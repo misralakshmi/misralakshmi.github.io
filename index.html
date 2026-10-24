@@ -25,7 +25,6 @@
   --c2: #5a48d0;
   --c3: #d9572f;
   --c4: #3f8a3a;
-  --on-accent: #ffffff;
 
   --sans: "Geist", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
@@ -36,14 +35,14 @@
   :root:not([data-theme="light"]) {
     --bg: #111214; --fg: #ececea; --muted: #94979d; --line: #26282c;
     --frame: #1b1d20; --accent: #5cc8c3; color-scheme: dark;
-    --c1: #5cc8c3; --c2: #a89bff; --c3: #ff8f6b; --c4: #7cc675; --on-accent: #0b1f1f;
+    --c1: #5cc8c3; --c2: #a89bff; --c3: #ff8f6b; --c4: #7cc675;
     --logo-filter: grayscale(1) brightness(0) invert(1); --logo-filter-hover: grayscale(1) brightness(0) invert(1);
   }
 }
 :root[data-theme="dark"] {
   --bg: #111214; --fg: #ececea; --muted: #94979d; --line: #26282c;
   --frame: #1b1d20; --accent: #5cc8c3; color-scheme: dark;
-    --c1: #5cc8c3; --c2: #a89bff; --c3: #ff8f6b; --c4: #7cc675; --on-accent: #0b1f1f;
+    --c1: #5cc8c3; --c2: #a89bff; --c3: #ff8f6b; --c4: #7cc675;
     --logo-filter: grayscale(1) brightness(0) invert(1); --logo-filter-hover: grayscale(1) brightness(0) invert(1);
 }
 
@@ -181,33 +180,6 @@ section { padding-block: clamp(24px, 3.5vw, 40px); border-top: 1px solid var(--l
 .eyebrow { color: var(--accent); }
 #contact { background: color-mix(in srgb, var(--accent) 8%, var(--bg)); }
 button.copy:hover { border-color: var(--accent); color: var(--accent); }
-
-/* Bolder colour pass: tinted hero, stat tiles, domain panels, coloured career rules, solid contact band */
-.hero { background: linear-gradient(180deg, color-mix(in srgb, var(--c1) 11%, var(--bg)), var(--bg)); }
-.hero h1 { font-weight: 500; }
-.stats { border-top: 0; gap: 12px; }
-.stats li { padding: 14px 16px; border-radius: 6px; border-top: 3px solid var(--sc); background: color-mix(in srgb, var(--sc) 11%, var(--bg)); }
-.stats li:nth-child(1) { --sc: var(--c1); }
-.stats li:nth-child(2) { --sc: var(--c2); }
-.stats li:nth-child(3) { --sc: var(--c3); }
-.stats li:nth-child(4) { --sc: var(--c4); }
-.stats .n { font-weight: 500; }
-#domains .domain { padding: clamp(16px, 2.5vw, 24px); border: 0; border-radius: 8px; background: color-mix(in srgb, var(--dc) 7%, var(--bg)); margin-bottom: 14px; }
-.domain h2 { color: var(--dc); font-weight: 500; }
-.domain h2::before { width: 12px; height: 12px; }
-.domain .photo { background: color-mix(in srgb, var(--dc) 30%, var(--frame)); }
-.domain .proof li { border-top: 2px solid var(--dc); }
-.domain .proof .n { font-weight: 500; }
-.career li { border-top-width: 3px; }
-.career li:nth-child(1) { border-top-color: var(--c3); }
-.career li:nth-child(2) { border-top-color: var(--c4); }
-.career li:nth-child(3) { border-top-color: var(--c2); }
-.career li:nth-child(4) { border-top-color: color-mix(in srgb, var(--c1) 55%, var(--line)); }
-.creds li .small { color: var(--accent); }
-#contact { background: var(--accent); color: var(--on-accent); border-top: 0; }
-#contact a, #contact .email { color: var(--on-accent); text-decoration-color: currentColor; }
-#contact button.copy { border-color: var(--on-accent); color: var(--on-accent); }
-#contact button.copy:hover { background: var(--on-accent); color: var(--accent); }
 
 /* Credentials */
 .creds { display: grid; grid-template-columns: 1fr; gap: 20px 36px; }
