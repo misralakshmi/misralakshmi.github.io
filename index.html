@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lakshmi Misra Portfolio</title>
+<meta name="description" content="Lakshmi Misra — innovation and AI transformation leader. Director, The Garage India at Microsoft.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: organised by domain, not by job. Each domain is one compact row:
+   statement + proof points on one side, a photo on the other, alternating.
+   A one-line career strip and a short credentials block follow. */
+:root {
+  --bg: #fbfbfa;
+  --fg: #151618;
+  --muted: #6c6f75;
+  --line: #e4e5e2;
+  --frame: #eeefec;
+  --accent: #3f5d78;
+
+  --sans: "Geist", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --wrap: 1080px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111214; --fg: #ececea; --muted: #94979d; --line: #26282c;
+    --frame: #1b1d20; --accent: #9db8d2; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111214; --fg: #ececea; --muted: #94979d; --line: #26282c;
+  --frame: #1b1d20; --accent: #9db8d2; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 56px; }
+body {
+  background: var(--bg); color: var(--fg);
+  font: 400 1rem/1.55 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg);
+}
+a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; transition: text-decoration-color .2s; }
+a:hover { text-decoration-color: currentColor; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3, h4, p, figure { margin: 0; }
+
+.wrap {
+  max-width: var(--wrap); margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) {
+  .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); }
+}
+
+.small { font: 400 0.8125rem/1.5 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.eyebrow { font: 500 0.75rem/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+
+/* ---------- Photo placeholder ---------- */
+.photo {
+  position: relative; max-width: 100%; width: 100%;
+  background: var(--frame); border-radius: 2px; overflow: hidden;
+  display: flex; align-items: flex-end;
+}
+.photo::after {
+  content: attr(data-label);
+  font: 400 0.6875rem/1 var(--mono); letter-spacing: .06em; color: var(--muted);
+  padding: 10px;
+}
+.r-portrait { aspect-ratio: 4 / 5; }
+.r-land { aspect-ratio: 3 / 2; }
+figcaption { font: 400 0.8125rem/1.45 var(--sans); color: var(--muted); margin-top: 6px; }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 12px; }
+.nav .mark { font-weight: 500; text-decoration: none; }
+.nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: 0.875rem; }
+.nav li a { text-decoration: none; color: var(--muted); }
+.nav li a:hover { color: var(--fg); }
+@media (max-width: 640px) { .nav ul { display: none; } }
+
+/* ---------- Hero ---------- */
+.hero { padding-block: clamp(24px, 4vw, 44px) clamp(20px, 3vw, 32px); }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: end; }
+@media (min-width: 760px) { .hero-grid { grid-template-columns: minmax(0, 1fr) 220px; gap: 40px; } }
+.hero-grid > * { min-width: 0; }
+.hero h1 {
+  font-weight: 400; font-size: clamp(2.2rem, 5.2vw, 3.75rem);
+  line-height: 1.04; letter-spacing: -0.035em; text-wrap: balance; max-width: 16ch;
+}
+.hero h1 span { color: var(--muted); }
+.hero p.lede { margin-top: 14px; max-width: 58ch; color: var(--muted); }
+.hero .meta { display: flex; flex-wrap: wrap; gap: 4px 22px; margin-top: 14px; }
+.hero .meta .dot::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 8px; vertical-align: 1px; }
+
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; list-style: none; margin: 24px 0 0; padding: 16px 0 0; border-top: 1px solid var(--line); }
+@media (min-width: 760px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.stats li { display: grid; gap: 2px; align-content: start; }
+.stats .n { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.stats .t { font-size: 0.875rem; line-height: 1.4; color: var(--muted); max-width: 28ch; }
+
+/* ---------- Sections ---------- */
+section { padding-block: clamp(24px, 3.5vw, 40px); border-top: 1px solid var(--line); }
+
+/* Domains */
+.domain { display: grid; grid-template-columns: 1fr; gap: 16px 36px; align-items: center; padding-block: 22px; border-top: 1px solid var(--line); }
+.domain:first-of-type { border-top: 0; padding-top: 0; }
+@media (min-width: 760px) {
+  .domain { grid-template-columns: minmax(0, 1fr) 300px; }
+  .domain.flip { grid-template-columns: 300px minmax(0, 1fr); }
+  .domain.flip figure { order: -1; }
+}
+.domain > * { min-width: 0; }
+.domain h2 { font-size: clamp(1.35rem, 2.4vw, 1.7rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; text-wrap: balance; }
+.domain p.what { color: var(--muted); margin-top: 6px; max-width: 58ch; }
+.domain .where { margin-top: 6px; }
+.proof { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 480px) { .proof { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.proof li { display: grid; gap: 2px; align-content: start; padding-top: 8px; border-top: 1px solid var(--line); }
+.proof .n { font-size: 1.4rem; font-weight: 400; letter-spacing: -0.03em; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.proof .t { font-size: 0.8125rem; line-height: 1.4; color: var(--muted); }
+
+/* Career strip */
+.career { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px 20px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 760px) { .career { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.career li { display: grid; gap: 1px; align-content: start; padding-top: 8px; border-top: 2px solid var(--line); }
+.career li.now { border-top-color: var(--accent); }
+.career strong { font-weight: 500; font-size: 0.9375rem; line-height: 1.3; }
+.career span.r { font-size: 0.8125rem; color: var(--muted); line-height: 1.4; }
+
+/* Credentials */
+.creds { display: grid; grid-template-columns: 1fr; gap: 20px 36px; }
+@media (min-width: 760px) { .creds { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.creds > * { min-width: 0; }
+.creds ul { list-style: none; margin: 0; padding: 0; }
+.creds li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 12px; padding-block: 7px; border-top: 1px solid var(--line); font-size: 0.9375rem; }
+.creds li:first-child { border-top: 0; padding-top: 0; }
+.creds li .by { color: var(--muted); }
+
+/* Contact */
+.contact-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; }
+.contact-row h2 { font-weight: 400; font-size: clamp(1.3rem, 2.6vw, 1.75rem); letter-spacing: -0.02em; line-height: 1.2; text-wrap: balance; max-width: 26ch; }
+.reach { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; }
+.email { font: 400 1rem/1.4 var(--mono); user-select: all; overflow-wrap: anywhere; }
+button.copy {
+  font: 500 0.8125rem/1 var(--sans); padding: 8px 12px; border-radius: 999px;
+  border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer;
+}
+button.copy:hover { border-color: var(--fg); }
+
+footer { border-top: 1px solid var(--line); padding-block: 14px 24px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+img { max-width: 100%; }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="mark" href="#top">Lakshmi Misra</a>
+    <ul>
+      <li><a href="#domains">Domains</a></li>
+      <li><a href="#career">Career</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>Lakshmi Misra. <span>Taking ideas from experiment to product, at scale.</span></h1>
+        <p class="lede">I build the programs, communities and partnerships that help large organizations innovate and adopt AI. Fifteen years across technology, academia, government and startups.</p>
+        <div class="meta small">
+          <span class="dot">Director, The Garage India, Microsoft</span>
+          <span>Noida, India</span>
+        </div>
+      </div>
+      <figure>
+        <div class="photo r-portrait" data-label="Portrait 4:5" role="img" aria-label="Portrait of Lakshmi Misra"></div>
+      </figure>
+    </div>
+    <ul class="stats">
+      <li><span class="n">15+ yrs</span><span class="t">across technology, academia, government and startups</span></li>
+      <li><span class="n">~25,000</span><span class="t">employees served by The Garage India</span></li>
+      <li><span class="n">500+</span><span class="t">volunteers led across six Hackathon editions</span></li>
+      <li><span class="n">~$1M</span><span class="t">government funding raised for startup incubators</span></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section id="domains">
+    <div class="wrap">
+      <p class="eyebrow">What I do</p>
+
+      <article class="domain">
+        <div>
+          <h2>Innovation programs</h2>
+          <p class="what">Running hackathons and innovation charters that move employee ideas onto product roadmaps.</p>
+          <p class="small where">Microsoft Global Hackathon · IDC innovation charter</p>
+          <ul class="proof">
+            <li><span class="n">#1</span><span class="t">Global Hackathon venue, four years running</span></li>
+            <li><span class="n">43%</span><span class="t">of global winning projects from India</span></li>
+            <li><span class="n">50%</span><span class="t">of showcased projects now on product roadmaps</span></li>
+          </ul>
+        </div>
+        <figure>
+          <div class="photo r-land" data-label="Photo 3:2" role="img" aria-label="Microsoft Global Hackathon India"></div>
+          <figcaption>Microsoft Global Hackathon, India.</figcaption>
+        </figure>
+      </article>
+
+      <article class="domain flip">
+        <div>
+          <h2>AI transformation &amp; skilling</h2>
+          <p class="what">Helping thousands of employees and customers learn and adopt Copilot and agentic AI.</p>
+          <p class="small where">SkillUp AI · AI-Powered Innovation workshops · Pinnacle AI Tour</p>
+          <ul class="proof">
+            <li><span class="n">20,000+</span><span class="t">employees reached through SkillUp AI</span></li>
+            <li><span class="n">1,000+</span><span class="t">new hires trained in 20+ workshops</span></li>
+            <li><span class="n">~15,000</span><span class="t">audience for the first Pinnacle AI Tour</span></li>
+          </ul>
+        </div>
+        <figure>
+          <div class="photo r-land" data-label="Photo 3:2" role="img" aria-label="AI workshop"></div>
+          <figcaption>Pinnacle AI Tour, Microsoft IDC.</figcaption>
+        </figure>
+      </article>
+
+      <article class="domain">
+        <div>
+          <h2>Innovation hubs &amp; communities</h2>
+          <p class="what">Launching physical spaces and the communities that keep them busy.</p>
+          <p class="small where">The Garage Noida · The Garage Hyderabad</p>
+          <ul class="proof">
+            <li><span class="n">150+</span><span class="t">events since the 2024 Noida launch</span></li>
+            <li><span class="n">10,000+</span><span class="t">attendees, rated ~4.5/5</span></li>
+            <li><span class="n">2,800</span><span class="t">community members, built from zero</span></li>
+          </ul>
+        </div>
+        <figure>
+          <div class="photo r-land" data-label="Photo 3:2" role="img" aria-label="The Garage Noida"></div>
+          <figcaption>The Garage Noida, opened September 2024.</figcaption>
+        </figure>
+      </article>
+
+      <article class="domain flip">
+        <div>
+          <h2>Startup &amp; ecosystem building</h2>
+          <p class="what">Connecting startups, government, academia and industry around shared programs.</p>
+          <p class="small where">IIIT Hyderabad CIE · UK India Tech Hub · NASSCOM Foundation</p>
+          <ul class="proof">
+            <li><span class="n">~70</span><span class="t">startups connected with investors</span></li>
+            <li><span class="n">75+</span><span class="t">partners for India’s largest academic AI cluster</span></li>
+            <li><span class="n">5</span><span class="t">international Tech Hubs coordinated</span></li>
+          </ul>
+        </div>
+        <figure>
+          <div class="photo r-land" data-label="Photo 3:2" role="img" aria-label="Startup community event"></div>
+          <figcaption>Startup community, IIIT Hyderabad.</figcaption>
+        </figure>
+      </article>
+    </div>
+  </section>
+
+  <section id="career">
+    <div class="wrap">
+      <p class="eyebrow">Career</p>
+      <ol class="career">
+        <li><span class="small">2006 – 10</span><strong>Titan Industries</strong><span class="r">Engineer</span></li>
+        <li><span class="small">2015 – 16</span><strong>NASSCOM Foundation</strong><span class="r">Consultant</span></li>
+        <li><span class="small">2016 – 20</span><strong>IIIT Hyderabad</strong><span class="r">Program Head, Industry Outreach</span></li>
+        <li><span class="small">2020 – 21</span><strong>British Deputy High Commission</strong><span class="r">Deputy Director, UK India Tech Hub</span></li>
+        <li class="now"><span class="small">2021 – now</span><strong>Microsoft</strong><span class="r">Director, The Garage India</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <div class="wrap creds">
+      <div>
+        <p class="eyebrow">Recognition</p>
+        <ul>
+          <li><span class="small">2026</span><span>Microsoft CVP recognition, AI Unlocked</span></li>
+          <li><span class="small">2025</span><span>Microsoft CVP recognition, engagement &amp; innovation</span></li>
+          <li><span class="small">2021</span><span>High Commissioners’ Award for Unsung Heroes <span class="by">· British High Commission</span></span></li>
+          <li><span class="small">2018</span><span>IVLP <span class="by">· U.S. Department of State</span></span></li>
+          <li><span class="small">2008</span><span>Tata Innovation Award, team member</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow">Education</p>
+        <ul>
+          <li><span class="small">2025</span><span>MBA <span class="by">· IIM Lucknow</span></span></li>
+          <li><span class="small">2021</span><span>Digital Transformation Strategies <span class="by">· University of Cambridge</span></span></li>
+          <li><span class="small">2015</span><span>M.A. <span class="by">· University of Hyderabad</span></span></li>
+          <li><span class="small">2008</span><span>Design Strategy for Product Innovation <span class="by">· NID Ahmedabad</span></span></li>
+          <li><span class="small">2006</span><span>B.E. <span class="by">· VTU</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact-row">
+      <h2>Building an innovation program or an AI skilling effort? Let’s talk.</h2>
+      <div class="reach">
+        <span class="email" id="email">misra.lakshmi@gmail.com</span>
+        <button class="copy" id="copy-email" type="button">Copy email</button>
+        <a href="https://www.linkedin.com/in/misralakshmi" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="small">© 2026 Lakshmi Misra</span>
+    <span class="small">Noida, India</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('copy-email');
+    var email = document.getElementById('email');
+    btn.addEventListener('click', function () {
+      var text = email.textContent.trim();
+      var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy email'; }, 1800); };
+      var fallback = function () {
+        var r = document.createRange(); r.selectNodeContents(email);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = 'Selected, press Ctrl/Cmd+C';
+      };
+      try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+    });
+  })();
+</script>
+</body>
+</html>
