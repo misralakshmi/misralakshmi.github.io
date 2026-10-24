@@ -18,9 +18,13 @@
   --muted: #6c6f75;
   --line: #e4e5e2;
   --frame: #eeefec;
-  --accent: #3f5d78;
-  --logo-filter: grayscale(1);
+  --accent: #0e7c7b;
+  --logo-filter: none;
   --logo-filter-hover: none;
+  --c1: #0e7c7b;
+  --c2: #5a48d0;
+  --c3: #d9572f;
+  --c4: #3f8a3a;
 
   --sans: "Geist", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
@@ -30,13 +34,15 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #111214; --fg: #ececea; --muted: #94979d; --line: #26282c;
-    --frame: #1b1d20; --accent: #9db8d2; color-scheme: dark;
+    --frame: #1b1d20; --accent: #5cc8c3; color-scheme: dark;
+    --c1: #5cc8c3; --c2: #a89bff; --c3: #ff8f6b; --c4: #7cc675;
     --logo-filter: grayscale(1) brightness(0) invert(1); --logo-filter-hover: grayscale(1) brightness(0) invert(1);
   }
 }
 :root[data-theme="dark"] {
   --bg: #111214; --fg: #ececea; --muted: #94979d; --line: #26282c;
-  --frame: #1b1d20; --accent: #9db8d2; color-scheme: dark;
+  --frame: #1b1d20; --accent: #5cc8c3; color-scheme: dark;
+    --c1: #5cc8c3; --c2: #a89bff; --c3: #ff8f6b; --c4: #7cc675;
     --logo-filter: grayscale(1) brightness(0) invert(1); --logo-filter-hover: grayscale(1) brightness(0) invert(1);
 }
 
@@ -153,6 +159,27 @@ section { padding-block: clamp(24px, 3.5vw, 40px); border-top: 1px solid var(--l
 .career .logo img[alt^="NASSCOM"] { max-width: 92px; }
 .career .logo img[alt^="IIIT"] { max-height: 48px; max-width: 110px; }
 .career .logo img[alt^="Microsoft"] { max-width: 108px; }
+.career .logo img { opacity: 0.9; }
+
+/* Colour: one hue per domain, carried into its marker, numbers and photo tint */
+.domain:nth-of-type(1) { --dc: var(--c1); }
+.domain:nth-of-type(2) { --dc: var(--c2); }
+.domain:nth-of-type(3) { --dc: var(--c3); }
+.domain:nth-of-type(4) { --dc: var(--c4); }
+.domain h2::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; background: var(--dc); margin-right: 10px; vertical-align: 0.15em; }
+.domain .proof .n { color: var(--dc); }
+.domain .proof li { border-top-color: color-mix(in srgb, var(--dc) 40%, var(--line)); }
+.domain .photo { background: color-mix(in srgb, var(--dc) 14%, var(--frame)); }
+.domain .photo::after { color: color-mix(in srgb, var(--dc) 70%, var(--muted)); }
+.stats li:nth-child(1) .n { color: var(--c1); }
+.stats li:nth-child(2) .n { color: var(--c2); }
+.stats li:nth-child(3) .n { color: var(--c3); }
+.stats li:nth-child(4) .n { color: var(--c4); }
+.hero h1 span { color: var(--accent); }
+.hero .photo { background: color-mix(in srgb, var(--c2) 12%, var(--frame)); }
+.eyebrow { color: var(--accent); }
+#contact { background: color-mix(in srgb, var(--accent) 8%, var(--bg)); }
+button.copy:hover { border-color: var(--accent); color: var(--accent); }
 
 /* Credentials */
 .creds { display: grid; grid-template-columns: 1fr; gap: 20px 36px; }
