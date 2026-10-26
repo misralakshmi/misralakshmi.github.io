@@ -105,12 +105,14 @@ figcaption { font: 400 0.8125rem/1.45 var(--sans); color: var(--muted); margin-t
 
 /* ---------- Hero ---------- */
 .hero { padding-block: clamp(24px, 4vw, 44px) clamp(20px, 3vw, 32px); }
-.hero-grid { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: end; }
-@media (min-width: 760px) { .hero-grid { grid-template-columns: minmax(0, 1fr) 220px; gap: 40px; } }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
+@media (min-width: 760px) { .hero-grid { grid-template-columns: minmax(0, 1.25fr) minmax(280px, 1fr); gap: 48px; } }
+.hero-grid > figure { margin: 0; max-width: 440px; justify-self: end; width: 100%; }
+@media (max-width: 759px) { .hero-grid > figure { order: -1; justify-self: start; max-width: 360px; } }
 .hero-grid > * { min-width: 0; }
 .hero h1 {
-  font-weight: 400; font-size: clamp(2.2rem, 5.2vw, 3.75rem);
-  line-height: 1.04; letter-spacing: -0.035em; text-wrap: balance; max-width: 16ch;
+  font-weight: 400; font-size: clamp(2rem, 4.2vw, 3.1rem);
+  line-height: 1.06; letter-spacing: -0.03em; text-wrap: balance; max-width: 20ch;
 }
 .hero h1 span { color: var(--muted); }
 .hero p.lede { margin-top: 14px; max-width: 58ch; color: var(--muted); }
@@ -127,6 +129,30 @@ figcaption { font: 400 0.8125rem/1.45 var(--sans); color: var(--muted); margin-t
 .stepper li:last-child::before { background: var(--rc); }
 .stepper li:not(:last-child)::after { content: ""; position: absolute; top: 5px; left: 12px; right: 0; height: 2px; background: color-mix(in srgb, var(--rc) 45%, var(--line)); }
 .stepper b, .mcards b { font-weight: 600; }
+.places-col { display: grid; gap: 16px; min-width: 0; }
+.beyond { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.beyond-label { display: inline-flex; align-items: center; gap: 6px; font: 500 0.75rem/1 var(--mono); letter-spacing: .04em; color: var(--rc); }
+.beyond-label .jicon { width: 16px; height: 16px; }
+.tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.tags li { padding: 5px 11px; border: 1px dashed color-mix(in srgb, var(--rc) 55%, var(--line)); border-radius: 999px; font-size: 0.8125rem; color: var(--muted); }
+.tags b { font-weight: 600; color: var(--fg); }
+.moments { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+.moment { display: flex; align-items: center; gap: 12px; padding: 8px 16px 8px 8px; border: 1px solid var(--line); border-radius: 10px; background: color-mix(in srgb, var(--rc) 6%, var(--bg)); color: var(--fg); font: inherit; text-align: left; cursor: zoom-in; transition: border-color .2s; }
+.moment:hover { border-color: var(--rc); }
+.m-thumb { flex: none; width: 84px; height: 63px; border-radius: 6px; display: grid; place-items: center; background: color-mix(in srgb, var(--rc) 22%, var(--frame)) center / cover no-repeat; font: 500 0.625rem/1 var(--mono); color: var(--muted); }
+.m-thumb::after { content: attr(data-label); }
+.m-thumb.has-img::after { content: none; }
+.m-text { display: grid; gap: 2px; }
+.m-text span { font-size: 0.8125rem; color: var(--muted); }
+.lightbox { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(10, 12, 16, 0.72); }
+.lightbox[hidden] { display: none; }
+.lb-panel { position: relative; width: min(760px, 100%); padding: 14px 14px 18px; border-radius: 10px; background: var(--bg); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35); }
+.lb-media { aspect-ratio: 3 / 2; border-radius: 6px; overflow: hidden; display: grid; place-items: center; background: var(--frame); font: 400 0.8125rem var(--mono); color: var(--muted); }
+.lb-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lb-title { margin-top: 12px; font-size: 1.05rem; font-weight: 600; }
+.lb-caption { margin-top: 2px; color: var(--muted); }
+.lb-close { position: absolute; top: 20px; right: 20px; width: 34px; height: 34px; border: 0; border-radius: 50%; background: var(--bg); color: var(--fg); font-size: 1.4rem; line-height: 1; cursor: pointer; }
+.portrait-img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; }
 .stepper small { display: block; margin-top: 2px; font: 400 0.75rem/1.4 var(--mono); color: var(--muted); }
 .stepper span, .mcards span { font-size: 0.875rem; line-height: 1.45; color: var(--muted); }
 .mcards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
@@ -227,7 +253,7 @@ section { padding-block: clamp(24px, 3.5vw, 40px); border-top: 1px solid var(--l
 .stats li:nth-child(2) .n { color: var(--c2); }
 .stats li:nth-child(3) .n { color: var(--c3); }
 .stats li:nth-child(4) .n { color: var(--c4); }
-.hero h1 span { color: var(--accent); }
+.hero h1 span { color: var(--c3); }
 .hero .photo { background: color-mix(in srgb, var(--c2) 12%, var(--frame)); }
 .eyebrow { color: var(--accent); }
 #contact { background: color-mix(in srgb, var(--accent) 8%, var(--bg)); }
@@ -300,10 +326,10 @@ img { max-width: 100%; }
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <h1>Lakshmi Misra. <span>I empower teams and organizations to innovate, adopt AI and turn ideas into results.</span></h1>
+        <h1>Lakshmi Misra. <span>I empower people and businesses to innovate, adopt AI and turn ideas into results at scale.</span></h1>
         <p class="jobtitle">Innovation &amp; AI Adoption Leader · Director, The Garage India, Microsoft</p>
-        <p class="lede">I grew up in Banaras, studied engineering in Bengaluru and began my career at Titan, a manufacturing company where innovation was an enabler rather than the goal. Those early years taught me to start with people. Wherever I have worked since, I have started something new, often before anyone asked: incubators at IIIT Hyderabad, and The Garage Noida and AI Unlocked at Microsoft. Today I lead The Garage India, Microsoft’s innovation hub for its ~23,000-person India Development Centre.</p>
-        <p class="belief">Transformation is 10% tools and 90% human empowerment.</p>
+        <p class="lede">I grew up in Banaras and studied engineering in Bengaluru. I began my career in Titan’s corporate innovation team, building early smartwatches, and later worked with AI researchers and startups at IIIT Hyderabad. Those years taught me to start with people, empower them, and help them build their ideas into real products. Wherever I have worked, I have created spaces and launched programs before anyone asked and stayed with them until they became mainstream: incubators at IIIT Hyderabad, and The Garage Noida and AI Unlocked at Microsoft. Today I lead The Garage India, Microsoft’s innovation hub across four sites for its ~23,000-person India Development Centre.</p>
+        <p class="belief">Empower people. Build the spaces. Grow the community. Innovation follows.</p>
         <div class="meta small">
           <span class="dot">Noida, India</span>
           <span>Executive MBA, IIM Lucknow</span>
@@ -322,12 +348,20 @@ img { max-width: 100%; }
       <p class="eyebrow">My journey</p>
       <p class="journey-intro">My path has rarely been a straight line. Three things have stayed constant: I start with people, I build from scratch, and I don’t wait for someone else to begin.</p>
       <div class="jrows">
-        <div class="jrow" style="--rc: var(--c1)"><span class="jlabel"><svg class="jicon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.8-6.5-11.2a6.5 6.5 0 1 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.3"/></svg>Places</span><ol class="stepper"><li><b>Banaras</b><span>where I grew up, one of the world’s oldest living cities</span></li><li><b>Bengaluru</b><span>engineering, and my first job at Titan</span></li><li><b>Hyderabad</b><span>sociology, startups, and The Garage</span></li><li><b>Noida</b><span>home today, and The Garage Noida</span></li></ol></div>
-        <div class="jrow" style="--rc: var(--c4)"><span class="jlabel"><svg class="jicon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9.5 12 5l9.5 4.5L12 14z"/><path d="M6.5 11.6v4.6c3.2 2.1 7.8 2.1 11 0v-4.6"/></svg>Learning</span><ol class="stepper"><li><b>Engineering</b><span>Solid fundamentals: how things are designed, built, tested and made to work.</span><small>B.E., 2006</small></li><li><b>Sociology</b><span>Understanding people: how communities work, and how they take to change.</span><small>M.A., University of Hyderabad, 2015</small></li><li><b>Management</b><span>Leading through change. My dissertation studied how women leaders adapt when they move to a new organization.</span><small>Executive MBA, IIM Lucknow, 2025</small></li></ol></div>
+        <div class="jrow" style="--rc: var(--c1)"><span class="jlabel"><svg class="jicon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.8-6.5-11.2a6.5 6.5 0 1 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.3"/></svg>Places</span><div class="places-col"><ol class="stepper"><li><b>Banaras</b><span>where I grew up, one of the world’s oldest living cities</span></li><li><b>Bengaluru</b><span>engineering, and my first job at Titan</span></li><li><b>Hyderabad</b><span>sociology, startups, and The Garage</span></li><li><b>Noida</b><span>home today, and The Garage Noida</span></li></ol><div class="beyond"><span class="beyond-label"><svg class="jicon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.6 3.6 5.4 3.6 8.5s-1.2 5.9-3.6 8.5c-2.4-2.6-3.6-5.4-3.6-8.5S9.6 6.1 12 3.5z"/></svg>Beyond India</span><ul class="tags"><li><b>Washington DC</b> · IVLP, 2018</li><li><b>Redmond</b> · Microsoft visits</li><li><b>Paris</b> · ESSEC exchange, 2024</li></ul></div></div></div>
+        <div class="jrow" style="--rc: var(--c4)"><span class="jlabel"><svg class="jicon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9.5 12 5l9.5 4.5L12 14z"/><path d="M6.5 11.6v4.6c3.2 2.1 7.8 2.1 11 0v-4.6"/></svg>Learning</span><ol class="stepper"><li><b>Engineering</b><span>Solid fundamentals: how products are designed, built, tested and made to work.</span><small>B.E., 2006</small></li><li><b>Sociology</b><span>Understanding people: how communities work, and how they take to change.</span><small>M.A., University of Hyderabad, 2015</small></li><li><b>Management</b><span>Leading through change. My dissertation studied how women leaders adapt when they move to a new organization.</span><small>Executive MBA, IIM Lucknow, 2025</small></li></ol></div>
         <div class="jrow" style="--rc: var(--c2)"><span class="jlabel"><svg class="jicon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4.5M12 16.5V21M3 12h4.5M16.5 12H21M5.6 5.6l3.2 3.2M15.2 15.2l3.2 3.2M5.6 18.4l3.2-3.2M15.2 8.8l3.2-3.2"/></svg>Built &amp; started</span><ol class="stepper"><li><b>Incubators</b><span>four at IIIT Hyderabad, ~$1M in funding, 2016–2020</span></li><li><b>A community</b><span>startups, partners and innovators in Hyderabad</span></li><li><b>Executive Challenge</b><span>IDC’s first, 2023; won the global Grand Prize</span></li><li><b>The Garage Noida</b><span>opened 2024; 3,000 employees engaged</span></li><li><b>AI Unlocked</b><span>started without formal backing; recognised by CVP Rajiv Kumar, 2026</span></li></ol></div>
-        <div class="jrow" style="--rc: var(--c3)"><span class="jlabel"><svg class="jicon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></svg>Moments</span><ul class="mcards"><li><b>Representing India</b><span>International Visitor Leadership Program, U.S. Department of State, 2018</span></li><li><b>Redmond</b><span>presenting India’s hackathon results to CEO Satya Nadella, 2024</span></li></ul></div>
+        <div class="jrow" style="--rc: var(--c3)"><span class="jlabel"><svg class="jicon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></svg>Moments</span><ul class="moments"><li><button type="button" class="moment" aria-haspopup="dialog" data-title="Representing India" data-caption="Selected for the U.S. State Department’s International Visitor Leadership Program in 2018, representing India." data-img=""><span class="m-thumb" data-label="Photo"></span><span class="m-text"><b>Representing India</b><span>IVLP, U.S. Department of State, 2018</span></span></button></li><li><button type="button" class="moment" aria-haspopup="dialog" data-title="Redmond" data-caption="Presenting India’s Global Hackathon results to Microsoft CEO Satya Nadella in Redmond, 2024." data-img=""><span class="m-thumb" data-label="Photo"></span><span class="m-text"><b>Redmond</b><span>Presenting to Satya Nadella, 2024</span></span></button></li></ul></div>
       </div>
-      <p class="journey-note">I’m inspired by Indra Nooyi, for how she combines leadership with getting things done. Outside work, I started practising yoga six years ago and I’m still at it. For me, staying with something matters as much as starting it.</p>
+      <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lb-title" hidden>
+        <div class="lb-panel">
+          <button type="button" class="lb-close" id="lb-close" aria-label="Close">×</button>
+          <div class="lb-media" id="lb-media"></div>
+          <p class="lb-title" id="lb-title"></p>
+          <p class="lb-caption" id="lb-caption"></p>
+        </div>
+      </div>
+      <p class="journey-note">I’m inspired by Indra Nooyi, for how she combines leadership with execution. Outside work, I started practising yoga six years ago and I’m still at it. For me, consistency matters as much as a strong start.</p>
     </div>
   </section>
 
@@ -518,9 +552,9 @@ img { max-width: 100%; }
 
   <section id="contact">
     <div class="wrap contact-row">
-      <h2>If you are building something new, or helping people find their way with AI, I would love to hear from you.</h2>
+      <h2>Open to conversations on innovation, AI adoption and community building.</h2>
       <div class="reach">
-        <span class="email" id="email">misra.lakshmi@gmail.com</span>
+        <span class="email" id="email">misralakshmi@gmail.com</span>
         <button class="copy" id="copy-email" type="button">Copy email</button>
         <a href="https://www.linkedin.com/in/misralakshmi" target="_blank" rel="noopener">LinkedIn</a>
       </div>
@@ -549,6 +583,32 @@ img { max-width: 100%; }
       };
       try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
     });
+  })();
+</script>
+<script>
+  (function () {
+    var box = document.getElementById('lightbox');
+    if (!box) return;
+    var media = document.getElementById('lb-media'), title = document.getElementById('lb-title'), caption = document.getElementById('lb-caption'), closer = document.getElementById('lb-close');
+    var opener = null;
+    document.querySelectorAll('.moment').forEach(function (m) {
+      var img = m.dataset.img;
+      if (img) { var t = m.querySelector('.m-thumb'); t.style.backgroundImage = 'url(' + img + ')'; t.classList.add('has-img'); }
+      m.addEventListener('click', function () {
+        opener = m;
+        media.innerHTML = '';
+        if (img) { var i = document.createElement('img'); i.src = img; i.alt = m.dataset.title; media.appendChild(i); }
+        else { media.textContent = 'Photo coming soon'; }
+        title.textContent = m.dataset.title;
+        caption.textContent = m.dataset.caption;
+        box.hidden = false;
+        closer.focus();
+      });
+    });
+    function close() { box.hidden = true; if (opener) opener.focus(); }
+    closer.addEventListener('click', close);
+    box.addEventListener('click', function (e) { if (e.target === box) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
   })();
 </script>
 <script>
