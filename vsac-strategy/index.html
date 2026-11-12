@@ -229,7 +229,8 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
 .eq-me h3 { color: var(--me-b); }
 .eq-me .eq-chips { margin-top: 8px; }
 .eq-op { align-self: center; font-family: var(--display); font-size: 54px; color: var(--muted); }
-.eq-val { border-radius: 14px; padding: 14px 16px; }
+.eq-val { border-radius: 14px; padding: 18px 18px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.eq-val .fund { margin-top: 12px !important; }
 .eq-val.partners { background: var(--gcc-t); border-left: 5px solid var(--gcc); }
 .eq-val.ashoka { background: var(--re-t); border-left: 5px solid var(--re-b); }
 .eq-loop { margin-top: 18px; border: 2px dashed var(--re-b); border-radius: 999px; padding: 12px 22px; font-size: 15px; text-align: center; }
@@ -318,6 +319,16 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
 .pipe li b::before { content: counter(s) ". "; color: var(--muted); font-weight: 400; }
 .pipe p { margin: 0; font-size: 13.5px; }
 @media (max-width: 1100px) { .vision, .iac { grid-template-columns: 1fr; } .plan-around ul { grid-template-columns: 1fr 1fr; } .pipe ol { grid-template-columns: 1fr; } }
+.eq-v { gap: 10px !important; }
+.lay-intro { font-size: 12px !important; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 2px !important; }
+.lay { flex: 1; border-radius: 14px; padding: 12px 16px; display: flex; flex-direction: column; justify-content: center; align-self: center; border-left: 5px solid; }
+.lay h3 { font-size: 17px !important; margin-bottom: 3px !important; }
+.lay p { font-size: 14px !important; }
+.lay.l1 { width: 70%; background: var(--re-t); border-color: var(--re-b); }
+.lay.l2 { width: 80%; background: var(--hub-t); border-color: var(--hub); }
+.lay.l3 { width: 90%; background: var(--gcc-t); border-color: var(--gcc); }
+.lay.l4 { width: 100%; background: color-mix(in srgb, #0b7285 12%, var(--paper)); border-color: #0b7285; }
+@media (max-width: 1100px) { .lay { width: 100% !important; } }
 </style>
 </head>
 <body>
@@ -346,7 +357,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
       <div class="pos"><div class="eyebrow">Positioning</div><p>India's school for responsible computing and AI: <strong>technical rigour with human purpose.</strong></p></div>
     </div>
 
-    <div class="eq" role="img" aria-label="CS multiplied by X, where X is the liberal arts, applied across five liberal arts verticals in three contexts, industrial transformation, the national agenda and societal challenges, through indicative mechanisms, equals value for partners and value for Ashoka; the value feeds back to shape CS">
+    <div class="eq" role="img" aria-label="CS multiplied by X, where X is the liberal arts, applied across five liberal arts verticals in three contexts, industrial transformation, the national agenda and societal challenges, through indicative mechanisms, equals value in widening layers, for faculty and students, Ashoka, partners and society; the value feeds back to shape CS">
       <div class="eq-card eq-cs">
         <div class="eq-sym">CS</div>
         <h3>The core</h3>
@@ -382,15 +393,11 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
       <div class="eq-op" aria-hidden="true">=</div>
       <div class="eq-card eq-v">
         <div class="eq-sym">Value</div>
-        <div class="eq-val partners">
-          <h3>For partners</h3>
-          <p><strong>Innovation and AI transformation</strong>, public and societal impact, research partnerships and talent.</p>
-        </div>
-        <div class="eq-val ashoka">
-          <h3>For Ashoka</h3>
-          <p>Funding, reputation, government relationships, scale, and knowledge: IP and papers.</p>
-          <p class="fund">Funded through the founding gift, industry affiliates, sponsored research and named labs, government missions, CSR and philanthropy, and paid programmes.</p>
-        </div>
+        <p class="lay-intro">Value in widening layers</p>
+        <div class="lay l1"><h3>Faculty and students</h3><p>A research agenda with real problems, publications, internships and careers.</p></div>
+        <div class="lay l2"><h3>Ashoka</h3><p>Funding, reputation, government relationships, IP and papers.</p></div>
+        <div class="lay l3"><h3>Partners</h3><p><strong>Innovation and AI transformation</strong>, research partnerships and talent.</p></div>
+        <div class="lay l4"><h3>Society</h3><p>Responsible computing applied to India's public challenges.</p></div>
       </div>
     </div>
     <div class="fb" aria-label="Feedback loop: value flows back to shape CS">
@@ -401,7 +408,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
     <div class="explore">
       <a class="ex" href="#map" style="--c: var(--hub)"><div class="eyebrow">01 · Operating map</div><h3>How it works</h3><p>Trace each partner through Ashoka's units, themes and mechanisms to impact.</p><span>Open the map →</span></a>
       <a class="ex" href="#stakeholders" style="--c: var(--parks)"><div class="eyebrow">02 · Stakeholders</div><h3>Who to work with</h3><p>51 organisations across seven partner types, existing ties and prospects.</p><span>See stakeholders →</span></a>
-      <a class="ex" href="#kpis" style="--c: var(--indian)"><div class="eyebrow">03 · KPIs</div><h3>What success looks like</h3><p>Indicators for years 1, 3 and 5 across innovation, translation, reputation and value.</p><span>View KPIs →</span></a>
+      <a class="ex" href="#kpis" style="--c: var(--indian)"><div class="eyebrow">03 · KPIs</div><h3>What success looks like</h3><p>Indicators for years 1, 3 and 5 across the four layers of value and the mechanisms.</p><span>View KPIs →</span></a>
     </div>
   </div>
 
@@ -498,7 +505,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
         <div class="eyebrow">Key performance indicators · years 1, 3 and 5</div>
         <h1>What success looks like by year five</h1>
       </div>
-      <p class="lead">Six groups of indicators that follow the map: four for value for partners (innovation and AI transformation, public and societal impact, research reputation, student careers), one for the mechanisms, and value for Ashoka.</p>
+      <p class="lead">Indicators follow the four layers of value, widening from faculty and students to Ashoka, partners and society, with a final group for the mechanisms that produce them.</p>
     </header>
     <div class="kpi-note"><strong>Proposed targets for discussion.</strong> Baselines are set in the first 90 days; the numbers below show the intended scale and slope, and are revised once baselines are known.</div>
     <div class="kpi-bar">
@@ -996,32 +1003,31 @@ renderSH();
 
 // ---------- KPIs ----------
 const KG = [
-  ['Innovation and AI transformation','The main value VSAC creates for its partners','var(--gcc)',[
+  ['Faculty and students','The first layer: research, learning and careers','var(--re-b)',[
+    ['Papers at top-tier venues',[20,35,55],'','Per year, VSAC faculty and students'],
+    ['Students on partner-sponsored projects',[100,250,450],'','Capstones, challenges and studios'],
+    ['Internships through partners',[60,150,300],'','Per year'],
+    ['Visiting faculty and exchanges',[4,10,18],'','Per year']]],
+  ['Ashoka','What flows back to the university: the founding gift builds capacity, recurring sources fund operations','var(--hub)',[
+    ['External funding raised',[10,30,60],'₹ crore','Grants and sponsored research, per year'],
+    ['Recurring industry revenue',[1,4,10],'₹ crore','Executive education and sponsored projects'],
+    ['Non-philanthropic share of VSAC budget',[5,15,25],'%','Grants, contracts and fees'],
+    ['Joint grants with global partners',[1,3,6],'','Cumulative']]],
+  ['Partners: innovation and AI transformation','The main value VSAC creates for its partners','var(--gcc)',[
     ['Partner problems solved together',[10,30,60],'','Co-developed by faculty and students'],
     ['AI solutions adopted by partners',[3,10,25],'','Prototypes partners put into real use'],
     ['Professionals upskilled in AI',[150,500,1000],'','Executive education and sessions in experimental spaces'],
     ['Innovation programmes run with partners',[2,5,10],'','Challenges, studios and hackathons'],
     ['Science park and accelerator links',[1,3,5],'','e.g. Cambridge, IIT Madras, Y Combinator']]],
-  ['Public and societal impact','Work that serves India’s missions and society','var(--gov)',[
+  ['Society','Work on India’s public challenges','#0b7285',[
     ['Government-funded projects',[2,5,9],'','Active in the year'],
     ['Pilots in public systems',[1,3,6],'','Running with a government partner'],
     ['Societal challenge projects',[3,8,15],'','With NGOs, public bodies and communities']]],
-  ['Research reputation','Standing with global peers','var(--univ)',[
-    ['Papers at top-tier venues',[20,35,55],'','Per year, VSAC faculty and students'],
-    ['Joint grants with global partners',[1,3,6],'','Cumulative'],
-    ['Visiting faculty and exchanges',[4,10,18],'','Per year']]],
-  ['Student careers','Partners shaping talent','var(--startups)',[
-    ['Students on partner-sponsored projects',[100,250,450],'','Capstones, challenges and studios'],
-    ['Internships through partners',[60,150,300],'','Per year']]],
-  ['Mechanisms: translation','How research turns into products, deals and ventures','var(--bigtech)',[
+  ['How: mechanisms for translation','How research turns into products, deals and ventures across all four layers','var(--me-b)',[
     ['Invention disclosures',[5,15,30],'','Filed with the technology-transfer office'],
     ['Licences and tech-transfer deals',[0,3,8],'','Signed agreements'],
     ['VSAC-linked startups incubated',[5,12,25],'','With the InfoEdge Centre for Entrepreneurship'],
-    ['Research Park anchor tenants',[0,2,5],'','Signed before the park is built']]],
-  ['Value for Ashoka','What flows back to the university: the founding gift builds capacity, recurring sources fund operations','var(--indian)',[
-    ['External funding raised',[10,30,60],'₹ crore','Grants and sponsored research, per year'],
-    ['Recurring industry revenue',[1,4,10],'₹ crore','Executive education and sponsored projects'],
-    ['Non-philanthropic share of VSAC budget',[5,15,25],'%','Grants, contracts and fees']]]
+    ['Research Park anchor tenants',[0,2,5],'','Signed before the park is built']]]
 ];
 let kYear = 2;
 function renderK() {
