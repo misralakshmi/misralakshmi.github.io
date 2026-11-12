@@ -260,6 +260,13 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
 .eq-cs .eq-half h3 { margin-top: 14px; }
 .chg-text { fill: #fff; font-size: 12.5px; font-weight: 600; letter-spacing: .03em; }
 .chg { transition: opacity .15s; }
+.fb { position: relative; height: 96px; margin-top: 6px; }
+.fb-u { position: absolute; left: 13%; right: 13%; top: 0; height: 56px; border: 2.5px dashed var(--re-b); border-top: 0; border-radius: 0 0 28px 28px; }
+.fb-up { position: absolute; left: -9px; top: -4px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 13px solid var(--re-b); }
+.fb-from { position: absolute; right: -6px; top: -2px; width: 10px; height: 10px; border-radius: 50%; background: var(--re-b); }
+.fb-label { position: absolute; left: 50%; top: 38px; transform: translateX(-50%); background: var(--paper); padding: 4px 16px; font-size: 14.5px; text-align: center; white-space: nowrap; }
+.fb-label b { color: var(--re-b); margin-right: 6px; }
+@media (max-width: 1100px) { .fb { display: none; } }
 </style>
 </head>
 <body>
@@ -330,7 +337,10 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
         </div>
       </div>
     </div>
-    <div class="eq-loop"><span>↺</span> Outcomes feed back to shape what CS at Ashoka becomes: its courses, research agenda and hiring.</div>
+    <div class="fb" aria-label="Feedback loop: value flows back to shape CS">
+      <div class="fb-u"><span class="fb-up" aria-hidden="true"></span><span class="fb-from" aria-hidden="true"></span></div>
+      <div class="fb-label"><b>↺ Feedback loop</b> Value flows back to shape what CS at Ashoka becomes: its courses, research agenda and hiring.</div>
+    </div>
 
     <div class="explore">
       <a class="ex" href="#map" style="--c: var(--hub)"><div class="eyebrow">01 · Operating map</div><h3>How it works</h3><p>Trace each partner through Ashoka's units, themes and mechanisms to impact.</p><span>Open the map →</span></a>
