@@ -398,7 +398,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
     <div class="explore">
       <a class="ex" href="#map" style="--c: var(--hub)"><div class="eyebrow">01 · Operating map</div><h3>How it works</h3><p>Trace each partner through Ashoka's units, themes and mechanisms to impact.</p><span>Open the map →</span></a>
       <a class="ex" href="#stakeholders" style="--c: var(--parks)"><div class="eyebrow">02 · Stakeholders</div><h3>Who to work with</h3><p>51 organisations across seven partner types, existing ties and prospects.</p><span>See stakeholders →</span></a>
-      <a class="ex" href="#kpis" style="--c: var(--indian)"><div class="eyebrow">03 · KPIs</div><h3>What success looks like</h3><p>Three-year indicators for innovation, translation, reputation and value.</p><span>View KPIs →</span></a>
+      <a class="ex" href="#kpis" style="--c: var(--indian)"><div class="eyebrow">03 · KPIs</div><h3>What success looks like</h3><p>Indicators for years 1, 3 and 5 across innovation, translation, reputation and value.</p><span>View KPIs →</span></a>
     </div>
   </div>
 
@@ -440,14 +440,14 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
     <div class="eyebrow">Mechanisms and sequence</div>
     <h2>Build on what exists, add what is missing</h2>
     <p class="sec-lead">Incubation and experimental spaces already have a home at Ashoka, and joint research exists in pockets. Technology transfer and the Research Park need building, the park last.</p>
-    <svg id="phase" viewBox="0 0 1300 150" role="img" aria-label="Three-year sequence: experimental spaces, technology transfer and joint research in year one; incubation track in year two; Research Park in year three"></svg>
+    <svg id="phase" viewBox="0 0 1300 150" role="img" aria-label="Five-year sequence: experimental spaces, technology transfer and joint research in year one; incubation track by year three; Research Park by year five"></svg>
     <div class="mechs">
       <div class="mech"><span class="status" style="--sc: var(--seed)">Seed exists</span><h3>Experimental spaces</h3><p style="margin-bottom:6px">Labs, makerspaces and an experience centre: places where faculty, students and partners build and test together.</p><div class="k">At Ashoka today</div><p>Mphasis AI &amp; Applied Tech Lab, its Digital Makerspace, and centre labs such as KCDH-A and CDLDS.</p></div>
 
       <div class="mech"><span class="status" style="--sc: var(--exists)">Exists</span><h3>Incubation</h3><div class="k">At Ashoka today</div><p>InfoEdge Centre for Entrepreneurship, 100+ startups. Add a deep-tech AI track with VSAC faculty.</p></div>
       <div class="mech"><span class="status" style="--sc: var(--build)">Build</span><h3>Technology transfer</h3><div class="k">At Ashoka today</div><p>To build: IP policy, licensing and sponsored-research contracts for VSAC.</p></div>
       <div class="mech"><span class="status" style="--sc: var(--seed)">In pockets</span><h3>Joint research and exchange</h3><div class="k">At Ashoka today</div><p>Board of Advisors from IIT Kharagpur, ISI Kolkata, MIT and Google DeepMind; KCDH-A's India–Singapore grant.</p></div>
-      <div class="mech"><span class="status" style="--sc: var(--build)">Build</span><h3>Research Park</h3><div class="k">At Ashoka today</div><p>To build in year three, with anchor tenants committed first.</p></div>
+      <div class="mech"><span class="status" style="--sc: var(--build)">Build</span><h3>Research Park</h3><div class="k">At Ashoka today</div><p>To build by year five, with anchor tenants committed first.</p></div>
     </div>
   </section>
 
@@ -492,8 +492,8 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
   <div class="page" id="page-kpis" hidden>
     <header class="ph">
       <div>
-        <div class="eyebrow">Key performance indicators · three years</div>
-        <h1>What success looks like by year three</h1>
+        <div class="eyebrow">Key performance indicators · years 1, 3 and 5</div>
+        <h1>What success looks like by year five</h1>
       </div>
       <p class="lead">Six groups of indicators that follow the map: four for value for partners (innovation and AI transformation, public and societal impact, research reputation, student careers), one for the mechanisms, and value for Ashoka.</p>
     </header>
@@ -502,8 +502,8 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
       <div class="chips" role="group" aria-label="Highlight a year" id="kpiYear">
         <span>Highlight</span>
         <button data-y="0" aria-pressed="false" style="--c: var(--indian)">Year 1</button>
-        <button data-y="1" aria-pressed="false" style="--c: var(--bar-a)">Year 2</button>
-        <button data-y="2" aria-pressed="true" style="--c: var(--gov)">Year 3</button>
+        <button data-y="1" aria-pressed="false" style="--c: var(--bar-a)">Year 3</button>
+        <button data-y="2" aria-pressed="true" style="--c: var(--gov)">Year 5</button>
       </div>
     </div>
     <div class="kpi-groups" id="kpiGroups"></div>
@@ -549,7 +549,7 @@ const THV = [['v-health','Health & biosciences'],['v-econ','Economics & finance'
 const TH = [...THH, ...THV];
 const TMAP = { 't-cs':['h-ai','h-sys'], 't-ds':['h-data'], 't-econ':['v-econ'], 't-ais':['h-ai','v-policy'], 't-ethics':['v-hum'], 't-dig':['v-policy','h-sec'], 't-policy':['v-policy'], 't-hum':['v-hum'], 't-health':['v-health'], 't-hw':['h-sys'] };
 const remapT = list => [...new Set(list.flatMap(x => TMAP[x] || [x]))];
-const ME = [['m-exp','Experimental spaces','Labs & experience centre'],['m-inc','Incubation','Exists: InfoEdge CfE'],['m-tt','Technology transfer','To build'],['m-joint','Joint research','In pockets today'],['m-park','Research Park','To build · year 3']];
+const ME = [['m-exp','Experimental spaces','Labs & experience centre'],['m-inc','Incubation','Exists: InfoEdge CfE'],['m-tt','Technology transfer','To build'],['m-joint','Joint research','In pockets today'],['m-park','Research Park','To build · year 5']];
 const IM = [['d-ind','Innovation & AI transformation'],['d-nat','Public & societal impact'],['d-rep','Research reputation'],['d-stu','Student careers']];
 const CHG = [['c-ind','Industrial transformation',130,320],['c-nat','National agenda',335,525],['c-soc','Societal challenges',540,730]];
 const SCH = { parks:['c-ind'], gov:['c-nat','c-soc'], startups:['c-ind','c-soc'], gcc:['c-ind'], bigtech:['c-ind','c-soc'], indian:['c-ind','c-nat'], univ:['c-soc','c-nat'] };
@@ -628,10 +628,10 @@ const addT = (k, t) => { if (!S[k].links.includes(t)) S[k].links.push(t); };
 ['gcc','startups'].forEach(k => addT(k, 'h-hci'));
 const MD = {
   'm-exp': ['Seed exists','Places to experiment together: research labs, the Digital Makerspace, and an experience centre where government and industry see VSAC’s work and frame problems with faculty. Seed: Mphasis AI & Applied Tech Lab and Digital Makerspace.','Year 1'],
-  'm-inc': ['Exists','InfoEdge Centre for Entrepreneurship, 100+ startups. Add a deep-tech AI track with VSAC faculty.','Year 2'],
-  'm-tt': ['Build','IP policy, licensing and sponsored-research contracts for VSAC.','Year 1 set-up; first deals in year 2'],
+  'm-inc': ['Exists','InfoEdge Centre for Entrepreneurship, 100+ startups. Add a deep-tech AI track with VSAC faculty.','Year 3'],
+  'm-tt': ['Build','IP policy, licensing and sponsored-research contracts for VSAC.','Year 1 set-up; first deals by year 3'],
   'm-joint': ['In pockets','Faculty-to-faculty projects, joint grants and PhD exchange, building on the advisory board and KCDH-A’s international grants.','Year 1'],
-  'm-park': ['Build','Co-located labs for GCCs, Big Tech and startups beside faculty, modelled on Cambridge Science Park, Stanford Research Park and IIT Madras Research Park.','Year 3, anchor tenants first']
+  'm-park': ['Build','Co-located labs for GCCs, Big Tech and startups beside faculty, modelled on Cambridge Science Park, Stanford Research Park and IIT Madras Research Park.','Year 5, anchor tenants first']
 };
 const NAME = {};
 [EXT, UNITS, TH, ME, IM].forEach(g => g.forEach(([id, n]) => NAME[id] = n));
@@ -850,8 +850,8 @@ const grad = pe('defs', {});
 grad.innerHTML = '<linearGradient id="lineGrad" x1="0" x2="1"><stop offset="0" stop-color="var(--indian)"/><stop offset=".5" stop-color="var(--bar-a)"/><stop offset="1" stop-color="var(--gov)"/></linearGradient>';
 pe('rect', { x: 40, y: 72, width: 1220, height: 6, rx: 3, fill: 'url(#lineGrad)' });
 [[220, 'Year 1', 'Open the front door', 'Experimental spaces · Technology transfer set-up · Joint research', 'var(--indian)'],
- [650, 'Year 2', 'Convert demand into deals', 'Deep-tech incubation track · First licences and contracts', 'var(--bar-a)'],
- [1080, 'Year 3', 'Build the park', 'Research Park with committed anchor tenants', 'var(--gov)']].forEach(([x, y, title, items, c]) => {
+ [650, 'Year 3', 'Convert demand into deals', 'Deep-tech incubation track · First licences and contracts', 'var(--bar-a)'],
+ [1080, 'Year 5', 'Build the park', 'Research Park with committed anchor tenants', 'var(--gov)']].forEach(([x, y, title, items, c]) => {
   pe('text', { x, y: 34, 'text-anchor': 'middle', style: 'font-family:var(--display);font-size:26px;fill:' + c }, y);
   pe('text', { x, y: 58, 'text-anchor': 'middle', style: 'font-family:var(--display);font-size:16px;fill:var(--ink)' }, title);
   pe('circle', { cx: x, cy: 75, r: 11, fill: c, stroke: 'var(--paper)', 'stroke-width': 3 });
@@ -1028,9 +1028,9 @@ function renderK() {
       <div class="kcards">${items.map(([n, v, u, how]) => { const mx = Math.max(...v) || 1; return `
         <div class="kcard">
           <div class="kname">${n}</div>
-          <div class="big">${v[kYear]}${u === '%' ? '%' : ''}<small>${u && u !== '%' ? u + ' · ' : ''}Year ${kYear + 1}</small></div>
+          <div class="big">${v[kYear]}${u === '%' ? '%' : ''}<small>${u && u !== '%' ? u + ' · ' : ''}Year ${[1, 3, 5][kYear]}</small></div>
           <div class="bars">${v.map((x, i) => `<div class="${i === kYear ? 'sel' : ''}" style="height:${Math.max(4, x / mx * 100)}%"><b>${x}</b></div>`).join('')}</div>
-          <div class="yl"><span>Y1</span><span>Y2</span><span>Y3</span></div>
+          <div class="yl"><span>Y1</span><span>Y3</span><span>Y5</span></div>
           <p class="how">${how}</p>
         </div>`; }).join('')}</div>
     </section>`).join('');
