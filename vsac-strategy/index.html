@@ -6,50 +6,45 @@
 <title>VSAC Strategy Map</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Plan: Ashoka University brand palette (red #C4122F, blue #0D3862, deep red, deep blue, beige, greys; Georgia + Open Sans).
-   Each partner type keeps its own tone within the brand family; CS (horizontal) is Ashoka blue, the liberal arts (vertical) Ashoka beige.
-   Layout: landing equation, flow diagram + side panel, stakeholders directory, KPI cards. */
+/* Plan: colourful editorial. Each external stakeholder owns a hue; its path lights up in that hue.
+   Columns sit on soft pastel tints; the VSAC hub is indigo, the problem bar an amber-to-coral band.
+   Layout: flow diagram + side panel, then "who powers VSAC", then mechanisms on a three-year line. */
 :root {
-  --red: #C4122F; --red-d: #a70e13; --blue: #0D3862; --navy: #15113e; --beige: #F7EBD3; --beige-n: #FBF3DF;
-  --paper: #ffffff; --ink: #1a1a1a; --muted: #4a5568; --rule: #e3e8ec; --soft: #FBF3DF;
-  --parks: #C4122F; --parks-t: #fbe7ea; --gov: #0D3862; --startups: #E8586F; --gcc: #3E6A8F; --bigtech: #15113e; --indian: #8C6D2F; --univ: #6D7F89;
-  --gov-t: #e4ebf2; --startups-t: #fdecef; --gcc-t: #e8eff5; --bigtech-t: #e7e6ef; --indian-t: #f7efe0; --univ-t: #edf1f3;
-  --hub: #0D3862; --hub-t: #e8eef4;
-  --th-t: #F7EBD3; --th-b: #b8995a; --me-t: #f2f5f7; --me-b: #7F93A0; --im-t: #FBF3DF; --im-b: #a70e13; --re-t: #FBF3DF; --re-b: #C4122F;
-  --bar-a: #C4122F; --bar-b: #15113e;
-  --exists: #0D3862; --seed: #8C6D2F; --build: #C4122F;
+  --paper: #fcfcfb; --ink: #1b1c20; --muted: #5d616a; --rule: #e2e3e7; --soft: #f4f4f6;
+  --parks: #ae3ec9; --parks-t: #fcefff; --gov: #d6336c; --startups: #f76707; --gcc: #1c7ed6; --bigtech: #7048e8; --indian: #2f9e44; --univ: #0c8599;
+  --gov-t: #fff0f6; --startups-t: #fff4e6; --gcc-t: #e7f5ff; --bigtech-t: #f3f0ff; --indian-t: #ebfbee; --univ-t: #e3fafc;
+  --hub: #364fc7; --hub-t: #edf2ff;
+  --th-t: #fff4e6; --th-b: #e8590c; --x: #e8590c; --me-t: #f8f0fc; --me-b: #b07cc6; --im-t: #fff9db; --im-b: #d4a72c; --re-t: #fff4e6; --re-b: #e8a06a;
+  --bar-a: #f59f00; --bar-b: #f03e3e;
+  --exists: #2f9e44; --seed: #f59f00; --build: #d6336c;
   --display: Georgia, "Times New Roman", serif;
-  --body: "Open Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --red:#e8586f; --red-d:#d9414f; --blue:#7fa6cf; --navy:#a9a5d6; --beige:#3a3222; --beige-n:#2c2619;
-    --paper:#121418; --ink:#ececef; --muted:#a7afb8; --rule:#2c3138; --soft:#22201a;
-    --parks:#e8586f; --parks-t:#3a1a20; --gov:#7fa6cf; --startups:#f0899b; --gcc:#8fb1cf; --bigtech:#a9a5d6; --indian:#cda968; --univ:#9fb0b9;
-    --gov-t:#16263a; --startups-t:#3a1d24; --gcc-t:#1a2a38; --bigtech-t:#211f38; --indian-t:#33291a; --univ-t:#222a2f;
-    --hub:#7fa6cf; --hub-t:#16263a;
-    --th-t:#3a3222; --th-b:#cda968; --me-t:#20262c; --me-b:#9fb0b9; --im-t:#2c2619; --im-b:#e8586f; --re-t:#2c2619; --re-b:#e8586f;
-    --bar-a:#e8586f; --bar-b:#7fa6cf; --exists:#7fa6cf; --seed:#cda968; --build:#e8586f;
+    --paper:#15161a; --ink:#ececef; --muted:#a5a8b0; --rule:#2e3038; --soft:#1d1f25;
+    --parks:#da77f2; --parks-t:#2f1a35; --gov:#f06595; --startups:#ff922b; --gcc:#4dabf7; --bigtech:#9775fa; --indian:#51cf66; --univ:#3bc9db;
+    --gov-t:#3a1a27; --startups-t:#3a2512; --gcc-t:#12283d; --bigtech-t:#251c3f; --indian-t:#14301b; --univ-t:#0f2f33;
+    --hub:#748ffc; --hub-t:#1c2340;
+    --th-t:#3a2512; --th-b:#ff922b; --x:#ff922b; --me-t:#2a1a30; --me-b:#9c6bb3; --im-t:#33290f; --im-b:#c49a2a; --re-t:#33240f; --re-b:#c98450;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --red:#e8586f; --red-d:#d9414f; --blue:#7fa6cf; --navy:#a9a5d6; --beige:#3a3222; --beige-n:#2c2619;
-  --paper:#121418; --ink:#ececef; --muted:#a7afb8; --rule:#2c3138; --soft:#22201a;
-  --parks:#e8586f; --parks-t:#3a1a20; --gov:#7fa6cf; --startups:#f0899b; --gcc:#8fb1cf; --bigtech:#a9a5d6; --indian:#cda968; --univ:#9fb0b9;
-  --gov-t:#16263a; --startups-t:#3a1d24; --gcc-t:#1a2a38; --bigtech-t:#211f38; --indian-t:#33291a; --univ-t:#222a2f;
-  --hub:#7fa6cf; --hub-t:#16263a;
-  --th-t:#3a3222; --th-b:#cda968; --me-t:#20262c; --me-b:#9fb0b9; --im-t:#2c2619; --im-b:#e8586f; --re-t:#2c2619; --re-b:#e8586f;
-  --bar-a:#e8586f; --bar-b:#7fa6cf; --exists:#7fa6cf; --seed:#cda968; --build:#e8586f;
+  --paper:#15161a; --ink:#ececef; --muted:#a5a8b0; --rule:#2e3038; --soft:#1d1f25;
+  --parks:#da77f2; --parks-t:#2f1a35; --gov:#f06595; --startups:#ff922b; --gcc:#4dabf7; --bigtech:#9775fa; --indian:#51cf66; --univ:#3bc9db;
+  --gov-t:#3a1a27; --startups-t:#3a2512; --gcc-t:#12283d; --bigtech-t:#251c3f; --indian-t:#14301b; --univ-t:#0f2f33;
+  --hub:#748ffc; --hub-t:#1c2340;
+  --th-t:#3a2512; --th-b:#ff922b; --x:#ff922b; --me-t:#2a1a30; --me-b:#9c6bb3; --im-t:#33290f; --im-b:#c49a2a; --re-t:#33240f; --re-b:#c98450;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.55 var(--body); }
 .wrap { max-width: 1440px; margin: 0 auto; padding: 0 24px 72px; }
-.topband { height: 6px; background: linear-gradient(90deg, var(--red) 0 50%, var(--blue) 50% 100%); }
+.topband { height: 6px; background: linear-gradient(90deg, var(--gov), var(--startups), var(--bar-a), var(--indian), var(--univ), var(--gcc), var(--bigtech)); }
 h1, h2, h3 { font-family: var(--display); font-weight: normal; text-wrap: balance; margin: 0; }
 h1 { font-size: clamp(32px, 4.2vw, 48px); line-height: 1.08; max-width: 22ch; }
 h1 em { font-style: normal; color: var(--hub); }
@@ -218,8 +213,8 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
 .eq-card p { margin: 0; font-size: 14.5px; }
 .eq-cs { background: var(--hub-t); border: 2px solid var(--hub); }
 .eq-cs .eq-sym { color: var(--hub); }
-.eq-x { background: var(--beige-n); border: 2px solid var(--red); }
-.eq-x .eq-sym { color: var(--red); }
+.eq-x { background: var(--th-t); border: 2px solid var(--x); }
+.eq-x .eq-sym { color: var(--x); }
 .eq-v { background: var(--soft); border: 2px solid var(--ink); display: flex; flex-direction: column; gap: 12px; }
 .eq-v .eq-sym { color: var(--ink); margin-bottom: 0; }
 .eq-half { margin-top: 10px; }
@@ -244,7 +239,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
 @media (max-width: 1100px) { .eq { grid-template-columns: 1fr; } .eq-op { justify-self: center; font-size: 40px; line-height: .8; } .explore { grid-template-columns: 1fr; } }
 .tmx { position: relative; margin-top: 8px; }
 .tmx-cols { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
-.tcol { background: var(--beige); border: 1.5px solid var(--th-b); border-radius: 10px; height: 250px; padding: 6px 4px; font-size: 11.5px; line-height: 1.25; text-align: center; font-weight: 600; }
+.tcol { background: var(--th-t); border: 1.5px solid var(--th-b); border-radius: 10px; height: 250px; padding: 6px 4px; font-size: 11.5px; line-height: 1.25; text-align: center; font-weight: 600; }
 .tmx-rows { position: absolute; left: -8px; right: -8px; top: 66px; display: grid; gap: 8px; }
 .trow { background: var(--hub); color: #fff; border-radius: 999px; padding: 5px 14px; font-size: 12.5px; font-weight: 600; opacity: .92; }
 .tmx-key { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 8px; font-size: 12px; color: var(--muted); }
@@ -252,10 +247,13 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
 .tmx-key .kh::before { background: var(--hub); }
 .tmx-key .kv::before { background: var(--th-t); border: 1.5px solid var(--th-b); }
 .la-band { margin-top: 8px; background: var(--th-b); color: #fff; border-radius: 10px; padding: 8px 12px; font-size: 12.5px; line-height: 1.4; }
-.x-head { font-size: 26px !important; color: var(--red); }
+.x-head { font-size: 26px !important; color: var(--x); }
 .x-sub { font-size: 14.5px !important; margin-bottom: 4px !important; }
 .nav a.ext { font-size: 13.5px; color: var(--muted); text-decoration: none; padding-left: 18px; border-left: 1px solid var(--rule); }
 .nav a.ext:hover { color: var(--ink); text-decoration: underline; }
+.ph h1 .cs { color: var(--hub); }
+.ph h1 .xx { color: var(--x); }
+.ph h1 em { color: var(--muted) !important; }
 </style>
 </head>
 <body>
@@ -275,7 +273,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
     <header class="ph">
       <div>
         <div class="eyebrow">Vachani School of Advanced Computing · Ashoka University · November 2026</div>
-        <h1>CS <em>×</em> X: Computing that creates value for Ashoka and the world</h1>
+        <h1><span class="cs">CS</span> <em>×</em> <span class="xx">X</span>: Computing that creates value for Ashoka and the world</h1>
       </div>
       <p class="lead">VSAC's strength in computer science, multiplied by Ashoka's liberal arts, applied to the problems that matter to India and the world, through mechanisms that turn research into impact.</p>
     </header>
