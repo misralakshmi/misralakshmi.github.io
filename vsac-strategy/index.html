@@ -286,6 +286,34 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
 .shm-key .kt { background: var(--muted); color: #fff; }
 .shm-key .kp { border: 1.5px dashed var(--muted); }
 @media (max-width: 1150px) { .sh-mapwrap { grid-template-columns: 1fr; } }
+.vision { margin-top: 28px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
+.vision > div { border-left: 4px solid var(--hub); padding: 4px 0 4px 18px; }
+.vision .pos { border-left-color: var(--x); }
+.vq { font-family: var(--display); font-size: 22px; line-height: 1.3; margin: 0; }
+.vs { margin: 8px 0 0; font-size: 14px; color: var(--muted); }
+.pos p { font-size: 17px; margin: 0; }
+.fund { margin-top: 8px !important; font-size: 13px !important; color: var(--muted); }
+.plan-around { margin-top: 36px; }
+.plan-around ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.plan-around li { background: var(--soft); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; }
+.plan-around li b { font-size: 14.5px; }
+.plan-around li span { color: var(--muted); }
+.iac { margin-top: 28px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; }
+.iac-card { background: var(--hub-t); border: 1.5px solid var(--hub); border-radius: 16px; padding: 18px 20px; }
+.iac-card h3 { font-size: 22px; margin-bottom: 6px; }
+.iac-card p { margin: 0; font-size: 14.5px; }
+.iac-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0; }
+.iac-pillars span { background: var(--paper); border-radius: 10px; padding: 8px 10px; font-size: 13px; color: var(--muted); }
+.iac-pillars b { display: block; color: var(--hub); font-size: 14px; }
+.iac-mix { font-size: 13px !important; color: var(--muted); }
+.pipe { background: var(--soft); border-radius: 16px; padding: 18px 20px; }
+.pipe ol { list-style: none; margin: 6px 0 10px; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; counter-reset: s; }
+.pipe li { position: relative; background: var(--paper); border-top: 4px solid var(--hub); border-radius: 8px; padding: 8px 8px 10px; font-size: 12px; color: var(--muted); counter-increment: s; }
+.pipe li:nth-child(2) { border-top-color: var(--gcc); } .pipe li:nth-child(3) { border-top-color: var(--univ); } .pipe li:nth-child(4) { border-top-color: var(--indian); } .pipe li:nth-child(5) { border-top-color: var(--x); }
+.pipe li b { display: block; color: var(--ink); font-size: 13.5px; }
+.pipe li b::before { content: counter(s) ". "; color: var(--muted); font-weight: 400; }
+.pipe p { margin: 0; font-size: 13.5px; }
+@media (max-width: 1100px) { .vision, .iac { grid-template-columns: 1fr; } .plan-around ul { grid-template-columns: 1fr 1fr; } .pipe ol { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -309,6 +337,10 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
       </div>
       <p class="lead">VSAC's strength in computer science, multiplied by Ashoka's liberal arts, applied in the contexts that matter to India and the world, through mechanisms that turn research into impact.</p>
     </header>
+    <div class="vision">
+      <div><div class="eyebrow">VSAC's vision</div><p class="vq">“Exploring and Harvesting the Future of Computing for Sustainable Human Progress”</p><p class="vs">Explore at the frontier · harvest value through strategic utilisation · stay anchored in ethical responsibility · serve humanity. CS × X is how VSAC delivers the second principle.</p></div>
+      <div class="pos"><div class="eyebrow">Positioning</div><p>India's school for responsible computing and AI: <strong>technical rigour with human purpose.</strong></p></div>
+    </div>
 
     <div class="eq" role="img" aria-label="CS multiplied by X, where X is the liberal arts, applied across five liberal arts verticals in three contexts, industrial transformation, the national agenda and societal challenges, through five mechanisms, equals value for partners and value for Ashoka; the value feeds back to shape CS">
       <div class="eq-card eq-cs">
@@ -353,12 +385,24 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
         <div class="eq-val ashoka">
           <h3>For Ashoka</h3>
           <p>Funding, reputation, government relationships, scale, and knowledge: IP and papers.</p>
+          <p class="fund">Funded through the founding gift, industry affiliates, sponsored research and named labs, government missions, CSR and philanthropy, and paid programmes.</p>
         </div>
       </div>
     </div>
     <div class="fb" aria-label="Feedback loop: value flows back to shape CS">
       <div class="fb-u"><span class="fb-up" aria-hidden="true"></span><span class="fb-from" aria-hidden="true"></span></div>
       <div class="fb-label"><b>↺ Feedback loop</b> Value flows back to shape what CS at Ashoka becomes: its courses, research agenda and hiring.</div>
+    </div>
+
+    <div class="plan-around">
+      <div class="eyebrow">What the plan works around</div>
+      <ul>
+        <li><b>A young brand</b><span>No graduate placement record or alumni base yet.</span></li>
+        <li><b>One founding donor</b><span>The founding gift builds capacity; recurring sources fund operations.</span></li>
+        <li><b>Competition for talent</b><span>IITs, IIITs and new private universities compete for the same faculty and students.</span></li>
+        <li><b>Distance from industry</b><span>From Sonipat, outreach goes to Delhi, Gurugram, Noida, Bengaluru, Hyderabad and Mumbai.</span></li>
+        <li><b>Relationships held by individuals</b><span>Industry ties need to become an institutional programme.</span></li>
+      </ul>
     </div>
 
     <div class="explore">
@@ -412,7 +456,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
 
       <div class="mech"><span class="status" style="--sc: var(--exists)">Exists</span><h3>Incubation</h3><div class="k">At Ashoka today</div><p>InfoEdge Centre for Entrepreneurship, 100+ startups. Add a deep-tech AI track with VSAC faculty.</p></div>
       <div class="mech"><span class="status" style="--sc: var(--build)">Build</span><h3>Technology transfer</h3><div class="k">At Ashoka today</div><p>To build: IP policy, licensing and sponsored-research contracts for VSAC.</p></div>
-      <div class="mech"><span class="status" style="--sc: var(--seed)">In pockets</span><h3>Joint research and exchange</h3><div class="k">At Ashoka today</div><p>Advisors from Penn, Northwestern, IIT Bombay and Google DeepMind; KCDH-A's India–Singapore grant.</p></div>
+      <div class="mech"><span class="status" style="--sc: var(--seed)">In pockets</span><h3>Joint research and exchange</h3><div class="k">At Ashoka today</div><p>Board of Advisors from IIT Kharagpur, ISI Kolkata, MIT and Google DeepMind; KCDH-A's India–Singapore grant.</p></div>
       <div class="mech"><span class="status" style="--sc: var(--build)">Build</span><h3>Research Park</h3><div class="k">At Ashoka today</div><p>To build in year three, with anchor tenants committed first.</p></div>
     </div>
   </section>
@@ -426,6 +470,20 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
       </div>
       <p class="lead">Named organisations by partner type, mapped to the thematic areas and mechanisms where they fit. Solid badges mark ties Ashoka already has; the rest are prospects to approach.</p>
     </header>
+    <div class="iac">
+      <div class="iac-card">
+        <div class="eyebrow">How partners connect</div>
+        <h3>VSAC Industry Advisory Council</h3>
+        <p>An advisory council of 12 to 15 senior leaders that connects VSAC's teaching and research to industry, opens doors to partners and builds a lasting funding base. It complements the academic Board of Advisors.</p>
+        <div class="iac-pillars"><span><b>Partnerships</b> introductions and real problem statements</span><span><b>Talent</b> curriculum review, internships, mentoring</span><span><b>Funding</b> affiliates, named labs, chairs and scholarships</span></div>
+        <p class="iac-mix">Seats: founding and named-centre funders · global technology companies · Indian enterprises · startups and investors · public sector and industry bodies · a bridge member from the Board of Advisors. Meets three times a year.</p>
+      </div>
+      <div class="pipe" aria-label="Partnership pipeline">
+        <div class="eyebrow">Partnership pipeline</div>
+        <ol><li><b>Target</b><span>Named contact and route in</span></li><li><b>Engage</b><span>First meeting or visit</span></li><li><b>Pilot</b><span>Talk, capstone or challenge</span></li><li><b>Member</b><span>Affiliate agreement</span></li><li><b>Strategic</b><span>Named lab, chair or multi-year fund</span></li></ol>
+        <p>Prospects below start at <b>Target</b>; existing ties are ready to move to <b>Pilot</b> and beyond.</p>
+      </div>
+    </div>
     <div class="sh-summary" id="shSummary" aria-label="Stakeholders by partner type"></div>
     <div class="sh-filters">
       <div class="chips" role="group" aria-label="Filter by partner type" id="shType"></div>
@@ -543,7 +601,7 @@ const S = {
     ties:'Founding supporters include Dixon Technologies (Vachani), Safexpress and Info Edge.',
     links:['i-cdlds','i-cdsa','i-mphasis','i-econ','i-mgmt','t-ds','t-econ','t-health','t-dig','m-exp','m-tt','d-ind','r-fund','r-scale'] },
   univ: { name:'Top-ranked national and global universities', bring:'Peer researchers, joint grants and student exchange.', offer:'India-scale data and problems, and cross-disciplinary teams from a liberal arts setting.',
-    ties:'VSAC advisors from Penn, Northwestern, IIT Bombay, IIT Kharagpur and ISI Kolkata; KCDH-A holds an India–Singapore joint research grant.',
+    ties:'The VSAC Board of Advisors includes academics from IIT Kharagpur, ISI Kolkata and MIT; KCDH-A holds an India–Singapore joint research grant.',
     links:['i-cs','i-kcdh','i-cdlds','i-cdais','i-tsb','i-hum','t-cs','t-health','t-ais','t-hum','t-policy','m-joint','d-rep','d-stu','r-rep','r-know'] }
 };
 const UNIT = {
@@ -786,6 +844,7 @@ function showNode(id) {
   let html = '<div class="eyebrow">' + kind + '</div><h3>' + NAME[id] + '</h3>';
   if (THEME[id]) html += '<div class="k">People and units at Ashoka</div><p>' + THEME[id] + '</p>';
   if (us.length) html += '<div class="k">' + (id.startsWith('m-') ? 'Hosted by' : 'Strong units') + '</div>' + unitList(us);
+  if (id === 'r-fund') html += '<div class="k">Funding streams</div><p>Founding gift (capacity building) · industry affiliates (recurring) · sponsored research and named labs or chairs · government and mission funding · CSR and philanthropy · paid executive programmes.</p>';
   if (MD[id]) html += '<div class="k">Status</div><p>' + MD[id][0] + '</p><div class="k">What it is</div><p>' + MD[id][1] + '</p><div class="k">When</div><p>' + MD[id][2] + '</p>';
   html += '<div class="k">Serves</div><p>' + (who.length ? who.map(k => '<span style="color:' + COLOR[k] + ';font-weight:600">' + S[k].name + '</span>').join(', ') : '—') + '</p>';
   html += '<button class="reset" type="button">Show the whole map</button>';
@@ -863,10 +922,10 @@ const SH = [
   ['Optum (UnitedHealth Group)','gcc',['t-health','t-ds'],['m-park','m-tt'],'prospect','Health analytics; capstones with KCDH-A.'],
   ['Walmart Global Tech India','gcc',['t-ds','t-cs'],['m-exp'],'prospect','Supply-chain and decision sciences; sponsored student projects.'],
   ['JPMorgan Chase (India)','gcc',['t-ds','t-econ'],['m-tt'],'prospect','Quantitative finance and AI; sponsored research.'],
-  ['Google DeepMind & Google Research India','bigtech',['t-cs','t-ais','t-ds'],['m-joint'],'tie','A Google DeepMind Senior Director advises VSAC; Google Research India advises CDLDS.'],
-  ['Microsoft Research India','bigtech',['t-cs','t-ais'],['m-joint','m-tt'],'prospect','Fellowships, joint projects and visiting researchers.'],
-  ['IBM Research India','bigtech',['t-cs'],['m-joint'],'prospect','Quantum computing and AI systems.'],
-  ['Adobe Research','bigtech',['t-cs','t-hum'],['m-joint'],'prospect','Creative AI and digital heritage.'],
+  ['Google DeepMind & Google Research India','bigtech',['t-cs','t-ais','t-ds'],['m-joint'],'tie','Manish Gupta (Senior Director, Google DeepMind) sits on the VSAC Board of Advisors; VSAC students intern and work at Google.'],
+  ['Microsoft Research India','bigtech',['t-cs','t-ais'],['m-joint','m-tt'],'tie','VSAC students already intern and work at Microsoft; next step is fellowships and joint projects.'],
+  ['IBM Research India','bigtech',['t-cs'],['m-joint'],'tie','VSAC students already intern and work at IBM; next step is joint work on quantum computing and AI systems.'],
+  ['Adobe Research','bigtech',['t-cs','t-hum'],['m-joint'],'tie','VSAC students already intern and work at Adobe; next step is creative AI and digital heritage research.'],
   ['Amazon Web Services','bigtech',['t-cs','t-ds'],['m-exp'],'prospect','Cloud compute credits and applied AI programmes.'],
   ['Dixon Technologies','indian',['t-cs'],['m-park','m-exp'],'tie','Chairman Sunil Vachani’s grant founded VSAC; anchor for the Maker Space and hardware.'],
   ['Safexpress','indian',['t-ds','t-econ'],['m-tt'],'tie','Funds the Safexpress Centre for Data, Learning and Decision Sciences.'],
@@ -877,13 +936,14 @@ const SH = [
   ['Apollo Hospitals','indian',['t-health'],['m-tt','m-exp'],'prospect','Clinical data and validation partner for health AI.'],
   ['Maruti Suzuki','indian',['t-ds','t-cs'],['m-exp','m-park'],'prospect','Haryana-based manufacturer; AI in operations and mobility.'],
   ['HDFC Bank','indian',['t-ds','t-econ'],['m-tt'],'prospect','Financial AI and executive education.'],
-  ['University of Pennsylvania','univ',['t-ais','t-ethics'],['m-joint'],'tie','Penn faculty, including the ASSET Center for Trustworthy AI director, advise VSAC.'],
-  ['Northwestern University','univ',['t-cs','t-ds'],['m-joint'],'tie','Northwestern faculty advise VSAC and visit CDLDS.'],
+  ['University of Pennsylvania','univ',['t-ais','t-ethics'],['m-joint'],'prospect','Home of the ASSET Center for Trustworthy AI; a natural peer for responsible AI research.'],
+  ['Northwestern University','univ',['t-cs','t-ds'],['m-joint'],'tie','Northwestern faculty are distinguished visitors at CDLDS.'],
   ['Columbia University','univ',['t-ds','t-econ'],['m-joint'],'tie','Columbia faculty chair and advise the CDLDS advisory board.'],
   ['University of Geneva','univ',['t-health','t-dig'],['m-joint'],'tie','Hub of the Botnar-funded Digital Transformation for Health Lab; Ashoka is the Asia node.'],
-  ['IIT Bombay','univ',['t-cs','t-health'],['m-joint'],'tie','Faculty advise VSAC and CDLDS; home of the original Koita Centre for Digital Health.'],
-  ['IIT Kharagpur','univ',['t-cs'],['m-joint'],'tie','Faculty advise VSAC; several VSAC faculty came from IIT Kharagpur.'],
-  ['Indian Statistical Institute, Kolkata','univ',['t-ds'],['m-joint'],'tie','ISI’s Director advises VSAC.'],
+  ['IIT Bombay','univ',['t-cs','t-health'],['m-joint'],'tie','IIT Bombay faculty advise CDLDS; home of the original Koita Centre for Digital Health.'],
+  ['IIT Kharagpur','univ',['t-cs'],['m-joint'],'tie','An IIT Kharagpur academic sits on the VSAC Board of Advisors; several VSAC faculty came from IIT Kharagpur.'],
+  ['Indian Statistical Institute, Kolkata','univ',['t-ds'],['m-joint'],'tie','An ISI Kolkata academic sits on the VSAC Board of Advisors.'],
+  ['Massachusetts Institute of Technology','univ',['h-ai','h-data'],['m-joint'],'tie','An MIT academic sits on the VSAC Board of Advisors.'],
   ['Caltech','univ',['t-ds'],['m-joint'],'tie','A Caltech climate scientist mentors CDLDS weather and climate work.']
 ];
 SH.forEach(s => { s[2] = remapT(s[2]); });
@@ -970,7 +1030,7 @@ const KG = [
     ['Licences and tech-transfer deals',[0,3,8],'','Signed agreements'],
     ['VSAC-linked startups incubated',[5,12,25],'','With the InfoEdge Centre for Entrepreneurship'],
     ['Research Park anchor tenants',[0,2,5],'','Signed before the park is built']]],
-  ['Value for Ashoka','What flows back to the university','var(--indian)',[
+  ['Value for Ashoka','What flows back to the university: the founding gift builds capacity, recurring sources fund operations','var(--indian)',[
     ['External funding raised',[10,30,60],'₹ crore','Grants and sponsored research, per year'],
     ['Recurring industry revenue',[1,4,10],'₹ crore','Executive education and sponsored projects'],
     ['Non-philanthropic share of VSAC budget',[5,15,25],'%','Grants, contracts and fees']]]
