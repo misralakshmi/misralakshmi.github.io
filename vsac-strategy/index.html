@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VSAC Strategy Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Plan: colourful editorial. Each external stakeholder owns a hue; its path lights up in that hue.
+   Columns sit on soft pastel tints; the VSAC hub is indigo, the problem bar an amber-to-coral band.
+   Layout: flow diagram + side panel, then "who powers VSAC", then mechanisms on a three-year line. */
+:root {
+  --paper: #fcfcfb; --ink: #1b1c20; --muted: #5d616a; --rule: #e2e3e7; --soft: #f4f4f6;
+  --parks: #ae3ec9; --parks-t: #fcefff; --gov: #d6336c; --startups: #f76707; --gcc: #1c7ed6; --bigtech: #7048e8; --indian: #2f9e44; --univ: #0c8599;
+  --gov-t: #fff0f6; --startups-t: #fff4e6; --gcc-t: #e7f5ff; --bigtech-t: #f3f0ff; --indian-t: #ebfbee; --univ-t: #e3fafc;
+  --hub: #364fc7; --hub-t: #edf2ff;
+  --th-t: #e6fcf5; --th-b: #63b3a0; --me-t: #f8f0fc; --me-b: #b07cc6; --im-t: #fff9db; --im-b: #d4a72c; --re-t: #fff4e6; --re-b: #e8a06a;
+  --bar-a: #f59f00; --bar-b: #f03e3e;
+  --exists: #2f9e44; --seed: #f59f00; --build: #d6336c;
+  --display: Georgia, "Times New Roman", serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:#15161a; --ink:#ececef; --muted:#a5a8b0; --rule:#2e3038; --soft:#1d1f25;
+    --parks:#da77f2; --parks-t:#2f1a35; --gov:#f06595; --startups:#ff922b; --gcc:#4dabf7; --bigtech:#9775fa; --indian:#51cf66; --univ:#3bc9db;
+    --gov-t:#3a1a27; --startups-t:#3a2512; --gcc-t:#12283d; --bigtech-t:#251c3f; --indian-t:#14301b; --univ-t:#0f2f33;
+    --hub:#748ffc; --hub-t:#1c2340;
+    --th-t:#11302a; --th-b:#4d9e8b; --me-t:#2a1a30; --me-b:#9c6bb3; --im-t:#33290f; --im-b:#c49a2a; --re-t:#33240f; --re-b:#c98450;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper:#15161a; --ink:#ececef; --muted:#a5a8b0; --rule:#2e3038; --soft:#1d1f25;
+  --parks:#da77f2; --parks-t:#2f1a35; --gov:#f06595; --startups:#ff922b; --gcc:#4dabf7; --bigtech:#9775fa; --indian:#51cf66; --univ:#3bc9db;
+  --gov-t:#3a1a27; --startups-t:#3a2512; --gcc-t:#12283d; --bigtech-t:#251c3f; --indian-t:#14301b; --univ-t:#0f2f33;
+  --hub:#748ffc; --hub-t:#1c2340;
+  --th-t:#11302a; --th-b:#4d9e8b; --me-t:#2a1a30; --me-b:#9c6bb3; --im-t:#33290f; --im-b:#c49a2a; --re-t:#33240f; --re-b:#c98450;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.55 var(--body); }
+.wrap { max-width: 1440px; margin: 0 auto; padding: 0 24px 72px; }
+.topband { height: 6px; background: linear-gradient(90deg, var(--gov), var(--startups), var(--bar-a), var(--indian), var(--univ), var(--gcc), var(--bigtech)); }
+h1, h2, h3 { font-family: var(--display); font-weight: normal; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(32px, 4.2vw, 48px); line-height: 1.08; max-width: 22ch; }
+h1 em { font-style: normal; color: var(--hub); }
+h2 { font-size: 28px; line-height: 1.2; }
+h3 { font-size: 21px; line-height: 1.25; }
+header { padding-top: 40px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: end; }
+.eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.lead { font-size: 17px; max-width: 60ch; margin: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13px; color: var(--muted); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+
+.stage { margin-top: 30px; border-top: 1px solid var(--rule); padding-top: 18px; display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 28px; align-items: start; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 6px; }
+.chips span { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.chips button { font: inherit; font-size: 14px; border-radius: 999px; padding: 5px 14px; cursor: pointer; border: 1.5px solid var(--c, var(--ink)); background: var(--ct, transparent); color: var(--ink); transition: background .15s, color .15s; }
+.chips button[aria-pressed="true"] { background: var(--c, var(--ink)); color: #fff; font-weight: 600; }
+.chips button[data-s="all"][aria-pressed="true"] { color: var(--paper); }
+button:focus-visible, [role="button"]:focus-visible { outline: 2px solid var(--hub); outline-offset: 3px; }
+
+.viz-box { overflow-x: auto; }
+svg#viz { display: block; width: 100%; min-width: 960px; height: auto; font-family: var(--body); }
+.head { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; fill: var(--muted); font-weight: 600; }
+.link { fill: none; stroke: var(--rule); stroke-width: 1; transition: opacity .15s; }
+.link.on { stroke-width: 2.2; }
+.dim .link:not(.on) { opacity: .35; }
+.pill { cursor: pointer; }
+.pill rect { stroke-width: 1.3; transition: fill .15s; }
+.pill text { fill: var(--ink); font-size: 14px; }
+.pill.on text { fill: #fff; font-weight: 600; }
+.dim .pill:not(.on) text { opacity: .35; }
+.dim .pill:not(.on) rect { fill: var(--paper) !important; stroke: var(--rule) !important; }
+.hub { fill: var(--hub-t); stroke: var(--hub); stroke-width: 2; }
+.hub-title { font-family: var(--display); font-size: 38px; fill: var(--hub); }
+.outer { fill: none; stroke: var(--ink); stroke-width: 2; }
+.outer-title { font-family: var(--display); font-size: 22px; fill: var(--ink); }
+.ablock { fill: var(--soft); stroke: var(--muted); stroke-width: 1.5; }
+.ablock-title { font-family: var(--display); font-size: 19px; fill: var(--ink); }
+.hub-sub { font-size: 12px; fill: var(--muted); }
+.int { font-size: 13.5px; fill: var(--ink); cursor: pointer; }
+.int.on { fill: var(--hub); font-weight: 600; }
+.dim .int:not(.on) { opacity: .4; }
+.bar-text { fill: #fff; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+.loop { fill: none; stroke: var(--re-b); stroke-width: 2; stroke-dasharray: 6 5; }
+.loop.on { stroke-dasharray: none; stroke-width: 2.6; }
+.unit-card { cursor: pointer; transition: opacity .15s; }
+.unit-card rect.card { fill: var(--paper); stroke: var(--rule); stroke-width: 1.2; }
+.unit-card .uname { font-size: 13.5px; font-weight: 600; fill: var(--ink); }
+.unit-card .ulead { font-size: 11.5px; fill: var(--muted); }
+.unit-card.on rect.card { stroke-width: 2.2; }
+.dim .unit-card:not(.on) { opacity: .35; }
+.msub { font-size: 11.5px; fill: var(--muted); }
+.pill.on .msub { fill: #fff; font-weight: 400; }
+.small { font-size: 13px; fill: var(--muted); }
+
+aside.panel { border-left: 4px solid var(--pc, var(--hub)); padding: 4px 0 8px 22px; position: sticky; top: 16px; }
+.panel .k { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 16px 0 4px; }
+.panel p { margin: 0; }
+.panel ul { margin: 0; padding-left: 18px; }
+.panel h3 { color: var(--pc, var(--ink)); }
+.panel button.reset { margin-top: 18px; font: inherit; font-size: 13px; background: none; border: 0; border-bottom: 1px solid var(--rule); color: var(--muted); cursor: pointer; padding: 2px 0; }
+.panel button.reset:hover { color: var(--ink); }
+
+section { position: relative; margin-top: 64px; padding-top: 26px; border-top: 1px solid var(--rule); }
+.num { position: absolute; right: 0; top: 4px; font-family: var(--display); font-size: 100px; line-height: 1; color: var(--soft); pointer-events: none; user-select: none; }
+section > *:not(.num) { position: relative; }
+.sec-lead { color: var(--muted); max-width: 66ch; margin: 8px 0 0; }
+
+.units { margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 22px 26px; }
+.unit { border-top: 4px solid var(--uc); padding-top: 12px; }
+.unit .tag { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--uc); font-weight: 600; }
+.unit h3 { font-size: 19px; margin: 4px 0 6px; }
+.unit .lead-name { font-weight: 600; margin: 0; }
+.unit p { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+
+svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-family: var(--body); }
+.mechs { margin-top: 8px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 22px; }
+.mech { background: var(--me-t); border-radius: 14px; padding: 16px 16px 18px; }
+.status { display: inline-block; font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: var(--sc); border-radius: 999px; padding: 2px 10px; }
+.mech h3 { font-size: 18px; margin: 10px 0 8px; }
+.mech .k { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 10px 0 2px; }
+.mech p { margin: 0; font-size: 14px; }
+
+.foot { margin-top: 56px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 14px; }
+.foot a { color: var(--muted); }
+.foot ul { margin: 6px 0 0; padding-left: 18px; columns: 2; column-gap: 32px; }
+
+@media (max-width: 1150px) {
+  .stage { grid-template-columns: 1fr; }
+  aside.panel { position: static; }
+  .mechs { grid-template-columns: repeat(2, 1fr); }
+  header { grid-template-columns: 1fr; gap: 18px; }
+}
+@media (max-width: 560px) { .mechs { grid-template-columns: 1fr; } .foot ul { columns: 1; } .num { font-size: 70px; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+.nav { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.nav-in { max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 28px; height: 58px; }
+.brand { font-family: var(--display); font-size: 19px; color: var(--ink); text-decoration: none; margin-right: auto; }
+.brand b { color: var(--hub); font-weight: normal; }
+.nav a.tab { color: var(--muted); text-decoration: none; font-size: 14.5px; padding: 18px 0 16px; border-bottom: 3px solid transparent; }
+.nav a.tab:hover { color: var(--ink); }
+.nav a.tab[aria-current="page"] { color: var(--ink); font-weight: 600; border-bottom-color: var(--hub); }
+.page[hidden] { display: none; }
+.ph { padding-top: 40px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: end; }
+
+.sh-summary { margin-top: 30px; display: flex; height: 54px; border-radius: 12px; overflow: hidden; }
+.sh-summary button { border: 0; cursor: pointer; color: #fff; font: inherit; font-size: 13px; font-weight: 600; text-align: left; padding: 8px 12px; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.sh-summary button span { font-family: var(--display); font-size: 20px; font-weight: normal; line-height: 1; }
+.sh-filters { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; }
+.sh-selects { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; font-size: 13px; color: var(--muted); }
+.sh-selects select { font: inherit; font-size: 14px; color: var(--ink); background: var(--paper); border: 1.5px solid var(--rule); border-radius: 999px; padding: 5px 12px; margin-right: 10px; }
+.sh-count { color: var(--muted); font-size: 14px; margin: 18px 0 0; }
+.sh-grid { margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 16px; }
+.sh-card { border-radius: 14px; background: var(--ct); border: 1.5px solid transparent; padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; }
+.sh-card .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.sh-card .type { font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; color: var(--c); }
+.badge { font-size: 11px; font-weight: 600; border-radius: 999px; padding: 2px 9px; white-space: nowrap; }
+.badge.tie { background: var(--c); color: #fff; }
+.badge.prospect { border: 1.5px dashed var(--c); color: var(--c); }
+.sh-card h3 { font-size: 19px; }
+.sh-card p { margin: 0; font-size: 14px; color: var(--ink); }
+.tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { font-size: 12px; border-radius: 999px; padding: 2px 9px; background: var(--paper); }
+.tag.th { border: 1px solid var(--th-b); }
+.tag.me { border: 1px solid var(--me-b); }
+
+.kpi-note { margin-top: 26px; background: var(--im-t); border-left: 4px solid var(--im-b); border-radius: 8px; padding: 12px 16px; max-width: 900px; font-size: 14.5px; }
+.kpi-bar { margin-top: 22px; }
+.kpi-groups { margin-top: 18px; display: grid; gap: 34px; }
+.kgroup h2 { font-size: 24px; display: flex; align-items: center; gap: 12px; }
+.kgroup h2 i { width: 14px; height: 14px; border-radius: 50%; background: var(--gc); display: inline-block; }
+.kgroup .gsub { color: var(--muted); margin: 4px 0 0 26px; font-size: 14px; }
+.kcards { margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.kcard { border: 1.5px solid var(--rule); border-top: 4px solid var(--gc); border-radius: 12px; padding: 14px 16px 12px; }
+.kcard .kname { font-weight: 600; font-size: 14.5px; line-height: 1.4; min-height: 2.8em; }
+.kcard .big { font-family: var(--display); font-size: 36px; line-height: 1.1; color: var(--gc); font-variant-numeric: tabular-nums; }
+.kcard .big small { font-family: var(--body); font-size: 13px; color: var(--muted); margin-left: 6px; }
+.bars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; align-items: end; height: 78px; margin-top: 10px; border-bottom: 1px solid var(--rule); }
+.bars div { background: var(--gc); opacity: .28; border-radius: 6px 6px 0 0; position: relative; min-height: 3px; transition: opacity .15s; }
+.bars div.sel { opacity: 1; }
+.bars div b { position: absolute; top: -18px; left: 0; right: 0; text-align: center; font-size: 12px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.yl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 11.5px; color: var(--muted); text-align: center; margin-top: 4px; }
+.kcard .how { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; }
+@media (max-width: 1150px) { .ph { grid-template-columns: 1fr; gap: 16px; } }
+@media (max-width: 640px) { .nav-in { gap: 16px; } .brand { font-size: 16px; } .nav a.tab { font-size: 13px; } .sh-summary button { font-size: 0; } .sh-summary button span { font-size: 16px; } }
+.sh-key { margin-top: 30px; }
+.sh-keygrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.key-card { background: var(--parks); color: #fff; border-radius: 16px; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 8px; }
+.key-card .type { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; opacity: .85; }
+.key-card h3 { font-size: 22px; color: #fff; }
+.key-card p { margin: 0; font-size: 14px; }
+.key-card .tag { background: rgba(255,255,255,.2); color: #fff; border: 0; }
+.blk { cursor: pointer; outline: none; }
+.blk:hover rect.hub, .blk:hover rect.ablock { stroke-width: 3; }
+.blk-cta { font-size: 13px; font-weight: 600; fill: var(--hub); }
+.dim .blk:not(.on) { opacity: .4; }
+.ulist { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 8px; }
+.ulist li { display: grid; grid-template-columns: 12px 1fr; column-gap: 10px; font-size: 14px; line-height: 1.35; }
+.ulist i { width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; grid-row: span 2; }
+.ulist span { color: var(--muted); font-size: 13px; }
+.ph h1 em { font-style: normal; color: var(--hub); }
+.eq { margin-top: 36px; display: grid; grid-template-columns: 1fr auto 1.35fr auto 1fr; gap: 18px; align-items: stretch; }
+.eq-card { border-radius: 20px; padding: 22px 22px 24px; position: relative; }
+.eq-sym { font-family: var(--display); font-size: 56px; line-height: 1; margin-bottom: 10px; }
+.eq-card h3 { font-size: 19px; margin-bottom: 6px; }
+.eq-card h3 small { font-family: var(--body); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-left: 6px; }
+.eq-card p { margin: 0; font-size: 14.5px; }
+.eq-cs { background: var(--hub-t); border: 2px solid var(--hub); }
+.eq-cs .eq-sym { color: var(--hub); }
+.eq-x { background: linear-gradient(160deg, var(--th-t), var(--me-t)); border: 2px solid var(--me-b); }
+.eq-x .eq-sym { color: var(--me-b); }
+.eq-v { background: var(--soft); border: 2px solid var(--ink); display: flex; flex-direction: column; gap: 12px; }
+.eq-v .eq-sym { color: var(--ink); margin-bottom: 0; }
+.eq-half { margin-top: 10px; }
+.eq-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.eq-half .eq-chips { margin-top: 6px; }
+.eq-chips span { font-size: 13px; border-radius: 999px; padding: 4px 11px; background: var(--paper); border: 1.5px solid var(--hub); }
+.eq-chips.th span { border-color: var(--th-b); background: var(--paper); }
+.eq-chips.me span { border-color: var(--me-b); background: var(--paper); }
+.eq-note { margin-top: 14px !important; font-size: 13.5px !important; color: var(--muted); }
+.eq-op { align-self: center; font-family: var(--display); font-size: 54px; color: var(--muted); }
+.eq-val { border-radius: 14px; padding: 14px 16px; }
+.eq-val.partners { background: var(--gcc-t); border-left: 5px solid var(--gcc); }
+.eq-val.ashoka { background: var(--re-t); border-left: 5px solid var(--re-b); }
+.eq-loop { margin-top: 18px; border: 2px dashed var(--re-b); border-radius: 999px; padding: 12px 22px; font-size: 15px; text-align: center; }
+.eq-loop span { font-size: 20px; color: var(--re-b); margin-right: 6px; }
+.explore { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.ex { display: block; text-decoration: none; color: var(--ink); border-top: 5px solid var(--c); border-radius: 14px; background: var(--soft); padding: 18px 20px 20px; transition: transform .15s; }
+.ex:hover { transform: translateY(-2px); }
+.ex h3 { font-size: 22px; margin-bottom: 6px; }
+.ex p { margin: 0 0 12px; font-size: 14.5px; color: var(--muted); }
+.ex span { font-weight: 600; color: var(--c); font-size: 14px; }
+@media (max-width: 1100px) { .eq { grid-template-columns: 1fr; } .eq-op { justify-self: center; font-size: 40px; line-height: .8; } .explore { grid-template-columns: 1fr; } }
+.tmx { position: relative; margin-top: 8px; }
+.tmx-cols { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.tcol { background: var(--th-t); border: 1.5px solid var(--th-b); border-radius: 10px; height: 250px; padding: 6px 4px; font-size: 11.5px; line-height: 1.25; text-align: center; font-weight: 600; }
+.tmx-rows { position: absolute; left: -8px; right: -8px; top: 66px; display: grid; gap: 8px; }
+.trow { background: var(--hub); color: #fff; border-radius: 999px; padding: 5px 14px; font-size: 12.5px; font-weight: 600; opacity: .92; }
+.tmx-key { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 8px; font-size: 12px; color: var(--muted); }
+.tmx-key span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.tmx-key .kh::before { background: var(--hub); }
+.tmx-key .kv::before { background: var(--th-t); border: 1.5px solid var(--th-b); }
+.la-band { margin-top: 8px; background: var(--th-b); color: #fff; border-radius: 10px; padding: 8px 12px; font-size: 12.5px; line-height: 1.4; }
+.x-head { font-size: 26px !important; color: var(--me-b); }
+.x-sub { font-size: 14.5px !important; margin-bottom: 4px !important; }
+</style>
+</head>
+<body>
+<div class="topband" aria-hidden="true"></div>
+<nav class="nav" aria-label="Site">
+  <div class="nav-in">
+    <a class="brand" href="#home"><b>VSAC</b> · Ashoka University</a>
+    <a class="tab" href="#home">Strategy</a>
+    <a class="tab" href="#map">Operating map</a>
+    <a class="tab" href="#stakeholders">Stakeholders</a>
+    <a class="tab" href="#kpis">KPIs</a>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="page" id="page-home">
+    <header class="ph">
+      <div>
+        <div class="eyebrow">Vachani School of Advanced Computing · Ashoka University · November 2026</div>
+        <h1>CS <em>×</em> X: Computing that creates value for Ashoka and the world</h1>
+      </div>
+      <p class="lead">VSAC's strength in computer science, multiplied by Ashoka's liberal arts, applied to the problems that matter to India and the world, through mechanisms that turn research into impact.</p>
+    </header>
+
+    <div class="eq" role="img" aria-label="CS multiplied by X, where X is the liberal arts, applied across five computing capabilities and five liberal arts verticals through five mechanisms, equals value for partners and value for Ashoka; the value feeds back to shape CS">
+      <div class="eq-card eq-cs">
+        <div class="eq-sym">CS</div>
+        <h3>The core</h3>
+        <p>Vachani School of Advanced Computing. Dean: Santanu Chaudhury.</p>
+        <div class="eq-chips">
+          <span>Computer Science</span><span>Data Science &amp; AI</span><span>Digitalisation, AI &amp; Society</span><span>Koita Digital Health</span><span>Safexpress CDLDS</span><span>Data Science &amp; Analytics</span><span>Maker Space</span>
+        </div>
+      </div>
+      <div class="eq-op" aria-hidden="true">×</div>
+      <div class="eq-card eq-x">
+        <div class="eq-sym">X</div>
+        <h3 class="x-head">The liberal arts</h3>
+        <p class="x-sub">Ashoka's humanities, social sciences and sciences. X is what makes VSAC different: computing shaped by ethics, society and human judgement, not computing alone.</p>
+        <div class="eq-half">
+          <h3>Where CS meets the liberal arts <small>indicative</small></h3>
+          <div class="tmx" id="eqTh"></div>
+          <div class="tmx-key"><span class="kh">Horizontal: computing capabilities (CS)</span><span class="kv">Vertical: the liberal arts (X)</span></div>
+        </div>
+        <div class="eq-half">
+          <h3>Through five mechanisms</h3>
+          <div class="eq-chips me" id="eqMe"></div>
+        </div>
+        <p class="eq-note">Led with Ashoka's schools and centres: Humanities, Economics and Finance, Biosciences, Public Policy, Social and Behaviour Change, Management.</p>
+      </div>
+      <div class="eq-op" aria-hidden="true">=</div>
+      <div class="eq-card eq-v">
+        <div class="eq-sym">Value</div>
+        <div class="eq-val partners">
+          <h3>For partners</h3>
+          <p><strong>Innovation and AI transformation</strong>: problems solved together, AI solutions adopted, professionals upskilled.</p>
+        </div>
+        <div class="eq-val ashoka">
+          <h3>For Ashoka</h3>
+          <p>Funding, reputation, government relationships, scale, and knowledge: IP and papers.</p>
+        </div>
+      </div>
+    </div>
+    <div class="eq-loop"><span>↺</span> Outcomes feed back to shape what CS at Ashoka becomes: its courses, research agenda and hiring.</div>
+
+    <div class="explore">
+      <a class="ex" href="#map" style="--c: var(--hub)"><div class="eyebrow">01 · Operating map</div><h3>How it works</h3><p>Trace each partner through Ashoka's units, themes and mechanisms to impact.</p><span>Open the map →</span></a>
+      <a class="ex" href="#stakeholders" style="--c: var(--parks)"><div class="eyebrow">02 · Stakeholders</div><h3>Who to work with</h3><p>51 organisations across seven partner types, existing ties and prospects.</p><span>See stakeholders →</span></a>
+      <a class="ex" href="#kpis" style="--c: var(--indian)"><div class="eyebrow">03 · KPIs</div><h3>What success looks like</h3><p>Three-year indicators for innovation, translation, reputation and value.</p><span>View KPIs →</span></a>
+    </div>
+  </div>
+
+  <div class="page" id="page-map" hidden>
+  <header>
+    <div>
+      <div class="eyebrow">Vachani School of Advanced Computing · Ashoka University · November 2026</div>
+      <h1>From India's problems to <em>global impact</em>: how VSAC can work</h1>
+    </div>
+    <div>
+      <p class="lead">Seven kinds of partners bring problem statements. VSAC's departments, centres and labs work them across Ashoka's disciplines, draw on schools across Ashoka, translate the results through five mechanisms, and create value for Ashoka: funding, reputation, government relationships, scale and knowledge.</p>
+    </div>
+  </header>
+
+  <div class="stage">
+    <div>
+      <div class="chips" role="group" aria-label="Trace a partner">
+        <span>Trace a partner</span>
+        <button data-s="all" aria-pressed="true" style="--c: var(--ink)">Whole map</button>
+        <button data-s="parks" aria-pressed="false" style="--c: var(--parks); --ct: var(--parks-t)">Science parks &amp; accelerators</button>
+        <button data-s="gov" aria-pressed="false" style="--c: var(--gov); --ct: var(--gov-t)">Government</button>
+        <button data-s="startups" aria-pressed="false" style="--c: var(--startups); --ct: var(--startups-t)">AI/ML startups</button>
+        <button data-s="gcc" aria-pressed="false" style="--c: var(--gcc); --ct: var(--gcc-t)">GCCs</button>
+        <button data-s="bigtech" aria-pressed="false" style="--c: var(--bigtech); --ct: var(--bigtech-t)">Big Tech research</button>
+        <button data-s="indian" aria-pressed="false" style="--c: var(--indian); --ct: var(--indian-t)">Indian enterprise</button>
+        <button data-s="univ" aria-pressed="false" style="--c: var(--univ); --ct: var(--univ-t)">Universities</button>
+      </div>
+      <div class="viz-box">
+        <svg id="viz" viewBox="0 0 1420 850" role="img" aria-label="VSAC operating map: partners bring problem statements to VSAC, whose departments and centres work them through thematic areas and mechanisms into impact, with returns flowing back">
+          <defs>
+            <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--bar-a)"/><stop offset="1" stop-color="var(--bar-b)"/></linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+    <aside class="panel" id="panel" aria-live="polite"></aside>
+  </div>
+
+  <section>
+    <div class="num" aria-hidden="true">02</div>
+    <div class="eyebrow">Mechanisms and sequence</div>
+    <h2>Build on what exists, add what is missing</h2>
+    <p class="sec-lead">Incubation and the Experience Centre already have a home at Ashoka, and joint research exists in pockets. Technology transfer and the Research Park need building, the park last.</p>
+    <svg id="phase" viewBox="0 0 1300 150" role="img" aria-label="Three-year sequence: Experience Centre, technology transfer and joint research in year one; incubation track in year two; Research Park in year three"></svg>
+    <div class="mechs">
+      <div class="mech"><span class="status" style="--sc: var(--seed)">Seed exists</span><h3>Experience Centre</h3><div class="k">At Ashoka today</div><p>Mphasis AI &amp; Applied Tech Lab and its Digital Makerspace.</p></div>
+      <div class="mech"><span class="status" style="--sc: var(--exists)">Exists</span><h3>Incubation</h3><div class="k">At Ashoka today</div><p>InfoEdge Centre for Entrepreneurship, 100+ startups. Add a deep-tech AI track with VSAC faculty.</p></div>
+      <div class="mech"><span class="status" style="--sc: var(--build)">Build</span><h3>Technology transfer</h3><div class="k">At Ashoka today</div><p>To build: IP policy, licensing and sponsored-research contracts for VSAC.</p></div>
+      <div class="mech"><span class="status" style="--sc: var(--seed)">In pockets</span><h3>Joint research and exchange</h3><div class="k">At Ashoka today</div><p>Advisors from Penn, Northwestern, IIT Bombay and Google DeepMind; KCDH-A's India–Singapore grant.</p></div>
+      <div class="mech"><span class="status" style="--sc: var(--build)">Build</span><h3>Research Park</h3><div class="k">At Ashoka today</div><p>To build in year three, with anchor tenants committed first.</p></div>
+    </div>
+  </section>
+
+  </div>
+  <div class="page" id="page-stakeholders" hidden>
+    <header class="ph">
+      <div>
+        <div class="eyebrow">Potential stakeholders</div>
+        <h1>Who VSAC should work with, and how</h1>
+      </div>
+      <p class="lead">Named organisations by partner type, mapped to the thematic areas and mechanisms where they fit. Solid badges mark ties Ashoka already has; the rest are prospects to approach.</p>
+    </header>
+    <div class="sh-summary" id="shSummary" aria-label="Stakeholders by partner type"></div>
+    <div class="sh-filters">
+      <div class="chips" role="group" aria-label="Filter by partner type" id="shType"></div>
+      <div class="sh-selects">
+        <label for="shTheme">Thematic area (indicative)</label><select id="shTheme"></select>
+        <label for="shMech">Mechanism</label><select id="shMech"></select>
+        <label for="shStatus">Status</label><select id="shStatus"><option value="">All</option><option value="tie">Existing ties</option><option value="prospect">Prospects</option></select>
+      </div>
+    </div>
+    <p class="sh-count" id="shCount" aria-live="polite"></p>
+    <div class="sh-grid" id="shGrid"></div>
+  </div>
+
+  <div class="page" id="page-kpis" hidden>
+    <header class="ph">
+      <div>
+        <div class="eyebrow">Key performance indicators · three years</div>
+        <h1>What success looks like by year three</h1>
+      </div>
+      <p class="lead">Six groups of indicators, one for each part of the map: innovation and AI transformation, translation, research reputation, national agenda, student careers and value for Ashoka.</p>
+    </header>
+    <div class="kpi-note"><strong>Proposed targets for discussion.</strong> Baselines are set in the first 90 days; the numbers below show the intended scale and slope, and are revised once baselines are known.</div>
+    <div class="kpi-bar">
+      <div class="chips" role="group" aria-label="Highlight a year" id="kpiYear">
+        <span>Highlight</span>
+        <button data-y="0" aria-pressed="false" style="--c: var(--indian)">Year 1</button>
+        <button data-y="1" aria-pressed="false" style="--c: var(--bar-a)">Year 2</button>
+        <button data-y="2" aria-pressed="true" style="--c: var(--gov)">Year 3</button>
+      </div>
+    </div>
+    <div class="kpi-groups" id="kpiGroups"></div>
+  </div>
+
+  <div class="foot">
+    Unit and faculty details are from Ashoka University's public pages, November 2026; partner paths are a proposed model.
+    <ul>
+      <li><a href="https://www.ashoka.edu.in/ashoka-university-announces-landmark-grant-from-sunil-vachani-to-launch-the-vachani-school-of-advanced-computing/">Vachani School of Advanced Computing launch</a></li>
+      <li><a href="https://www.ashoka.edu.in/post-doctoral-programme-at-vsac/">VSAC faculty</a></li>
+      <li><a href="https://www.ashoka.edu.in/centre-for-digitalisation-ai-and-society-about/">Centre for Digitalisation, AI and Society</a></li>
+      <li><a href="https://kcdha.ashoka.edu.in/">Koita Centre for Digital Health</a></li>
+      <li><a href="https://cdlds.ashoka.edu.in">Safexpress Centre for Data, Learning and Decision Sciences</a></li>
+      <li><a href="https://cdsa.ashoka.edu.in/">Centre for Data Science and Analytics</a></li>
+      <li><a href="https://mphasislab.ashoka.edu.in/pages/about.html">Mphasis AI &amp; Applied Tech Lab</a></li>
+      <li><a href="https://www.ashoka.edu.in/a-decade-of-entrepreneurial-impact-at-ashoka-university/">InfoEdge Centre for Entrepreneurship</a></li>
+      <li><a href="https://www.ashoka.edu.in/advisors-vsac/">VSAC advisors</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+const NS = 'http://www.w3.org/2000/svg';
+const EXT = [['parks','Parks & accelerators'],['gov','Government'],['startups','AI/ML startups'],['gcc','GCCs'],['bigtech','Big Tech research arms'],['indian','Indian enterprise'],['univ','Top-ranked universities']];
+const UNITS = [
+  ['i-cs','Computer Science Department','Head: Subhashis Banerjee · Awasthi, Gupta, Dey','var(--gcc)','v'],
+  ['i-dsai','Data Science & AI Department','New department under VSAC','var(--hub)','v'],
+  ['i-cdais','Digitalisation, AI & Society','Subhashis Banerjee, Debayan Gupta','var(--gov)','v'],
+  ['i-kcdh','Koita Centre for Digital Health','Head: Anurag Agrawal · with Trivedi School','var(--univ)','v'],
+  ['i-cdlds','Safexpress CDLDS','Director: Sandeep Juneja','var(--bigtech)','v'],
+  ['i-cdsa','Centre for Data Science & Analytics','Founding Director: Partha Pratim Das','var(--indian)','v'],
+  ['i-mphasis','Maker Space · Mphasis AI Lab','Digital Makerspace, Ashoka Innovation Centre','var(--startups)','v'],
+  ['i-cfe','InfoEdge Centre for Entrepreneurship','Director: Priyank Narayan · 100+ startups','var(--bar-a)','a'],
+  ['i-tsb','Trivedi School of Biosciences','Biology and health research','var(--univ)','a'],
+  ['i-icpp','Isaac Centre for Public Policy','Public policy research','var(--gov)','a'],
+  ['i-csbc','Centre for Social & Behaviour Change','Director: Pawan Mamidi · works with NITI Aayog','var(--gov)','a'],
+  ['i-econ','RJ School of Economics & Finance','Economics and finance','var(--indian)','a'],
+  ['i-hum','Harish & Bina Shah School of Humanities','Humanities, philosophy, languages','var(--bigtech)','a'],
+  ['i-mgmt','Havells School of Management','Management and executive education','var(--gcc)','a']
+];
+const THH = [['h-ai','AI & machine intelligence'],['h-data','Data science & decisions'],['h-sec','Security, privacy & crypto'],['h-sys','Systems, quantum & hardware'],['h-hci','Human-centred computing']];
+const THV = [['v-health','Health & biosciences'],['v-econ','Economics & finance'],['v-policy','Policy & society'],['v-hum','Humanities & heritage'],['v-climate','Climate & sustainability']];
+const TH = [...THH, ...THV];
+const TMAP = { 't-cs':['h-ai','h-sys'], 't-ds':['h-data'], 't-econ':['v-econ'], 't-ais':['h-ai','v-policy'], 't-ethics':['v-hum'], 't-dig':['v-policy','h-sec'], 't-policy':['v-policy'], 't-hum':['v-hum'], 't-health':['v-health'], 't-hw':['h-sys'] };
+const remapT = list => [...new Set(list.flatMap(x => TMAP[x] || [x]))];
+const ME = [['m-exp','Experience Centre','Seed: Mphasis Lab'],['m-inc','Incubation','Exists: InfoEdge CfE'],['m-tt','Technology transfer','To build'],['m-joint','Joint research','In pockets today'],['m-park','Research Park','To build · year 3']];
+const IM = [['d-nat','National agenda'],['d-ind','Industrial innovation'],['d-rep','Research reputation'],['d-stu','Student careers']];
+const RE = [['r-fund','Funding',1240,84],['r-rep','Reputation',1105,104],['r-gov','Govt relationships',945,150],['r-scale','Scale',800,66],['r-know','IP & papers',680,104]];
+const COLOR = { parks:'var(--parks)', gov:'var(--gov)', startups:'var(--startups)', gcc:'var(--gcc)', bigtech:'var(--bigtech)', indian:'var(--indian)', univ:'var(--univ)' };
+const TINT = { parks:'var(--parks-t)', gov:'var(--gov-t)', startups:'var(--startups-t)', gcc:'var(--gcc-t)', bigtech:'var(--bigtech-t)', indian:'var(--indian-t)', univ:'var(--univ-t)' };
+// unit -> themes, and unit -> mechanism it already hosts
+const UT = {
+  'i-cs':['t-cs','t-ds'], 'i-dsai':['t-ds','t-cs','t-ais'], 'i-cdais':['t-ais','t-dig','t-ethics','t-policy'],
+  'i-kcdh':['t-health','t-ds'], 'i-cdlds':['t-ds','t-econ','t-health'], 'i-cdsa':['t-ds','t-dig','t-hum'],
+  'i-mphasis':['t-cs','t-health'], 'i-cfe':['t-econ'], 'i-tsb':['t-health'], 'i-icpp':['t-policy'],
+  'i-csbc':['t-policy','t-econ'], 'i-econ':['t-econ'], 'i-hum':['t-hum','t-ethics'], 'i-mgmt':['t-econ']
+};
+const UM = { 'i-mphasis':'m-exp', 'i-cfe':'m-inc' };
+
+const S = {
+  parks: { name:'Science parks & accelerators', bring:'Proven models for research parks and accelerators, tenant and investor networks, and soft landings abroad for Indian founders.', offer:'A gateway to India-scale problems, deep-tech founders from VSAC, and a partner campus in Delhi NCR.',
+    ties:'The InfoEdge Centre for Entrepreneurship has worked with IIM Ahmedabad\u2019s CIIE on the entrepreneurship minor.',
+    links:['i-cs','i-dsai','i-kcdh','i-mphasis','i-cfe','i-mgmt','t-cs','t-ds','t-health','t-econ','m-park','m-inc','m-tt','d-ind','d-stu','d-rep','r-fund','r-rep','r-scale'] },
+  gov: { name:'Government', bring:'National missions: AI for public services, digital health, security and sovereign capability.', offer:'Trusted, policy-ready research and pilots that can run in public systems.',
+    ties:'Centre for Social and Behaviour Change works with NITI Aayog; KCDH-A runs a responsible-AI-in-health series with WHO South-East Asia.',
+    links:['i-cdais','i-kcdh','i-cdlds','i-cdsa','i-tsb','i-icpp','i-csbc','t-ais','t-dig','t-health','t-policy','t-ethics','t-ds','m-tt','m-exp','d-nat','r-fund','r-gov','r-scale'] },
+  startups: { name:'AI/ML startups', bring:'Fast-moving problems and products that need testing, talent and advice.', offer:'Founders from students and faculty, technical advisers, makerspace and compute.',
+    ties:'InfoEdge Centre for Entrepreneurship has incubated more than 100 startups.',
+    links:['i-cs','i-dsai','i-mphasis','i-kcdh','i-cfe','t-cs','t-ds','t-health','m-inc','m-park','d-ind','d-stu','r-know','r-rep','r-scale'] },
+  gcc: { name:'GCCs', bring:'AI-transformation problems, mentors and hiring demand.', offer:'Sponsored projects, capstones, graduates and executive education.',
+    ties:'Industry partners already include Mphasis, whose foundation funds the AI & Applied Tech Lab.',
+    links:['i-cs','i-dsai','i-cdlds','i-mphasis','i-cdais','i-mgmt','t-cs','t-ds','t-ais','t-econ','m-tt','m-park','m-exp','d-ind','d-stu','r-fund','r-scale'] },
+  bigtech: { name:'Big Tech research arms', bring:'Open research questions, compute, fellowships and visiting researchers.', offer:'Faculty collaborators, PhD talent and India-scale problems and data.',
+    ties:'VSAC advisors include a Senior Director at Google DeepMind; CDLDS advisors include Google Research India.',
+    links:['i-cs','i-dsai','i-cdlds','i-cdais','t-cs','t-ds','t-ais','t-ethics','m-tt','m-park','m-joint','d-rep','d-stu','r-fund','r-know','r-rep'] },
+  indian: { name:'Indian enterprise', bring:'Operational problems, often a firm’s first serious AI adoption.', offer:'Applied projects, demonstrations and executive education.',
+    ties:'Founding supporters include Dixon Technologies (Vachani), Safexpress and Info Edge.',
+    links:['i-cdlds','i-cdsa','i-mphasis','i-econ','i-mgmt','t-ds','t-econ','t-health','t-dig','m-exp','m-tt','d-ind','r-fund','r-scale'] },
+  univ: { name:'Top-ranked national and global universities', bring:'Peer researchers, joint grants and student exchange.', offer:'India-scale data and problems, and cross-disciplinary teams from a liberal arts setting.',
+    ties:'VSAC advisors from Penn, Northwestern, IIT Bombay, IIT Kharagpur and ISI Kolkata; KCDH-A holds an India–Singapore joint research grant.',
+    links:['i-cs','i-kcdh','i-cdlds','i-cdais','i-tsb','i-hum','t-cs','t-health','t-ais','t-hum','t-policy','m-joint','d-rep','d-stu','r-rep','r-know'] }
+};
+const UNIT = {
+  'i-cs': ['Department of Computer Science','Head: Subhashis Banerjee','Faculty include Manu Awasthi (computer architecture), Debayan Gupta (cryptography, privacy), Mahavir Jhanwar (post-quantum cryptography) and Lipika Dey (NLP; former TCS Chief Scientist).'],
+  'i-dsai': ['Department of Data Science and AI','New department under VSAC','Sits alongside Computer Science; home of the new CS and AI major.'],
+  'i-cdais': ['Centre for Digitalisation, AI and Society','Subhashis Banerjee, Debayan Gupta','Safe, trustworthy AI for large public-service systems in India.'],
+  'i-kcdh': ['Koita Centre for Digital Health','Head: Anurag Agrawal','Joint centre with the Trivedi School of Biosciences. Rintu Kutum works on clinical small language models; India–Singapore joint research grant.'],
+  'i-cdlds': ['Safexpress Centre for Data, Learning and Decision Sciences','Director: Sandeep Juneja','Financial data, weather and climate modelling, reinforcement learning, epidemiological modelling.'],
+  'i-cdsa': ['Centre for Data Science and Analytics','Founding Director: Partha Pratim Das','Ashoka’s academic datalake and the Data Science for Social Impact programme for working professionals.'],
+  'i-mphasis': ['Maker Space: Mphasis AI & Applied Tech Lab','With Mphasis F1 Foundation','Digital Makerspace in the Ashoka Innovation Centre; researchers from seven departments. The seed of the Experience Centre and Makers Lab.'],
+  'i-cfe': ['InfoEdge Centre for Entrepreneurship','Director: Priyank Narayan','More than 100 startups incubated; summer and winter incubation programmes. The home of VSAC’s incubation track.'],
+  'i-tsb': ['Trivedi School of Biosciences','Ashoka University','Biology and health research; co-hosts the Koita Centre for Digital Health with VSAC.'],
+  'i-icpp': ['Isaac Centre for Public Policy','Ashoka University','Public policy research; a route to government partners.'],
+  'i-csbc': ['Centre for Social and Behaviour Change','Director: Pawan Mamidi','Applied behavioural science; works closely with NITI Aayog.'],
+  'i-econ': ['Rakesh Jhunjhunwala School of Economics and Finance','Ashoka University','Economics and finance; partner for decision sciences and policy work.'],
+  'i-hum': ['Harish and Bina Shah School of Humanities','Ashoka University','Humanities and philosophy; partner for AI ethics and digital heritage.'],
+  'i-mgmt': ['Havells School of Management and Leadership','Ashoka University','Management education; partner for executive education with industry.']
+};
+const THEME = {
+  'h-ai': 'Santanu Chaudhury (computer vision, AI), Lipika Dey (NLP); Computer Science and Data Science & AI departments.',
+  'h-data': 'Safexpress CDLDS (Sandeep Juneja) and the Centre for Data Science and Analytics (Partha Pratim Das).',
+  'h-sec': 'Debayan Gupta (cryptography, privacy) and Mahavir Jhanwar (post-quantum cryptography).',
+  'h-sys': 'Manu Awasthi (computer architecture); Maker Space and Mphasis AI & Applied Tech Lab; the Dixon link.',
+  'h-hci': 'Maker Space and Mphasis AI & Applied Tech Lab; Centre for Digitalisation, AI and Society.',
+  'v-health': 'Koita Centre for Digital Health (Anurag Agrawal, Rintu Kutum) and the Trivedi School of Biosciences.',
+  'v-econ': 'RJ School of Economics and Finance; CDLDS work on financial data; Havells School of Management.',
+  'v-policy': 'Centre for Digitalisation, AI and Society (Subhashis Banerjee, Debayan Gupta), Isaac Centre for Public Policy, Centre for Social and Behaviour Change.',
+  'v-hum': 'Harish and Bina Shah School of Humanities; digital heritage work led by Santanu Chaudhury.',
+  'v-climate': 'CDLDS weather and climate modelling (Sandeep Juneja).'
+};
+// remap unit themes and partner links to the five indicative themes
+Object.keys(UT).forEach(u => UT[u] = remapT(UT[u]));
+UT['i-cs'] = [...new Set([...UT['i-cs'], 'h-sec'])]; UT['i-mphasis'] = [...new Set([...UT['i-mphasis'], 'h-sys', 'h-hci'])]; UT['i-cdlds'] = [...new Set([...UT['i-cdlds'], 'v-climate'])];
+Object.values(S).forEach(s => { const t = remapT(s.links.filter(x => x.startsWith('t-'))); s.links = [...s.links.filter(x => !x.startsWith('t-')), ...t]; });
+const addT = (k, t) => { if (!S[k].links.includes(t)) S[k].links.push(t); };
+['gov','indian','parks','startups'].forEach(k => addT(k, 'h-sys'));
+['gov','univ'].forEach(k => addT(k, 'v-climate'));
+['gov','gcc','bigtech'].forEach(k => addT(k, 'h-sec'));
+['gcc','startups'].forEach(k => addT(k, 'h-hci'));
+const MD = {
+  'm-exp': ['Seed exists','The front door where government and industry see VSAC’s work and frame problems with faculty. Seed: Mphasis AI & Applied Tech Lab and Digital Makerspace.','Year 1'],
+  'm-inc': ['Exists','InfoEdge Centre for Entrepreneurship, 100+ startups. Add a deep-tech AI track with VSAC faculty.','Year 2'],
+  'm-tt': ['Build','IP policy, licensing and sponsored-research contracts for VSAC.','Year 1 set-up; first deals in year 2'],
+  'm-joint': ['In pockets','Faculty-to-faculty projects, joint grants and PhD exchange, building on the advisory board and KCDH-A’s international grants.','Year 1'],
+  'm-park': ['Build','Co-located labs for GCCs, Big Tech and startups beside faculty, modelled on Cambridge Science Park, Stanford Research Park and IIT Madras Research Park.','Year 3, anchor tenants first']
+};
+const NAME = {};
+[EXT, UNITS, TH, ME, IM].forEach(g => g.forEach(([id, n]) => NAME[id] = n));
+RE.forEach(([id, n]) => NAME[id] = n);
+NAME['m-joint'] = 'Joint research and exchange';
+
+const svg = document.getElementById('viz');
+const el = (tag, attrs, parent, text) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; (parent || svg).appendChild(e); return e; };
+const curve = (x1, y1, x2, y2) => { const mx = (x1 + x2) / 2; return `M${x1} ${y1}C${mx} ${y1} ${mx} ${y2} ${x2} ${y2}`; };
+
+// blocks
+const BLK = {
+  v: { name: 'VSAC', full: 'Vachani School of Advanced Computing', y: 170, h: 230, color: 'var(--hub)', units: UNITS.filter(u => u[4] === 'v').map(u => u[0]) },
+  a: { name: 'Other departments and centres', full: 'Across Ashoka University', y: 425, h: 230, color: 'var(--muted)', units: UNITS.filter(u => u[4] === 'a').map(u => u[0]) }
+};
+const blockOf = {}; Object.keys(BLK).forEach(b => BLK[b].units.forEach(u => blockOf[u] = b));
+const UCOL = Object.fromEntries(UNITS.map(u => [u[0], u[3]]));
+Object.values(BLK).forEach(B => {
+  B.cy = B.y + B.h / 2;
+  B.themes = [...new Set(B.units.flatMap(u => UT[u]))];
+  B.mechs = [...new Set(B.units.map(u => UM[u]).filter(Boolean))];
+});
+
+const P = {};
+EXT.forEach(([id], i) => P[id] = { x: 20, w: 200, h: 32, cy: 150 + i * 90, fill: TINT[id], stroke: COLOR[id] });
+TH.forEach(([id], i) => P[id] = { x: 690, w: 200, h: 30, cy: (i < 5 ? 150 + i * 50 : 450 + (i - 5) * 50), fill: 'var(--th-t)', stroke: 'var(--th-b)' });
+ME.forEach(([id], i) => P[id] = { x: 960, w: 180, h: 46, cy: 160 + i * 130, fill: 'var(--me-t)', stroke: 'var(--me-b)' });
+IM.forEach(([id], i) => P[id] = { x: 1220, w: 180, h: 32, cy: 190 + i * 160, fill: 'var(--im-t)', stroke: 'var(--im-b)' });
+const CX = 330, CW = 320, OY = 112, OH = 568, LY = 760;
+
+const gLinks = el('g', {});
+const gNodes = el('g', {});
+const links = [];
+const addLink = (key, d, base, dash, op) => { const p = el('path', { d, class: 'link' }, gLinks); if (base) { p.style.stroke = base; p.style.opacity = op || .55; } if (dash) p.setAttribute('stroke-dasharray', '5 4'); links.push({ key, path: p, base, op: op || .55 }); };
+
+[['Partners',120],['Problems',278],['Ashoka University',490],['Thematic areas · indicative',790],['Mechanisms',1050],['Impact',1310]].forEach(([t, x]) => el('text', { x, y: 60, class: 'head', 'text-anchor': 'middle' }, null, t));
+el('text', { x: 790, y: 116, 'text-anchor': 'middle', class: 'small', style: 'font-weight:600;fill:var(--hub)' }, null, 'Horizontal \u00b7 computing (CS)');
+el('text', { x: 790, y: 416, 'text-anchor': 'middle', class: 'small', style: 'font-weight:600;fill:var(--th-b)' }, null, 'Vertical \u00b7 the liberal arts (X)');
+
+EXT.forEach(([id], i) => addLink('e:' + id, curve(220, P[id].cy, 260, 160 + i * 92), COLOR[id]));
+addLink('b:v', `M296 ${BLK.v.cy}H326`);
+addLink('b:a', `M296 ${BLK.a.cy}H326`);
+Object.entries(BLK).forEach(([b, B]) => {
+  B.themes.forEach(t => addLink('bt:' + b + ':' + t, curve(650, B.cy, 690, P[t].cy), B.color, false, .35));
+  B.mechs.forEach(m => addLink('bm:' + b + ':' + m, curve(650, B.cy + 20, 960, P[m].cy), B.color, true, .35));
+});
+TH.forEach(([t]) => ME.forEach(([m]) => addLink('tm:' + t + ':' + m, curve(890, P[t].cy, 960, P[m].cy))));
+ME.forEach(([m]) => IM.forEach(([d]) => addLink('md:' + m + ':' + d, curve(1140, P[m].cy, 1220, P[d].cy))));
+
+const loop = el('path', { d: `M1310 ${P['d-stu'].cy + 16}V${LY - 20}Q1310 ${LY} 1290 ${LY}H510Q490 ${LY} 490 ${LY - 20}V${OY + OH + 6}`, class: 'loop' }, gLinks);
+el('path', { d: `M483 ${OY + OH + 14}L490 ${OY + OH + 2}L497 ${OY + OH + 14}z`, fill: 'var(--re-b)' }, gLinks);
+el('text', { x: 900, y: LY + 50, class: 'small', 'text-anchor': 'middle', style: 'font-size:16px;font-weight:600;fill:var(--ink)' }, null, '↺  Value for Ashoka');
+
+el('rect', { x: 260, y: 130, width: 36, height: 600, rx: 18, fill: 'url(#barGrad)' }, gNodes);
+el('text', { x: 283, y: 430, class: 'bar-text', 'text-anchor': 'middle', transform: 'rotate(-90 283 430)' }, gNodes, 'Problem statements → research areas');
+el('text', { x: 278, y: 752, class: 'small', 'text-anchor': 'middle' }, gNodes, 'local + global');
+el('path', { d: `M318 ${BLK.v.cy - 6}L328 ${BLK.v.cy}L318 ${BLK.v.cy + 6}z`, fill: 'var(--bar-a)' }, gNodes);
+el('path', { d: `M318 ${BLK.a.cy - 6}L328 ${BLK.a.cy}L318 ${BLK.a.cy + 6}z`, fill: 'var(--bar-b)' }, gNodes);
+
+el('rect', { x: CX - 16, y: OY, width: CW + 32, height: OH, rx: 28, class: 'outer' }, gNodes);
+el('text', { x: CX + 4, y: OY + 34, class: 'outer-title' }, gNodes, 'Ashoka University');
+
+const blocks = {};
+Object.entries(BLK).forEach(([b, B]) => {
+  const g = el('g', { class: 'blk', tabindex: 0, role: 'button', 'data-id': 'blk-' + b, 'aria-label': B.name + ': show its departments and centres' }, gNodes);
+  const r = el('rect', { x: CX, y: B.y, width: CW, height: B.h, rx: 22, class: b === 'v' ? 'hub' : 'ablock' }, g);
+  if (b === 'v') {
+    el('text', { x: CX + 24, y: B.y + 50, class: 'hub-title' }, g, 'VSAC');
+    el('text', { x: CX + 24, y: B.y + 74, class: 'hub-sub', style: 'font-size:13px' }, g, 'Vachani School of Advanced Computing');
+    el('text', { x: CX + 24, y: B.y + 92, class: 'hub-sub', style: 'font-size:13px' }, g, 'Dean: Santanu Chaudhury');
+  } else {
+    el('text', { x: CX + 24, y: B.y + 44, class: 'ablock-title', style: 'font-size:21px' }, g, 'Other departments');
+    el('text', { x: CX + 24, y: B.y + 68, class: 'ablock-title', style: 'font-size:21px' }, g, 'and centres');
+    el('text', { x: CX + 24, y: B.y + 92, class: 'hub-sub', style: 'font-size:13px' }, g, 'Across Ashoka University');
+  }
+  B.units.forEach((u, i) => el('circle', { cx: CX + 32 + i * 26, cy: B.y + 130, r: 9, fill: UCOL[u] }, g));
+  el('text', { x: CX + 24, y: B.y + 166, class: 'ulead', style: 'font-size:13.5px;fill:var(--ink)' }, g, B.units.length + (b === 'v' ? ' departments and centres' : ' schools and centres'));
+  el('text', { x: CX + 24, y: B.y + 196, class: 'blk-cta' }, g, 'Click to see who leads them →');
+  blocks[b] = { g, r };
+});
+
+const pills = {};
+const pill = (id, label, sub, x, cy, w, h, fill, stroke, small) => {
+  const g = el('g', { class: 'pill', tabindex: 0, role: 'button', 'data-id': id, 'aria-label': NAME[id] }, gNodes);
+  const r = el('rect', { x, y: cy - h / 2, width: w, height: h, rx: h / 2 }, g);
+  r.style.fill = fill; r.style.stroke = stroke;
+  const tx = el('text', { x: x + w / 2, y: sub ? cy - 2 : cy + 5, 'text-anchor': 'middle' }, g, label);
+  if (small) tx.style.fontSize = '13px';
+  if (sub) el('text', { x: x + w / 2, y: cy + 14, 'text-anchor': 'middle', class: 'msub' }, g, sub);
+  pills[id] = { g, r, fill, stroke };
+};
+THH.forEach(([id]) => { P[id].fill = 'var(--hub-t)'; P[id].stroke = 'var(--hub)'; });
+const THSET = new Set(TH.map(t => t[0]));
+[EXT, TH, IM].forEach(grp => grp.forEach(([id, n]) => pill(id, n, null, P[id].x, P[id].cy, P[id].w, P[id].h, P[id].fill, P[id].stroke, THSET.has(id))));
+ME.forEach(([id, n, sub]) => pill(id, n, sub, P[id].x, P[id].cy, P[id].w, P[id].h, P[id].fill, P[id].stroke));
+RE.forEach(([id, n, cx, w]) => pill(id, n, null, cx - w / 2, LY, w, 28, 'var(--re-t)', 'var(--re-b)', true));
+
+const panel = document.getElementById('panel');
+const chips = [...document.querySelectorAll('.chips button')].filter(b => b.dataset.s !== undefined);
+const pressChip = s => chips.forEach(c => c.setAttribute('aria-pressed', String(c.dataset.s === s)));
+const names = ids => ids.map(i => NAME[i]).join(', ');
+const sel = (ls, p) => ls.filter(l => l.startsWith(p));
+const unitList = ids => '<ul class="ulist">' + ids.map(u => `<li><i style="background:${UCOL[u]}"></i><b>${UNIT[u][0]}</b><span>${UNIT[u][1]}</span></li>`).join('') + '</ul>';
+
+function reset() {
+  svg.classList.remove('dim');
+  Object.values(pills).forEach(p => { p.g.classList.remove('on'); p.r.style.fill = p.fill; p.r.style.stroke = p.stroke; });
+  Object.values(blocks).forEach(b => { b.g.classList.remove('on'); b.r.style.stroke = ''; b.r.style.strokeWidth = ''; });
+  links.forEach(l => { l.path.classList.remove('on'); l.path.style.stroke = l.base || ''; l.path.style.opacity = l.base ? l.op : ''; });
+  loop.classList.remove('on'); loop.style.stroke = '';
+}
+function light(ids, keyColor, nodeColor, blockColor) {
+  svg.classList.add('dim');
+  ids.forEach(id => { if (pills[id]) { const c = nodeColor(id); pills[id].g.classList.add('on'); pills[id].r.style.fill = c; pills[id].r.style.stroke = c; } });
+  Object.keys(BLK).forEach(b => { if (ids.includes('blk-' + b)) { blocks[b].g.classList.add('on'); blocks[b].r.style.stroke = blockColor; blocks[b].r.style.strokeWidth = 3; } });
+  links.forEach(l => { const c = keyColor.get(l.key); if (c) { l.path.classList.add('on'); l.path.style.stroke = c; l.path.style.opacity = 1; gLinks.appendChild(l.path); } });
+}
+function keysFor(s) {
+  const L = S[s].links, u = sel(L, 'i-'), t = L.filter(x => x.startsWith('h-') || x.startsWith('v-')), m = sel(L, 'm-'), d = sel(L, 'd-');
+  const k = ['e:' + s];
+  Object.keys(BLK).forEach(b => {
+    const us = u.filter(x => blockOf[x] === b);
+    if (!us.length) return;
+    k.push('b:' + b);
+    [...new Set(us.flatMap(x => UT[x]))].filter(y => t.includes(y)).forEach(y => k.push('bt:' + b + ':' + y));
+    us.forEach(x => { if (UM[x] && m.includes(UM[x])) k.push('bm:' + b + ':' + UM[x]); });
+  });
+  t.forEach(y => { if (!k.some(z => z.startsWith('bt:') && z.endsWith(':' + y))) { const bb = Object.keys(BLK).find(q => BLK[q].themes.includes(y)); if (bb) { k.push('b:' + bb, 'bt:' + bb + ':' + y); } } });
+  t.forEach(x => m.forEach(y => k.push('tm:' + x + ':' + y)));
+  m.forEach(x => d.forEach(y => k.push('md:' + x + ':' + y)));
+  return k;
+}
+const blocksFor = s => Object.keys(BLK).filter(b => keysFor(s).includes('b:' + b)).map(b => 'blk-' + b);
+function setPanel(color, html) { panel.style.setProperty('--pc', color); panel.innerHTML = html; const b = panel.querySelector('.reset'); if (b) b.addEventListener('click', showAll); }
+function showAll() {
+  reset(); pressChip('all');
+  setPanel('var(--hub)', '<div class="eyebrow">How to read it</div><h3>Problems in, impact out, value back</h3>' +
+    '<div class="k">Left to right</div><p>Seven kinds of partners bring problem statements. Inside Ashoka University, VSAC works them with the university’s other departments and centres, through five indicative thematic areas and five mechanisms, into four kinds of impact.</p>' +
+    '<div class="k">Underneath</div><p>Value for Ashoka: funding, reputation, government relationships, scale and IP.</p>' +
+    '<div class="k">Try</div><p>Trace a partner above, click VSAC or Other departments and centres to see who leads them, or click any theme or mechanism.</p>');
+}
+function showS(s) {
+  reset(); pressChip(s);
+  const km = new Map(keysFor(s).map(k => [k, COLOR[s]]));
+  light([s, ...S[s].links, ...blocksFor(s)], km, () => COLOR[s], COLOR[s]);
+  loop.classList.add('on'); loop.style.stroke = COLOR[s];
+  const L = S[s].links;
+  setPanel(COLOR[s], '<div class="eyebrow">Partner</div><h3>' + S[s].name + '</h3>' +
+    '<div class="k">They bring</div><p>' + S[s].bring + '</p>' +
+    '<div class="k">VSAC offers</div><p>' + S[s].offer + '</p>' +
+    '<div class="k">Ashoka ties today</div><p>' + S[s].ties + '</p>' +
+    '<div class="k">Worked by</div>' + unitList(sel(L, 'i-')) +
+    '<div class="k">Through</div><p>' + names(sel(L, 'm-')) + '</p>' +
+    '<div class="k">Impact and value</div><p>' + names(sel(L, 'd-')) + '. Value for Ashoka: ' + names(sel(L, 'r-')) + '.</p>' +
+    '<button class="reset" type="button">Show the whole map</button>');
+}
+function showBlock(b) {
+  reset(); pressChip('');
+  const B = BLK[b];
+  const km = new Map();
+  B.themes.forEach(t => km.set('bt:' + b + ':' + t, B.color));
+  B.mechs.forEach(m => km.set('bm:' + b + ':' + m, B.color));
+  light(['blk-' + b, ...B.themes, ...B.mechs], km, () => B.color, B.color);
+  setPanel(B.color, '<div class="eyebrow">' + (b === 'v' ? 'School' : 'Across the university') + '</div><h3>' + B.name + '</h3>' +
+    '<p>' + B.full + (b === 'v' ? '. Dean: Santanu Chaudhury.' : '.') + '</p>' +
+    '<div class="k">' + B.units.length + (b === 'v' ? ' departments and centres' : ' schools and centres') + '</div>' + unitList(B.units) +
+    '<div class="k">Strongest themes</div><p>' + names(B.themes) + '</p>' +
+    (B.mechs.length ? '<div class="k">Hosts today</div><p>' + names(B.mechs) + '</p>' : '') +
+    '<button class="reset" type="button">Show the whole map</button>');
+}
+function showNode(id) {
+  if (S[id]) return showS(id);
+  if (id.startsWith('blk-')) return showBlock(id.slice(4));
+  reset(); pressChip('');
+  const who = Object.keys(S).filter(k => S[k].links.includes(id));
+  const km = new Map();
+  who.forEach(w => km.set('e:' + w, COLOR[w]));
+  who.forEach(w => keysFor(w).forEach(k => { if (k.includes(id)) km.set(k, 'var(--hub)'); }));
+  const us = UNITS.filter(u => UT[u[0]].includes(id) || UM[u[0]] === id).map(u => u[0]);
+  const bs = [...new Set(us.map(u => blockOf[u]))];
+  bs.forEach(b => { km.set('b:' + b, 'var(--hub)'); if (km.has('bt:' + b + ':' + id) || BLK[b].themes.includes(id)) km.set('bt:' + b + ':' + id, BLK[b].color); if (BLK[b].mechs.includes(id)) km.set('bm:' + b + ':' + id, BLK[b].color); });
+  light([id, ...who, ...bs.map(b => 'blk-' + b)], km, n => COLOR[n] || 'var(--hub)', 'var(--hub)');
+  if (id.startsWith('r-')) { loop.classList.add('on'); loop.style.stroke = 'var(--hub)'; }
+  const kind = ({ h:'Thematic area \u00b7 horizontal (CS)', v:'Thematic area \u00b7 vertical', t:'Thematic area', m:'Mechanism', d:'Impact domain', r:'Value for Ashoka' })[id[0]];
+  let html = '<div class="eyebrow">' + kind + '</div><h3>' + NAME[id] + '</h3>';
+  if (THEME[id]) html += '<div class="k">People and units at Ashoka</div><p>' + THEME[id] + '</p>';
+  if (us.length) html += '<div class="k">' + (id.startsWith('m-') ? 'Hosted by' : 'Strong units') + '</div>' + unitList(us);
+  if (MD[id]) html += '<div class="k">Status</div><p>' + MD[id][0] + '</p><div class="k">What it is</div><p>' + MD[id][1] + '</p><div class="k">When</div><p>' + MD[id][2] + '</p>';
+  html += '<div class="k">Serves</div><p>' + (who.length ? who.map(k => '<span style="color:' + COLOR[k] + ';font-weight:600">' + S[k].name + '</span>').join(', ') : '—') + '</p>';
+  html += '<button class="reset" type="button">Show the whole map</button>';
+  setPanel('var(--hub)', html);
+}
+chips.forEach(c => c.addEventListener('click', () => c.dataset.s === 'all' ? showAll() : showS(c.dataset.s)));
+svg.querySelectorAll('[role="button"]').forEach(n => {
+  const go = () => showNode(n.dataset.id);
+  n.addEventListener('click', go);
+  n.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+});
+showAll();
+
+
+const ph = document.getElementById('phase');
+const pe = (tag, a, t) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); if (t != null) e.textContent = t; ph.appendChild(e); return e; };
+const grad = pe('defs', {});
+grad.innerHTML = '<linearGradient id="lineGrad" x1="0" x2="1"><stop offset="0" stop-color="var(--indian)"/><stop offset=".5" stop-color="var(--bar-a)"/><stop offset="1" stop-color="var(--gov)"/></linearGradient>';
+pe('rect', { x: 40, y: 72, width: 1220, height: 6, rx: 3, fill: 'url(#lineGrad)' });
+[[220, 'Year 1', 'Open the front door', 'Experience Centre · Technology transfer set-up · Joint research', 'var(--indian)'],
+ [650, 'Year 2', 'Convert demand into deals', 'Deep-tech incubation track · First licences and contracts', 'var(--bar-a)'],
+ [1080, 'Year 3', 'Build the park', 'Research Park with committed anchor tenants', 'var(--gov)']].forEach(([x, y, title, items, c]) => {
+  pe('text', { x, y: 34, 'text-anchor': 'middle', style: 'font-family:var(--display);font-size:26px;fill:' + c }, y);
+  pe('text', { x, y: 58, 'text-anchor': 'middle', style: 'font-family:var(--display);font-size:16px;fill:var(--ink)' }, title);
+  pe('circle', { cx: x, cy: 75, r: 11, fill: c, stroke: 'var(--paper)', 'stroke-width': 3 });
+  pe('text', { x, y: 112, 'text-anchor': 'middle', style: 'font-size:14px;fill:var(--muted)' }, items);
+});
+
+// ---------- routing ----------
+const PAGES = ['home', 'map', 'stakeholders', 'kpis'];
+function route() {
+  const h = location.hash.replace('#', '');
+  const cur = PAGES.includes(h) ? h : 'home';
+  PAGES.forEach(p => { document.getElementById('page-' + p).hidden = p !== cur; });
+  document.querySelectorAll('.nav a.tab').forEach(a => a.setAttribute('aria-current', a.getAttribute('href') === '#' + cur ? 'page' : 'false'));
+  window.scrollTo(0, 0);
+}
+document.getElementById('eqTh').innerHTML = '<div class="tmx-cols">' + THV.map(([, n]) => `<div class="tcol"><span>${n}</span></div>`).join('') + '</div><div class="tmx-rows">' + THH.map(([, n]) => `<div class="trow">${n}</div>`).join('') + '</div>';
+document.getElementById('eqMe').innerHTML = ME.map(([id, n]) => `<span>${id === 'm-joint' ? 'Joint research' : n}</span>`).join('');
+window.addEventListener('hashchange', route);
+route();
+
+// ---------- stakeholders ----------
+const TYPES = [['parks','Science parks & accelerators'],['gov','Government & multilateral'],['startups','AI/ML startups'],['gcc','GCCs'],['bigtech','Big Tech research'],['indian','Indian enterprise & philanthropy'],['univ','Universities']];
+const TNAME = Object.fromEntries(TH);
+const MNAME = Object.fromEntries(ME.map(([id, n]) => [id, id === 'm-joint' ? 'Joint research' : n]));
+const SH = [
+  ['Cambridge Science Park (Trinity College)','parks',['t-cs','t-health'],['m-park','m-joint'],'prospect','The UK\u2019s oldest science park, founded by Trinity College in 1970. The model for a VSAC Research Park.','key'],
+  ['Stanford Research Park','parks',['t-cs','t-ds'],['m-park'],'prospect','The original university research park; a model for tenant mix and leasing.','key'],
+  ['Y Combinator','parks',['t-cs','t-ds'],['m-inc'],'prospect','Global accelerator; a pathway for VSAC deep-tech founders and a benchmark for the incubation track.','key'],
+  ['IIT Madras Research Park','parks',['t-cs','t-ds'],['m-park','m-tt'],'prospect','India\u2019s leading university research park; the closest domestic model and a peer.','key'],
+  ['Oxford Science Park (Magdalen College)','parks',['t-health','t-cs'],['m-park'],'prospect','College-owned science park; a second UK model for health and deep tech.'],
+  ['NUS Enterprise and BLOCK71 Singapore','parks',['t-cs'],['m-inc','m-joint'],'prospect','University-linked startup hub with an international network; a soft-landing partner.'],
+  ['Station F (Paris)','parks',['t-cs','t-econ'],['m-inc'],'prospect','Large startup campus with corporate and university programmes.'],
+  ['Techstars','parks',['t-cs','t-econ'],['m-inc'],'prospect','Global accelerator network with corporate-backed programmes.'],
+  ['CIIE.CO (IIM Ahmedabad)','parks',['t-econ'],['m-inc'],'tie','Worked with the InfoEdge Centre for Entrepreneurship on the entrepreneurship minor.'],
+  ['T-Hub (Hyderabad)','parks',['t-cs','t-econ'],['m-inc','m-exp'],'prospect','India\u2019s large state-backed innovation campus; partner for corporate innovation programmes.'],
+  ['Society for Innovation and Development (IISc)','parks',['t-cs','t-health'],['m-tt','m-park'],'prospect','IISc\u2019s technology-transfer and incubation arm; peer model for VSAC.'],
+  ['IndiaAI Mission (MeitY)','gov',['t-ais','t-ds','t-cs'],['m-tt','m-exp'],'prospect','Compute, datasets and AI safety work; natural home for trustworthy-AI research.'],
+  ['Anusandhan National Research Foundation','gov',['t-cs','t-ds','t-health'],['m-joint','m-tt'],'prospect','Large, multi-year research grants for centres and consortia.'],
+  ['Ayushman Bharat Digital Mission (NHA)','gov',['t-health','t-dig'],['m-exp','m-tt'],'prospect','Digital health public infrastructure; pilots with KCDH-A.'],
+  ['Indian Council of Medical Research','gov',['t-health','t-ds'],['m-joint'],'tie','KCDH-A already holds an ICMR research award.'],
+  ['NITI Aayog','gov',['t-policy','t-econ'],['m-exp'],'tie','Centre for Social and Behaviour Change already works closely with NITI Aayog.'],
+  ['National Quantum Mission (DST)','gov',['t-cs'],['m-joint'],'prospect','Quantum-safe cryptography, building on post-quantum work in CS.'],
+  ['India Semiconductor Mission','gov',['t-cs'],['m-park','m-tt'],'prospect','Chip-design talent and the Maker Space; strengthened by the Dixon link.'],
+  ['Government of Haryana','gov',['t-dig','t-policy'],['m-exp'],'prospect','Home state; AI pilots in public services.'],
+  ['WHO South-East Asia Region','gov',['t-health','t-ethics'],['m-joint'],'tie','Co-runs a responsible-AI-in-healthcare webinar series with KCDH-A.'],
+  ['Sarvam AI','startups',['t-ais','t-cs'],['m-park','m-joint'],'prospect','Indian-language AI; research collaboration and student talent.'],
+  ['Qure.ai','startups',['t-health'],['m-park','m-tt'],'prospect','Medical-imaging AI; clinical validation with KCDH-A.'],
+  ['Niramai','startups',['t-health'],['m-tt'],'prospect','AI for early cancer screening; health data partnership.'],
+  ['Ashoka founder startups','startups',['t-cs','t-econ'],['m-inc'],'tie','InfoEdge Centre for Entrepreneurship has incubated 100+ startups; add a deep-tech AI track.'],
+  ['American Express (India)','gcc',['t-ds','t-econ'],['m-park','m-exp'],'prospect','Risk and fraud analytics; fits Safexpress CDLDS financial-data work.'],
+  ['Mastercard (India tech hub)','gcc',['t-ds','t-ethics'],['m-tt','m-park'],'prospect','Payments data, privacy and cryptography.'],
+  ['Optum (UnitedHealth Group)','gcc',['t-health','t-ds'],['m-park','m-tt'],'prospect','Health analytics; capstones with KCDH-A.'],
+  ['Walmart Global Tech India','gcc',['t-ds','t-cs'],['m-exp'],'prospect','Supply-chain and decision sciences; sponsored student projects.'],
+  ['JPMorgan Chase (India)','gcc',['t-ds','t-econ'],['m-tt'],'prospect','Quantitative finance and AI; sponsored research.'],
+  ['Google DeepMind & Google Research India','bigtech',['t-cs','t-ais','t-ds'],['m-joint'],'tie','A Google DeepMind Senior Director advises VSAC; Google Research India advises CDLDS.'],
+  ['Microsoft Research India','bigtech',['t-cs','t-ais'],['m-joint','m-tt'],'prospect','Fellowships, joint projects and visiting researchers.'],
+  ['IBM Research India','bigtech',['t-cs'],['m-joint'],'prospect','Quantum computing and AI systems.'],
+  ['Adobe Research','bigtech',['t-cs','t-hum'],['m-joint'],'prospect','Creative AI and digital heritage.'],
+  ['Amazon Web Services','bigtech',['t-cs','t-ds'],['m-exp'],'prospect','Cloud compute credits and applied AI programmes.'],
+  ['Dixon Technologies','indian',['t-cs'],['m-park','m-exp'],'tie','Chairman Sunil Vachani’s grant founded VSAC; anchor for the Maker Space and hardware.'],
+  ['Safexpress','indian',['t-ds','t-econ'],['m-tt'],'tie','Funds the Safexpress Centre for Data, Learning and Decision Sciences.'],
+  ['Info Edge','indian',['t-econ'],['m-inc'],'tie','Funds the InfoEdge Centre for Entrepreneurship.'],
+  ['Mphasis F1 Foundation','indian',['t-cs','t-health'],['m-exp'],'tie','Funds the Mphasis AI & Applied Tech Lab and Digital Makerspace.'],
+  ['Koita Foundation','indian',['t-health'],['m-joint'],'tie','Funds the Koita Centre for Digital Health.'],
+  ['TCS Research','indian',['t-ds','t-cs'],['m-tt','m-joint'],'prospect','Applied AI research; links through faculty with TCS backgrounds.'],
+  ['Apollo Hospitals','indian',['t-health'],['m-tt','m-exp'],'prospect','Clinical data and validation partner for health AI.'],
+  ['Maruti Suzuki','indian',['t-ds','t-cs'],['m-exp','m-park'],'prospect','Haryana-based manufacturer; AI in operations and mobility.'],
+  ['HDFC Bank','indian',['t-ds','t-econ'],['m-tt'],'prospect','Financial AI and executive education.'],
+  ['University of Pennsylvania','univ',['t-ais','t-ethics'],['m-joint'],'tie','Penn faculty, including the ASSET Center for Trustworthy AI director, advise VSAC.'],
+  ['Northwestern University','univ',['t-cs','t-ds'],['m-joint'],'tie','Northwestern faculty advise VSAC and visit CDLDS.'],
+  ['Columbia University','univ',['t-ds','t-econ'],['m-joint'],'tie','Columbia faculty chair and advise the CDLDS advisory board.'],
+  ['University of Geneva','univ',['t-health','t-dig'],['m-joint'],'tie','Hub of the Botnar-funded Digital Transformation for Health Lab; Ashoka is the Asia node.'],
+  ['IIT Bombay','univ',['t-cs','t-health'],['m-joint'],'tie','Faculty advise VSAC and CDLDS; home of the original Koita Centre for Digital Health.'],
+  ['IIT Kharagpur','univ',['t-cs'],['m-joint'],'tie','Faculty advise VSAC; several VSAC faculty came from IIT Kharagpur.'],
+  ['Indian Statistical Institute, Kolkata','univ',['t-ds'],['m-joint'],'tie','ISI’s Director advises VSAC.'],
+  ['Caltech','univ',['t-ds'],['m-joint'],'tie','A Caltech climate scientist mentors CDLDS weather and climate work.']
+];
+SH.forEach(s => { s[2] = remapT(s[2]); });
+SH.filter(s => /Dixon|Semiconductor|Maruti|Mphasis|Cambridge Science/.test(s[0])).forEach(s => { if (!s[2].includes('h-sys')) s[2].push('h-sys'); });
+SH.filter(s => /Quantum|Mastercard|JPMorgan/.test(s[0])).forEach(s => { if (!s[2].includes('h-sec')) s[2].push('h-sec'); });
+SH.filter(s => /Caltech|Columbia|Haryana/.test(s[0])).forEach(s => { if (!s[2].includes('v-climate')) s[2].push('v-climate'); });
+const shState = { type: '', theme: '', mech: '', status: '' };
+const shType = document.getElementById('shType');
+shType.innerHTML = '<span>Partner type</span><button data-t="" aria-pressed="true" style="--c: var(--ink)">All</button>' +
+  TYPES.map(([t, n]) => `<button data-t="${t}" aria-pressed="false" style="--c: ${COLOR[t]}; --ct: ${TINT[t]}">${n}</button>`).join('');
+const opt = (list, all) => '<option value="">' + all + '</option>' + list.map(([v, n]) => `<option value="${v}">${n}</option>`).join('');
+document.getElementById('shTheme').innerHTML = opt(TH, 'All areas');
+document.getElementById('shMech').innerHTML = opt(Object.entries(MNAME), 'All mechanisms');
+const summary = document.getElementById('shSummary');
+summary.innerHTML = TYPES.map(([t, n]) => { const c = SH.filter(s => s[1] === t).length; return `<button data-t="${t}" style="background:${COLOR[t]};flex:${c}" title="${n}: ${c}"><span>${c}</span>${n}</button>`; }).join('');
+function renderSH() {
+  const list = SH.filter(s => (!shState.type || s[1] === shState.type) && (!shState.theme || s[2].includes(shState.theme)) && (!shState.mech || s[3].includes(shState.mech)) && (!shState.status || s[4] === shState.status));
+  const ties = list.filter(s => s[4] === 'tie').length;
+  document.getElementById('shCount').textContent = `${list.length} organisations shown · ${ties} existing ties · ${list.length - ties} prospects`;
+  document.getElementById('shGrid').innerHTML = list.map(([n, t, th, me, st, why]) => `
+    <article class="sh-card" style="--c:${COLOR[t]};--ct:${TINT[t]}">
+      <div class="top"><span class="type">${TYPES.find(x => x[0] === t)[1]}</span><span class="badge ${st}">${st === 'tie' ? 'Existing tie' : 'Prospect'}</span></div>
+      <h3>${n}</h3>
+      <p>${why}</p>
+      <div class="tags">${th.map(x => `<span class="tag th">${TNAME[x]}</span>`).join('')}</div>
+      <div class="tags">${me.map(x => `<span class="tag me">${MNAME[x]}</span>`).join('')}</div>
+    </article>`).join('') || '<p>No organisations match these filters.</p>';
+  shType.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.t === shState.type)));
+}
+shType.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; shState.type = b.dataset.t; renderSH(); });
+summary.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; shState.type = shState.type === b.dataset.t ? '' : b.dataset.t; renderSH(); });
+document.getElementById('shTheme').addEventListener('change', e => { shState.theme = e.target.value; renderSH(); });
+document.getElementById('shMech').addEventListener('change', e => { shState.mech = e.target.value; renderSH(); });
+document.getElementById('shStatus').addEventListener('change', e => { shState.status = e.target.value; renderSH(); });
+renderSH();
+
+// ---------- KPIs ----------
+const KG = [
+  ['Innovation and AI transformation','The main value VSAC creates for its partners','var(--gcc)',[
+    ['Partner problems solved together',[10,30,60],'','Co-developed by faculty and students'],
+    ['AI solutions adopted by partners',[3,10,25],'','Prototypes partners put into real use'],
+    ['Professionals upskilled in AI',[150,500,1000],'','Executive education and Experience Centre sessions'],
+    ['Innovation programmes run with partners',[2,5,10],'','Challenges, studios and hackathons'],
+    ['Science park and accelerator links',[1,3,5],'','e.g. Cambridge, IIT Madras, Y Combinator']]],
+  ['Translation','Research turned into products, deals and ventures','var(--bigtech)',[
+    ['Invention disclosures',[5,15,30],'','Filed with the technology-transfer office'],
+    ['Licences and tech-transfer deals',[0,3,8],'','Signed agreements'],
+    ['VSAC-linked startups incubated',[5,12,25],'','With the InfoEdge Centre for Entrepreneurship'],
+    ['Research Park anchor tenants',[0,2,5],'','Signed before the park is built']]],
+  ['Research reputation','Standing with global peers','var(--univ)',[
+    ['Papers at top-tier venues',[20,35,55],'','Per year, VSAC faculty and students'],
+    ['Joint grants with global partners',[1,3,6],'','Cumulative'],
+    ['Visiting faculty and exchanges',[4,10,18],'','Per year']]],
+  ['National agenda','Work that serves India’s missions','var(--gov)',[
+    ['Government-funded projects',[2,5,9],'','Active in the year'],
+    ['Pilots in public systems',[1,3,6],'','Running with a government partner']]],
+  ['Student careers','Partners shaping talent','var(--startups)',[
+    ['Students on partner-sponsored projects',[100,250,450],'','Capstones, challenges and studios'],
+    ['Internships through partners',[60,150,300],'','Per year']]],
+  ['Value for Ashoka','What flows back to the university','var(--indian)',[
+    ['External funding raised',[10,30,60],'₹ crore','Grants and sponsored research, per year'],
+    ['Recurring industry revenue',[1,4,10],'₹ crore','Executive education and sponsored projects'],
+    ['Non-philanthropic share of VSAC budget',[5,15,25],'%','Grants, contracts and fees']]]
+];
+let kYear = 2;
+function renderK() {
+  document.getElementById('kpiGroups').innerHTML = KG.map(([g, sub, c, items]) => `
+    <section class="kgroup" style="--gc:${c};margin:0;padding:0;border:0">
+      <h2><i></i>${g}</h2><p class="gsub">${sub}</p>
+      <div class="kcards">${items.map(([n, v, u, how]) => { const mx = Math.max(...v) || 1; return `
+        <div class="kcard">
+          <div class="kname">${n}</div>
+          <div class="big">${v[kYear]}${u === '%' ? '%' : ''}<small>${u && u !== '%' ? u + ' · ' : ''}Year ${kYear + 1}</small></div>
+          <div class="bars">${v.map((x, i) => `<div class="${i === kYear ? 'sel' : ''}" style="height:${Math.max(4, x / mx * 100)}%"><b>${x}</b></div>`).join('')}</div>
+          <div class="yl"><span>Y1</span><span>Y2</span><span>Y3</span></div>
+          <p class="how">${how}</p>
+        </div>`; }).join('')}</div>
+    </section>`).join('');
+  document.querySelectorAll('#kpiYear button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.y === kYear)));
+}
+document.getElementById('kpiYear').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; kYear = +b.dataset.y; renderK(); });
+renderK();
+</script>
+</body>
+</html>
