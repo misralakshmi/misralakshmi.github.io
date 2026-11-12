@@ -66,7 +66,8 @@ button:focus-visible, [role="button"]:focus-visible { outline: 2px solid var(--h
 
 .viz-box { overflow-x: auto; }
 svg#viz { display: block; width: 100%; min-width: 960px; height: auto; font-family: var(--body); }
-.head { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; fill: var(--muted); font-weight: 600; }
+.head { font-size: 17px; letter-spacing: .06em; text-transform: uppercase; fill: var(--ink); font-weight: 700; }
+.head-sub { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; fill: var(--muted); }
 .link { fill: none; stroke: var(--rule); stroke-width: 1; transition: opacity .15s; }
 .link.on { stroke-width: 2.2; }
 .dim .link:not(.on) { opacity: .35; }
@@ -666,7 +667,7 @@ const gNodes = el('g', {});
 const links = [];
 const addLink = (key, d, base, dash, op) => { const p = el('path', { d, class: 'link' }, gLinks); if (base) { p.style.stroke = base; p.style.opacity = op || .55; } if (dash) p.setAttribute('stroke-dasharray', '5 4'); links.push({ key, path: p, base, op: op || .55 }); };
 
-[['Partners',120],['Context',278],['Ashoka University',490],['Thematic areas · indicative',790],['Mechanisms \u00b7 indicative',1050],['Value for partners',1310]].forEach(([t, x]) => el('text', { x, y: 60, class: 'head', 'text-anchor': 'middle' }, null, t));
+[['Partners',120],['Context',278],['Ashoka University',490],['Thematic areas',790,'indicative'],['Mechanisms',1050,'indicative'],['Value for partners',1310]].forEach(([t, x, sub]) => { el('text', { x, y: 54, class: 'head', 'text-anchor': 'middle' }, null, t); if (sub) el('text', { x, y: 74, class: 'head-sub', 'text-anchor': 'middle' }, null, sub); });
 el('text', { x: 790, y: 116, 'text-anchor': 'middle', class: 'small', style: 'font-weight:600;fill:var(--hub)' }, null, 'Horizontal \u00b7 computing (CS)');
 el('text', { x: 790, y: 416, 'text-anchor': 'middle', class: 'small', style: 'font-weight:600;fill:var(--th-b)' }, null, 'Vertical \u00b7 the liberal arts (X)');
 
