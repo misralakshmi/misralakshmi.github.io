@@ -874,7 +874,9 @@ document.getElementById('shMech').innerHTML = opt(Object.entries(MNAME), 'All me
 const summary = document.getElementById('shSummary');
 summary.innerHTML = TYPES.map(([t, n]) => { const c = SH.filter(s => s[1] === t).length; return `<button data-t="${t}" style="background:${COLOR[t]};flex:${c}" title="${n}: ${c}"><span>${c}</span>${n}</button>`; }).join('');
 function renderSH() {
-  const list = SH.filter(s => (!shState.type || s[1] === shState.type) && (!shState.theme || s[2].includes(shState.theme)) && (!shState.mech || s[3].includes(shState.mech)) && (!shState.status || s[4] === shState.status));
+  const mixed = []; const byType = TYPES.map(([t]) => SH.filter(s => s[1] === t));
+  for (let i = 0; byType.some(g => g[i]); i++) byType.forEach(g => { if (g[i]) mixed.push(g[i]); });
+  const list = mixed.filter(s => (!shState.type || s[1] === shState.type) && (!shState.theme || s[2].includes(shState.theme)) && (!shState.mech || s[3].includes(shState.mech)) && (!shState.status || s[4] === shState.status));
   const ties = list.filter(s => s[4] === 'tie').length;
   document.getElementById('shCount').textContent = `${list.length} organisations shown · ${ties} existing ties · ${list.length - ties} prospects`;
   document.getElementById('shGrid').innerHTML = list.map(([n, t, th, me, st, why]) => `
