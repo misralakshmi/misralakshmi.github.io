@@ -225,6 +225,9 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
 .eq-chips.th span { border-color: var(--th-b); background: var(--paper); }
 .eq-chips.me span { border-color: var(--me-b); background: var(--paper); }
 .eq-note { margin-top: 14px !important; font-size: 13.5px !important; color: var(--muted); }
+.eq-me { margin-top: 16px; border-radius: 14px; background: var(--me-t); border: 2px solid var(--me-b); padding: 12px 16px 14px; }
+.eq-me h3 { color: var(--me-b); }
+.eq-me .eq-chips { margin-top: 8px; }
 .eq-op { align-self: center; font-family: var(--display); font-size: 54px; color: var(--muted); }
 .eq-val { border-radius: 14px; padding: 14px 16px; }
 .eq-val.partners { background: var(--gcc-t); border-left: 5px solid var(--gcc); }
@@ -315,23 +318,6 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
 .pipe li b::before { content: counter(s) ". "; color: var(--muted); font-weight: 400; }
 .pipe p { margin: 0; font-size: 13.5px; }
 @media (max-width: 1100px) { .vision, .iac { grid-template-columns: 1fr; } .plan-around ul { grid-template-columns: 1fr 1fr; } .pipe ol { grid-template-columns: 1fr; } }
-.dim3 { margin-top: 44px; border-top: 1px solid var(--rule); padding-top: 24px; }
-.dim3 h2 { margin-top: 2px; }
-.dim3-grid { margin-top: 18px; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 32px; align-items: start; }
-.cube { margin: 0; }
-.cube svg { width: 100%; height: auto; display: block; font-family: var(--body); }
-.cube .cl { font-size: 17px; fill: var(--muted); }
-.cube figcaption { font-size: 14px; color: var(--muted); margin-top: 6px; }
-.flat .chips { margin-bottom: 12px; }
-.m3 { display: grid; grid-template-columns: 170px repeat(5, 1fr); gap: 5px; }
-.m3-c { border-radius: 8px; font-size: 12.5px; }
-.m3-h { font-weight: 600; color: var(--x); padding: 4px; text-align: center; align-self: end; line-height: 1.25; }
-.m3-r { font-weight: 600; color: var(--hub); display: flex; align-items: center; padding: 6px 8px; background: var(--hub-t); }
-.m3-cell { font: inherit; font-size: 14px; font-weight: 600; height: 46px; cursor: pointer; border: 1px solid var(--rule); color: #fff; background: color-mix(in srgb, var(--me-b) calc(var(--a) * 100%), var(--paper)); }
-.m3-cell.sel { outline: 2.5px solid var(--ink); outline-offset: 1px; }
-.m3-note { margin: 12px 0 0; font-size: 14px; color: var(--muted); min-height: 2.6em; }
-.m3-note b { color: var(--ink); }
-@media (max-width: 1100px) { .dim3-grid { grid-template-columns: 1fr; } .m3 { grid-template-columns: 120px repeat(5, 1fr); } }
 </style>
 </head>
 <body>
@@ -387,7 +373,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
           <div class="tmx" id="eqTh"></div>
           <div class="tmx-key"><span class="kh">Horizontal: the contexts in which VSAC operates</span><span class="kv">Vertical: the liberal arts (X)</span></div>
         </div>
-        <div class="eq-half">
+        <div class="eq-me">
           <h3>Through mechanisms <small>indicative</small></h3>
           <div class="eq-chips me" id="eqMe"></div>
         </div>
@@ -411,44 +397,6 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
       <div class="fb-u"><span class="fb-up" aria-hidden="true"></span><span class="fb-from" aria-hidden="true"></span></div>
       <div class="fb-label"><b>↺ Feedback loop</b> Value flows back to shape what CS at Ashoka becomes: its courses, research agenda and hiring.</div>
     </div>
-
-    <section class="dim3" aria-label="Mechanisms as a third dimension">
-      <div class="eyebrow">The third dimension: mechanisms</div>
-      <h2>Every initiative is one point: area × discipline × mechanism</h2>
-      <div class="dim3-grid">
-        <figure class="cube">
-          <svg viewBox="0 0 680 470" role="img" aria-label="Cube with axes CS areas of work, the liberal arts and mechanisms; one initiative shown as a point">
-            <polygon points="340,260 490,345 490,175 340,90" fill="var(--hub)" fill-opacity=".08" stroke="var(--rule)"/>
-            <polygon points="340,260 190,345 190,175 340,90" fill="var(--x)" fill-opacity=".08" stroke="var(--rule)"/>
-            <polygon points="340,260 490,345 340,430 190,345" fill="var(--me-b)" fill-opacity=".10" stroke="var(--rule)"/>
-            <g stroke="var(--faint)" stroke-width=".8" fill="none" opacity=".7">
-              <path d="M370 277V107M400 294V124M430 311V141M460 328V158M340 226L490 311M340 192L490 277M340 158L490 243M340 124L490 209"/>
-              <path d="M310 277V107M280 294V124M250 311V141M220 328V158M340 226L190 311M340 192L190 277M340 158L190 243M340 124L190 209"/>
-              <path d="M370 277L220 362M400 294L250 379M430 311L280 396M460 328L310 413M310 277L460 362M280 294L430 379M250 311L400 396M220 328L370 413"/>
-            </g>
-            <path d="M310 183V328" stroke="var(--x)" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
-            <circle cx="310" cy="328" r="4" fill="var(--x)"/>
-            <line x1="318" y1="172" x2="500" y2="120" stroke="var(--muted)" stroke-dasharray="3 3"/>
-            <circle cx="310" cy="175" r="10" fill="var(--x)"/>
-            <text x="506" y="104" style="font-size:19px;font-weight:600;fill:var(--ink)">One initiative</text>
-            <text x="506" y="128" class="cl">Data science</text>
-            <text x="506" y="150" class="cl">× climate</text>
-            <text x="506" y="172" class="cl">× technology transfer</text>
-            <text x="506" y="194" class="cl">= a forecasting model</text>
-            <text x="506" y="216" class="cl">licensed to a partner</text>
-            <text x="340" y="60" text-anchor="middle" style="font-size:20px;font-weight:700;fill:var(--x)">X · the liberal arts</text>
-            <text x="505" y="372" style="font-size:20px;font-weight:700;fill:var(--hub)">CS · areas of work</text>
-            <text x="180" y="372" text-anchor="end" style="font-size:20px;font-weight:700;fill:var(--me-b)">Mechanisms</text>
-          </svg>
-          <figcaption>Read as a cube, the strategy is a portfolio: some cells are full, some empty, and VSAC chooses which to fill first.</figcaption>
-        </figure>
-        <div class="flat">
-          <div class="chips" role="group" aria-label="Choose a mechanism" id="m3Btns"></div>
-          <div class="m3" id="m3Grid"></div>
-          <p class="m3-note" id="m3Note" aria-live="polite"></p>
-        </div>
-      </div>
-    </section>
 
     <div class="explore">
       <a class="ex" href="#map" style="--c: var(--hub)"><div class="eyebrow">01 · Operating map</div><h3>How it works</h3><p>Trace each partner through Ashoka's units, themes and mechanisms to impact.</p><span>Open the map →</span></a>
@@ -1093,36 +1041,6 @@ function renderK() {
 }
 document.getElementById('kpiYear').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; kYear = +b.dataset.y; renderK(); });
 renderK();
-// ---------- third dimension: mechanisms over CS x liberal arts ----------
-(function () {
-  const MS = ME.map(([id]) => [id, id === 'm-joint' ? 'Joint research' : NAME[id]]);
-  let m3 = '';
-  const btns = document.getElementById('m3Btns');
-  btns.innerHTML = '<span>Mechanism</span><button data-m="" aria-pressed="true" style="--c: var(--ink)">All</button>' + MS.map(([id, n]) => `<button data-m="${id}" aria-pressed="false" style="--c: var(--me-b)">${n}</button>`).join('');
-  function cellOrgs(h, v, m) { return SH.filter(s => s[2].includes(h) && s[2].includes(v) && (!m || s[3].includes(m))).map(s => s[0]); }
-  function render(sel) {
-    let mx = 1;
-    THH.forEach(([h]) => THV.forEach(([v]) => { mx = Math.max(mx, cellOrgs(h, v, m3).length); }));
-    let g = '<div class="m3-c m3-h"></div>' + THV.map(([, n]) => `<div class="m3-c m3-h m3-v">${n}</div>`).join('');
-    THH.forEach(([h, hn]) => {
-      g += `<div class="m3-c m3-r">${hn}</div>`;
-      THV.forEach(([v]) => {
-        const n = cellOrgs(h, v, m3).length;
-        const a = n ? (0.18 + 0.82 * n / mx) : 0;
-        g += `<button class="m3-c m3-cell${sel === h + '|' + v ? ' sel' : ''}" data-k="${h}|${v}" style="--a:${a}" aria-label="${n} stakeholders">${n || ''}</button>`;
-      });
-    });
-    document.getElementById('m3Grid').innerHTML = g;
-    btns.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.m === m3)));
-    const note = document.getElementById('m3Note');
-    if (sel) { const [h, v] = sel.split('|'); const o = cellOrgs(h, v, m3); note.innerHTML = `<b>${NAME[h]} × ${NAME[v]}${m3 ? ' × ' + MS.find(x => x[0] === m3)[1] : ''}</b>: ${o.length ? o.join(', ') : 'no stakeholder mapped yet'}`; }
-    else note.textContent = 'Darker cells have more stakeholders mapped to them. Choose a mechanism to see where it applies; click a cell to see who.';
-  }
-  let cur = null;
-  btns.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; m3 = b.dataset.m; render(cur); });
-  document.getElementById('m3Grid').addEventListener('click', e => { const c = e.target.closest('.m3-cell'); if (!c) return; cur = cur === c.dataset.k ? null : c.dataset.k; render(cur); });
-  render(null);
-})();
 </script>
 </body>
 </html>
