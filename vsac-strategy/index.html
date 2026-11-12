@@ -342,7 +342,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
       <div class="pos"><div class="eyebrow">Positioning</div><p>India's school for responsible computing and AI: <strong>technical rigour with human purpose.</strong></p></div>
     </div>
 
-    <div class="eq" role="img" aria-label="CS multiplied by X, where X is the liberal arts, applied across five liberal arts verticals in three contexts, industrial transformation, the national agenda and societal challenges, through five mechanisms, equals value for partners and value for Ashoka; the value feeds back to shape CS">
+    <div class="eq" role="img" aria-label="CS multiplied by X, where X is the liberal arts, applied across five liberal arts verticals in three contexts, industrial transformation, the national agenda and societal challenges, through indicative mechanisms, equals value for partners and value for Ashoka; the value feeds back to shape CS">
       <div class="eq-card eq-cs">
         <div class="eq-sym">CS</div>
         <h3>The core</h3>
@@ -370,7 +370,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
           <div class="tmx-key"><span class="kh">Horizontal: the contexts in which VSAC operates</span><span class="kv">Vertical: the liberal arts (X)</span></div>
         </div>
         <div class="eq-half">
-          <h3>Through five mechanisms</h3>
+          <h3>Through mechanisms <small>indicative</small></h3>
           <div class="eq-chips me" id="eqMe"></div>
         </div>
         <p class="eq-note">Led with Ashoka's schools and centres: Humanities, Economics and Finance, Biosciences, Public Policy, Social and Behaviour Change, Management.</p>
@@ -418,7 +418,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
       <div class="eyebrow">Operating map</div>
       <h1>How CS <em>×</em> X works in practice</h1>
     </div>
-    <p class="lead">VSAC operates in three contexts: industrial transformation, the national agenda and societal challenges. Partners in each bring work that Ashoka's units take on across computing and the liberal arts, and five mechanisms turn the work into value for partners and for Ashoka.</p>
+    <p class="lead">VSAC operates in three contexts: industrial transformation, the national agenda and societal challenges. Partners in each bring work that Ashoka's units take on across computing and the liberal arts, and a set of mechanisms turns the work into value for partners and for Ashoka.</p>
   </header>
 
   <div class="stage">
@@ -677,7 +677,7 @@ const gNodes = el('g', {});
 const links = [];
 const addLink = (key, d, base, dash, op) => { const p = el('path', { d, class: 'link' }, gLinks); if (base) { p.style.stroke = base; p.style.opacity = op || .55; } if (dash) p.setAttribute('stroke-dasharray', '5 4'); links.push({ key, path: p, base, op: op || .55 }); };
 
-[['Partners',120],['Context',278],['Ashoka University',490],['Thematic areas · indicative',790],['Mechanisms',1050],['Value for partners',1310]].forEach(([t, x]) => el('text', { x, y: 60, class: 'head', 'text-anchor': 'middle' }, null, t));
+[['Partners',120],['Context',278],['Ashoka University',490],['Thematic areas · indicative',790],['Mechanisms \u00b7 indicative',1050],['Value for partners',1310]].forEach(([t, x]) => el('text', { x, y: 60, class: 'head', 'text-anchor': 'middle' }, null, t));
 el('text', { x: 790, y: 116, 'text-anchor': 'middle', class: 'small', style: 'font-weight:600;fill:var(--hub)' }, null, 'Horizontal \u00b7 computing (CS)');
 el('text', { x: 790, y: 416, 'text-anchor': 'middle', class: 'small', style: 'font-weight:600;fill:var(--th-b)' }, null, 'Vertical \u00b7 the liberal arts (X)');
 
@@ -786,7 +786,7 @@ function setPanel(color, html) { panel.style.setProperty('--pc', color); panel.i
 function showAll() {
   reset(); pressChip('all');
   setPanel('var(--hub)', '<div class="eyebrow">How to read it</div><h3>From context to value</h3>' +
-    '<div class="k">Left to right</div><p>VSAC operates in three contexts: industrial transformation, the national agenda and societal challenges. Seven kinds of partners in those contexts bring work to VSAC. Inside Ashoka University, VSAC works them with the university’s other departments and centres, across computing and the liberal arts, through five mechanisms, into value for partners.</p>' +
+    '<div class="k">Left to right</div><p>VSAC operates in three contexts: industrial transformation, the national agenda and societal challenges. Seven kinds of partners in those contexts bring work to VSAC. Inside Ashoka University, VSAC works them with the university’s other departments and centres, across computing and the liberal arts, through a set of mechanisms, into value for partners.</p>' +
     '<div class="k">Underneath</div><p>Value for Ashoka: funding, reputation, government relationships, scale and IP.</p>' +
     '<div class="k">Try</div><p>Trace a partner above, click VSAC or Other departments and centres to see who leads them, or click any theme or mechanism.</p>');
 }
