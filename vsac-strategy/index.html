@@ -288,10 +288,10 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
         <div class="eyebrow">Vachani School of Advanced Computing · Ashoka University · November 2026</div>
         <h1><span class="cs">CS</span> <em>×</em> <span class="xx">X</span>: Computing that creates value for Ashoka and the world</h1>
       </div>
-      <p class="lead">VSAC's strength in computer science, multiplied by Ashoka's liberal arts, applied to the challenges that matter to India and the world, through mechanisms that turn research into impact.</p>
+      <p class="lead">VSAC's strength in computer science, multiplied by Ashoka's liberal arts, applied in the contexts that matter to India and the world, through mechanisms that turn research into impact.</p>
     </header>
 
-    <div class="eq" role="img" aria-label="CS multiplied by X, where X is the liberal arts, applied across five liberal arts verticals to industrial transformation, the national agenda and societal challenges through five mechanisms, equals value for partners and value for Ashoka; the value feeds back to shape CS">
+    <div class="eq" role="img" aria-label="CS multiplied by X, where X is the liberal arts, applied across five liberal arts verticals in three contexts, industrial transformation, the national agenda and societal challenges, through five mechanisms, equals value for partners and value for Ashoka; the value feeds back to shape CS">
       <div class="eq-card eq-cs">
         <div class="eq-sym">CS</div>
         <h3>The core</h3>
@@ -314,9 +314,9 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
         <h3 class="x-head">The liberal arts</h3>
         <p class="x-sub">Ashoka's humanities, social sciences and sciences. X is what makes VSAC different: computing shaped by ethics, society and human judgement, not computing alone.</p>
         <div class="eq-half">
-          <h3>Where the liberal arts meet the challenges <small>indicative</small></h3>
+          <h3>The liberal arts, in the contexts VSAC works in <small>indicative</small></h3>
           <div class="tmx" id="eqTh"></div>
-          <div class="tmx-key"><span class="kh">Horizontal: the challenges VSAC takes on</span><span class="kv">Vertical: the liberal arts (X)</span></div>
+          <div class="tmx-key"><span class="kh">Horizontal: the contexts in which VSAC operates</span><span class="kv">Vertical: the liberal arts (X)</span></div>
         </div>
         <div class="eq-half">
           <h3>Through five mechanisms</h3>
@@ -355,7 +355,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
       <div class="eyebrow">Operating map</div>
       <h1>How CS <em>×</em> X works in practice</h1>
     </div>
-    <p class="lead">Partners bring three kinds of challenge. Ashoka's units work them across computing and the liberal arts, and five mechanisms turn the work into value for partners and for Ashoka.</p>
+    <p class="lead">VSAC operates in three contexts: industrial transformation, the national agenda and societal challenges. Partners in each bring work that Ashoka's units take on across computing and the liberal arts, and five mechanisms turn the work into value for partners and for Ashoka.</p>
   </header>
 
   <div class="stage">
@@ -372,7 +372,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
         <button data-s="univ" aria-pressed="false" style="--c: var(--univ); --ct: var(--univ-t)">Top-ranked universities</button>
       </div>
       <div class="viz-box">
-        <svg id="viz" viewBox="0 0 1420 850" role="img" aria-label="VSAC operating map: partners bring challenges to VSAC, whose departments and centres work them through thematic areas and mechanisms into impact, with returns flowing back">
+        <svg id="viz" viewBox="0 0 1420 850" role="img" aria-label="VSAC operating map: within three contexts, partners bring work to VSAC, whose departments and centres work them through thematic areas and mechanisms into impact, with returns flowing back">
           <defs>
             <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--bar-a)"/><stop offset="1" stop-color="var(--bar-b)"/></linearGradient>
           </defs>
@@ -598,7 +598,7 @@ const gNodes = el('g', {});
 const links = [];
 const addLink = (key, d, base, dash, op) => { const p = el('path', { d, class: 'link' }, gLinks); if (base) { p.style.stroke = base; p.style.opacity = op || .55; } if (dash) p.setAttribute('stroke-dasharray', '5 4'); links.push({ key, path: p, base, op: op || .55 }); };
 
-[['Partners',120],['Challenges',278],['Ashoka University',490],['Thematic areas · indicative',790],['Mechanisms',1050],['Value for partners',1310]].forEach(([t, x]) => el('text', { x, y: 60, class: 'head', 'text-anchor': 'middle' }, null, t));
+[['Partners',120],['Context',278],['Ashoka University',490],['Thematic areas · indicative',790],['Mechanisms',1050],['Value for partners',1310]].forEach(([t, x]) => el('text', { x, y: 60, class: 'head', 'text-anchor': 'middle' }, null, t));
 el('text', { x: 790, y: 116, 'text-anchor': 'middle', class: 'small', style: 'font-weight:600;fill:var(--hub)' }, null, 'Horizontal \u00b7 computing (CS)');
 el('text', { x: 790, y: 416, 'text-anchor': 'middle', class: 'small', style: 'font-weight:600;fill:var(--th-b)' }, null, 'Vertical \u00b7 the liberal arts (X)');
 
@@ -706,8 +706,8 @@ const blocksFor = s => Object.keys(BLK).filter(b => keysFor(s).includes('b:' + b
 function setPanel(color, html) { panel.style.setProperty('--pc', color); panel.innerHTML = html; const b = panel.querySelector('.reset'); if (b) b.addEventListener('click', showAll); }
 function showAll() {
   reset(); pressChip('all');
-  setPanel('var(--hub)', '<div class="eyebrow">How to read it</div><h3>Challenges in, value out</h3>' +
-    '<div class="k">Left to right</div><p>Seven kinds of partners bring three kinds of challenge: industrial transformation, the national agenda and societal challenges. Inside Ashoka University, VSAC works them with the university’s other departments and centres, across computing and the liberal arts, through five mechanisms, into value for partners.</p>' +
+  setPanel('var(--hub)', '<div class="eyebrow">How to read it</div><h3>From context to value</h3>' +
+    '<div class="k">Left to right</div><p>VSAC operates in three contexts: industrial transformation, the national agenda and societal challenges. Seven kinds of partners in those contexts bring work to VSAC. Inside Ashoka University, VSAC works them with the university’s other departments and centres, across computing and the liberal arts, through five mechanisms, into value for partners.</p>' +
     '<div class="k">Underneath</div><p>Value for Ashoka: funding, reputation, government relationships, scale and IP.</p>' +
     '<div class="k">Try</div><p>Trace a partner above, click VSAC or Other departments and centres to see who leads them, or click any theme or mechanism.</p>');
 }
@@ -719,7 +719,7 @@ function showS(s) {
   Object.entries(segs).forEach(([c, g]) => g.style.opacity = SCH[s].includes(c) ? 1 : .3);
   const L = S[s].links;
   setPanel(COLOR[s], '<div class="eyebrow">Partner</div><h3>' + S[s].name + '</h3>' +
-    '<div class="k">Challenges</div><p>' + SCH[s].map(c => CHNAME[c]).join(', ') + '</p>' +
+    '<div class="k">Context</div><p>' + SCH[s].map(c => CHNAME[c]).join(', ') + '</p>' +
     '<div class="k">They bring</div><p>' + S[s].bring + '</p>' +
     '<div class="k">VSAC offers</div><p>' + S[s].offer + '</p>' +
     '<div class="k">Ashoka ties today</div><p>' + S[s].ties + '</p>' +
