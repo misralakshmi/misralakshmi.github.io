@@ -361,10 +361,11 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
     <div class="num" aria-hidden="true">02</div>
     <div class="eyebrow">Mechanisms and sequence</div>
     <h2>Build on what exists, add what is missing</h2>
-    <p class="sec-lead">Incubation and the Experience Centre already have a home at Ashoka, and joint research exists in pockets. Technology transfer and the Research Park need building, the park last.</p>
-    <svg id="phase" viewBox="0 0 1300 150" role="img" aria-label="Three-year sequence: Experience Centre, technology transfer and joint research in year one; incubation track in year two; Research Park in year three"></svg>
+    <p class="sec-lead">Incubation and experimental spaces already have a home at Ashoka, and joint research exists in pockets. Technology transfer and the Research Park need building, the park last.</p>
+    <svg id="phase" viewBox="0 0 1300 150" role="img" aria-label="Three-year sequence: experimental spaces, technology transfer and joint research in year one; incubation track in year two; Research Park in year three"></svg>
     <div class="mechs">
-      <div class="mech"><span class="status" style="--sc: var(--seed)">Seed exists</span><h3>Experience Centre</h3><div class="k">At Ashoka today</div><p>Mphasis AI &amp; Applied Tech Lab and its Digital Makerspace.</p></div>
+      <div class="mech"><span class="status" style="--sc: var(--seed)">Seed exists</span><h3>Experimental spaces</h3><p style="margin-bottom:6px">Labs, makerspaces and an experience centre: places where faculty, students and partners build and test together.</p><div class="k">At Ashoka today</div><p>Mphasis AI &amp; Applied Tech Lab, its Digital Makerspace, and centre labs such as KCDH-A and CDLDS.</p></div>
+
       <div class="mech"><span class="status" style="--sc: var(--exists)">Exists</span><h3>Incubation</h3><div class="k">At Ashoka today</div><p>InfoEdge Centre for Entrepreneurship, 100+ startups. Add a deep-tech AI track with VSAC faculty.</p></div>
       <div class="mech"><span class="status" style="--sc: var(--build)">Build</span><h3>Technology transfer</h3><div class="k">At Ashoka today</div><p>To build: IP policy, licensing and sponsored-research contracts for VSAC.</p></div>
       <div class="mech"><span class="status" style="--sc: var(--seed)">In pockets</span><h3>Joint research and exchange</h3><div class="k">At Ashoka today</div><p>Advisors from Penn, Northwestern, IIT Bombay and Google DeepMind; KCDH-A's India–Singapore grant.</p></div>
@@ -454,7 +455,7 @@ const THV = [['v-health','Health & biosciences'],['v-econ','Economics & finance'
 const TH = [...THH, ...THV];
 const TMAP = { 't-cs':['h-ai','h-sys'], 't-ds':['h-data'], 't-econ':['v-econ'], 't-ais':['h-ai','v-policy'], 't-ethics':['v-hum'], 't-dig':['v-policy','h-sec'], 't-policy':['v-policy'], 't-hum':['v-hum'], 't-health':['v-health'], 't-hw':['h-sys'] };
 const remapT = list => [...new Set(list.flatMap(x => TMAP[x] || [x]))];
-const ME = [['m-exp','Experience Centre','Seed: Mphasis Lab'],['m-inc','Incubation','Exists: InfoEdge CfE'],['m-tt','Technology transfer','To build'],['m-joint','Joint research','In pockets today'],['m-park','Research Park','To build · year 3']];
+const ME = [['m-exp','Experimental spaces','Labs & experience centre'],['m-inc','Incubation','Exists: InfoEdge CfE'],['m-tt','Technology transfer','To build'],['m-joint','Joint research','In pockets today'],['m-park','Research Park','To build · year 3']];
 const IM = [['d-nat','National agenda'],['d-ind','Industrial innovation'],['d-rep','Research reputation'],['d-stu','Student careers']];
 const RE = [['r-fund','Funding',1240,84],['r-rep','Reputation',1105,104],['r-gov','Govt relationships',945,150],['r-scale','Scale',800,66],['r-know','IP & papers',680,104]];
 const COLOR = { parks:'var(--parks)', gov:'var(--gov)', startups:'var(--startups)', gcc:'var(--gcc)', bigtech:'var(--bigtech)', indian:'var(--indian)', univ:'var(--univ)' };
@@ -498,7 +499,7 @@ const UNIT = {
   'i-kcdh': ['Koita Centre for Digital Health','Head: Anurag Agrawal','Joint centre with the Trivedi School of Biosciences. Rintu Kutum works on clinical small language models; India–Singapore joint research grant.'],
   'i-cdlds': ['Safexpress Centre for Data, Learning and Decision Sciences','Director: Sandeep Juneja','Financial data, weather and climate modelling, reinforcement learning, epidemiological modelling.'],
   'i-cdsa': ['Centre for Data Science and Analytics','Founding Director: Partha Pratim Das','Ashoka’s academic datalake and the Data Science for Social Impact programme for working professionals.'],
-  'i-mphasis': ['Maker Space: Mphasis AI & Applied Tech Lab','With Mphasis F1 Foundation','Digital Makerspace in the Ashoka Innovation Centre; researchers from seven departments. The seed of the Experience Centre and Makers Lab.'],
+  'i-mphasis': ['Maker Space: Mphasis AI & Applied Tech Lab','With Mphasis F1 Foundation','Digital Makerspace in the Ashoka Innovation Centre; researchers from seven departments. The seed of VSAC’s experimental spaces and Makers Lab.'],
   'i-cfe': ['InfoEdge Centre for Entrepreneurship','Director: Priyank Narayan','More than 100 startups incubated; summer and winter incubation programmes. The home of VSAC’s incubation track.'],
   'i-tsb': ['Trivedi School of Biosciences','Ashoka University','Biology and health research; co-hosts the Koita Centre for Digital Health with VSAC.'],
   'i-icpp': ['Isaac Centre for Public Policy','Ashoka University','Public policy research; a route to government partners.'],
@@ -529,7 +530,7 @@ const addT = (k, t) => { if (!S[k].links.includes(t)) S[k].links.push(t); };
 ['gov','gcc','bigtech'].forEach(k => addT(k, 'h-sec'));
 ['gcc','startups'].forEach(k => addT(k, 'h-hci'));
 const MD = {
-  'm-exp': ['Seed exists','The front door where government and industry see VSAC’s work and frame problems with faculty. Seed: Mphasis AI & Applied Tech Lab and Digital Makerspace.','Year 1'],
+  'm-exp': ['Seed exists','Places to experiment together: research labs, the Digital Makerspace, and an experience centre where government and industry see VSAC’s work and frame problems with faculty. Seed: Mphasis AI & Applied Tech Lab and Digital Makerspace.','Year 1'],
   'm-inc': ['Exists','InfoEdge Centre for Entrepreneurship, 100+ startups. Add a deep-tech AI track with VSAC faculty.','Year 2'],
   'm-tt': ['Build','IP policy, licensing and sponsored-research contracts for VSAC.','Year 1 set-up; first deals in year 2'],
   'm-joint': ['In pockets','Faculty-to-faculty projects, joint grants and PhD exchange, building on the advisory board and KCDH-A’s international grants.','Year 1'],
@@ -740,7 +741,7 @@ const pe = (tag, a, t) => { const e = document.createElementNS(NS, tag); for (co
 const grad = pe('defs', {});
 grad.innerHTML = '<linearGradient id="lineGrad" x1="0" x2="1"><stop offset="0" stop-color="var(--indian)"/><stop offset=".5" stop-color="var(--bar-a)"/><stop offset="1" stop-color="var(--gov)"/></linearGradient>';
 pe('rect', { x: 40, y: 72, width: 1220, height: 6, rx: 3, fill: 'url(#lineGrad)' });
-[[220, 'Year 1', 'Open the front door', 'Experience Centre · Technology transfer set-up · Joint research', 'var(--indian)'],
+[[220, 'Year 1', 'Open the front door', 'Experimental spaces · Technology transfer set-up · Joint research', 'var(--indian)'],
  [650, 'Year 2', 'Convert demand into deals', 'Deep-tech incubation track · First licences and contracts', 'var(--bar-a)'],
  [1080, 'Year 3', 'Build the park', 'Research Park with committed anchor tenants', 'var(--gov)']].forEach(([x, y, title, items, c]) => {
   pe('text', { x, y: 34, 'text-anchor': 'middle', style: 'font-family:var(--display);font-size:26px;fill:' + c }, y);
@@ -859,7 +860,7 @@ const KG = [
   ['Innovation and AI transformation','The main value VSAC creates for its partners','var(--gcc)',[
     ['Partner problems solved together',[10,30,60],'','Co-developed by faculty and students'],
     ['AI solutions adopted by partners',[3,10,25],'','Prototypes partners put into real use'],
-    ['Professionals upskilled in AI',[150,500,1000],'','Executive education and Experience Centre sessions'],
+    ['Professionals upskilled in AI',[150,500,1000],'','Executive education and sessions in experimental spaces'],
     ['Innovation programmes run with partners',[2,5,10],'','Challenges, studios and hackathons'],
     ['Science park and accelerator links',[1,3,5],'','e.g. Cambridge, IIT Madras, Y Combinator']]],
   ['Translation','Research turned into products, deals and ventures','var(--bigtech)',[
