@@ -254,6 +254,10 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
 .ph h1 .cs { color: var(--hub); }
 .ph h1 .xx { color: var(--x); }
 .ph h1 em { color: var(--muted) !important; }
+.cs-sub { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 10px; }
+.cs-sub + .eq-chips { margin-top: 6px; }
+.eq-chips.cs-areas span { background: var(--hub); color: #fff; border-color: var(--hub); }
+.eq-cs .eq-half h3 { margin-top: 14px; }
 </style>
 </head>
 <body>
@@ -282,9 +286,17 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
       <div class="eq-card eq-cs">
         <div class="eq-sym">CS</div>
         <h3>The core</h3>
-        <p>Vachani School of Advanced Computing. Dean: Santanu Chaudhury.</p>
-        <div class="eq-chips">
-          <span>Computer Science</span><span>Data Science &amp; AI</span><span>Digitalisation, AI &amp; Society</span><span>Koita Digital Health</span><span>Safexpress CDLDS</span><span>Data Science &amp; Analytics</span><span>Maker Space</span>
+        <p>Vachani School of Advanced Computing.</p>
+        <div class="eq-half">
+          <h3>Academic units</h3>
+          <div class="cs-sub">Departments</div>
+          <div class="eq-chips"><span>Computer Science</span><span>Data Science &amp; AI</span></div>
+          <div class="cs-sub">Centres and labs</div>
+          <div class="eq-chips"><span>Digitalisation, AI &amp; Society</span><span>Koita Centre for Digital Health</span><span>Safexpress CDLDS</span><span>Data Science &amp; Analytics</span><span>Maker Space · Mphasis AI Lab</span></div>
+        </div>
+        <div class="eq-half">
+          <h3>Areas of work <small>indicative</small></h3>
+          <div class="eq-chips cs-areas" id="eqCsAreas"></div>
         </div>
       </div>
       <div class="eq-op" aria-hidden="true">×</div>
@@ -512,7 +524,7 @@ const UNIT = {
   'i-mgmt': ['Havells School of Management and Leadership','Ashoka University','Management education; partner for executive education with industry.']
 };
 const THEME = {
-  'h-ai': 'Santanu Chaudhury (computer vision, AI), Lipika Dey (NLP); Computer Science and Data Science & AI departments.',
+  'h-ai': 'Computer vision and AI; Lipika Dey (NLP); Computer Science and Data Science & AI departments.',
   'h-data': 'Safexpress CDLDS (Sandeep Juneja) and the Centre for Data Science and Analytics (Partha Pratim Das).',
   'h-sec': 'Debayan Gupta (cryptography, privacy) and Mahavir Jhanwar (post-quantum cryptography).',
   'h-sys': 'Manu Awasthi (computer architecture); Maker Space and Mphasis AI & Applied Tech Lab; the Dixon link.',
@@ -520,7 +532,7 @@ const THEME = {
   'v-health': 'Koita Centre for Digital Health (Anurag Agrawal, Rintu Kutum) and the Trivedi School of Biosciences.',
   'v-econ': 'RJ School of Economics and Finance; CDLDS work on financial data; Havells School of Management.',
   'v-policy': 'Centre for Digitalisation, AI and Society (Subhashis Banerjee, Debayan Gupta), Isaac Centre for Public Policy, Centre for Social and Behaviour Change.',
-  'v-hum': 'Harish and Bina Shah School of Humanities; digital heritage work led by Santanu Chaudhury.',
+  'v-hum': 'Harish and Bina Shah School of Humanities; digital heritage work in computer vision.',
   'v-climate': 'CDLDS weather and climate modelling (Sandeep Juneja).'
 };
 // remap unit themes and partner links to the five indicative themes
@@ -607,7 +619,7 @@ Object.entries(BLK).forEach(([b, B]) => {
   if (b === 'v') {
     el('text', { x: CX + 24, y: B.y + 50, class: 'hub-title' }, g, 'VSAC');
     el('text', { x: CX + 24, y: B.y + 74, class: 'hub-sub', style: 'font-size:13px' }, g, 'Vachani School of Advanced Computing');
-    el('text', { x: CX + 24, y: B.y + 92, class: 'hub-sub', style: 'font-size:13px' }, g, 'Dean: Santanu Chaudhury');
+    
   } else {
     el('text', { x: CX + 24, y: B.y + 44, class: 'ablock-title', style: 'font-size:21px' }, g, 'Other departments');
     el('text', { x: CX + 24, y: B.y + 68, class: 'ablock-title', style: 'font-size:21px' }, g, 'and centres');
@@ -702,7 +714,7 @@ function showBlock(b) {
   B.mechs.forEach(m => km.set('bm:' + b + ':' + m, B.color));
   light(['blk-' + b, ...B.themes, ...B.mechs], km, () => B.color, B.color);
   setPanel(B.color, '<div class="eyebrow">' + (b === 'v' ? 'School' : 'Across the university') + '</div><h3>' + B.name + '</h3>' +
-    '<p>' + B.full + (b === 'v' ? '. Dean: Santanu Chaudhury.' : '.') + '</p>' +
+    '<p>' + B.full + '.</p>' +
     '<div class="k">' + B.units.length + (b === 'v' ? ' departments and centres' : ' schools and centres') + '</div>' + unitList(B.units) +
     '<div class="k">Strongest themes</div><p>' + names(B.themes) + '</p>' +
     (B.mechs.length ? '<div class="k">Hosts today</div><p>' + names(B.mechs) + '</p>' : '') +
@@ -763,6 +775,7 @@ function route() {
   window.scrollTo(0, 0);
 }
 document.getElementById('eqTh').innerHTML = '<div class="tmx-cols">' + THV.map(([, n]) => `<div class="tcol"><span>${n}</span></div>`).join('') + '</div><div class="tmx-rows">' + THH.map(([, n]) => `<div class="trow">${n}</div>`).join('') + '</div>';
+document.getElementById('eqCsAreas').innerHTML = THH.map(([, n]) => `<span>${n}</span>`).join('');
 document.getElementById('eqMe').innerHTML = ME.map(([id, n]) => `<span>${id === 'm-joint' ? 'Joint research' : n}</span>`).join('');
 window.addEventListener('hashchange', route);
 route();
