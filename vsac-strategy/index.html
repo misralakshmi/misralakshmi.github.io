@@ -258,6 +258,8 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
 .cs-sub + .eq-chips { margin-top: 6px; }
 .eq-chips.cs-areas span { background: var(--hub); color: #fff; border-color: var(--hub); }
 .eq-cs .eq-half h3 { margin-top: 14px; }
+.chg-text { fill: #fff; font-size: 12.5px; font-weight: 600; letter-spacing: .03em; }
+.chg { transition: opacity .15s; }
 </style>
 </head>
 <body>
@@ -279,7 +281,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
         <div class="eyebrow">Vachani School of Advanced Computing · Ashoka University · November 2026</div>
         <h1><span class="cs">CS</span> <em>×</em> <span class="xx">X</span>: Computing that creates value for Ashoka and the world</h1>
       </div>
-      <p class="lead">VSAC's strength in computer science, multiplied by Ashoka's liberal arts, applied to the problems that matter to India and the world, through mechanisms that turn research into impact.</p>
+      <p class="lead">VSAC's strength in computer science, multiplied by Ashoka's liberal arts, applied to the challenges that matter to India and the world, through mechanisms that turn research into impact.</p>
     </header>
 
     <div class="eq" role="img" aria-label="CS multiplied by X, where X is the liberal arts, applied across five liberal arts verticals to industrial transformation, the national agenda and societal challenges through five mechanisms, equals value for partners and value for Ashoka; the value feeds back to shape CS">
@@ -305,7 +307,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
         <h3 class="x-head">The liberal arts</h3>
         <p class="x-sub">Ashoka's humanities, social sciences and sciences. X is what makes VSAC different: computing shaped by ethics, society and human judgement, not computing alone.</p>
         <div class="eq-half">
-          <h3>Where the liberal arts meet real problems <small>indicative</small></h3>
+          <h3>Where the liberal arts meet the challenges <small>indicative</small></h3>
           <div class="tmx" id="eqTh"></div>
           <div class="tmx-key"><span class="kh">Horizontal: the challenges VSAC takes on</span><span class="kv">Vertical: the liberal arts (X)</span></div>
         </div>
@@ -320,7 +322,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
         <div class="eq-sym">Value</div>
         <div class="eq-val partners">
           <h3>For partners</h3>
-          <p><strong>Innovation and AI transformation</strong>: problems solved together, AI solutions adopted, professionals upskilled.</p>
+          <p><strong>Innovation and AI transformation</strong>, public and societal impact, research partnerships and talent.</p>
         </div>
         <div class="eq-val ashoka">
           <h3>For Ashoka</h3>
@@ -338,14 +340,12 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
   </div>
 
   <div class="page" id="page-map" hidden>
-  <header>
+  <header class="ph">
     <div>
-      <div class="eyebrow">Vachani School of Advanced Computing · Ashoka University · November 2026</div>
-      <h1>From India's problems to <em>global impact</em>: how VSAC can work</h1>
+      <div class="eyebrow">Operating map</div>
+      <h1>How CS <em>×</em> X works in practice</h1>
     </div>
-    <div>
-      <p class="lead">Seven kinds of partners bring problem statements. VSAC's departments, centres and labs work them across Ashoka's disciplines, draw on schools across Ashoka, translate the results through five mechanisms, and create value for Ashoka: funding, reputation, government relationships, scale and knowledge.</p>
-    </div>
+    <p class="lead">Partners bring three kinds of challenge. Ashoka's units work them across computing and the liberal arts, and five mechanisms turn the work into value for partners and for Ashoka.</p>
   </header>
 
   <div class="stage">
@@ -359,10 +359,10 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
         <button data-s="gcc" aria-pressed="false" style="--c: var(--gcc); --ct: var(--gcc-t)">GCCs</button>
         <button data-s="bigtech" aria-pressed="false" style="--c: var(--bigtech); --ct: var(--bigtech-t)">Big Tech research</button>
         <button data-s="indian" aria-pressed="false" style="--c: var(--indian); --ct: var(--indian-t)">Indian enterprise</button>
-        <button data-s="univ" aria-pressed="false" style="--c: var(--univ); --ct: var(--univ-t)">Universities</button>
+        <button data-s="univ" aria-pressed="false" style="--c: var(--univ); --ct: var(--univ-t)">Top-ranked universities</button>
       </div>
       <div class="viz-box">
-        <svg id="viz" viewBox="0 0 1420 850" role="img" aria-label="VSAC operating map: partners bring problem statements to VSAC, whose departments and centres work them through thematic areas and mechanisms into impact, with returns flowing back">
+        <svg id="viz" viewBox="0 0 1420 850" role="img" aria-label="VSAC operating map: partners bring challenges to VSAC, whose departments and centres work them through thematic areas and mechanisms into impact, with returns flowing back">
           <defs>
             <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--bar-a)"/><stop offset="1" stop-color="var(--bar-b)"/></linearGradient>
           </defs>
@@ -416,7 +416,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
         <div class="eyebrow">Key performance indicators · three years</div>
         <h1>What success looks like by year three</h1>
       </div>
-      <p class="lead">Six groups of indicators, one for each part of the map: innovation and AI transformation, translation, research reputation, national agenda, student careers and value for Ashoka.</p>
+      <p class="lead">Six groups of indicators that follow the map: four for value for partners (innovation and AI transformation, public and societal impact, research reputation, student careers), one for the mechanisms, and value for Ashoka.</p>
     </header>
     <div class="kpi-note"><strong>Proposed targets for discussion.</strong> Baselines are set in the first 90 days; the numbers below show the intended scale and slope, and are revised once baselines are known.</div>
     <div class="kpi-bar">
@@ -448,7 +448,7 @@ svg#phase { display: block; width: 100%; height: auto; margin-top: 18px; font-fa
 
 <script>
 const NS = 'http://www.w3.org/2000/svg';
-const EXT = [['parks','Parks & accelerators'],['gov','Government'],['startups','AI/ML startups'],['gcc','GCCs'],['bigtech','Big Tech research arms'],['indian','Indian enterprise'],['univ','Top-ranked universities']];
+const EXT = [['parks','Science parks & accelerators'],['gov','Government'],['startups','AI/ML startups'],['gcc','GCCs'],['bigtech','Big Tech research arms'],['indian','Indian enterprise'],['univ','Top-ranked universities']];
 const UNITS = [
   ['i-cs','Computer Science Department','Head: Subhashis Banerjee · Awasthi, Gupta, Dey','var(--gcc)','v'],
   ['i-dsai','Data Science & AI Department','New department under VSAC','var(--hub)','v'],
@@ -471,7 +471,10 @@ const TH = [...THH, ...THV];
 const TMAP = { 't-cs':['h-ai','h-sys'], 't-ds':['h-data'], 't-econ':['v-econ'], 't-ais':['h-ai','v-policy'], 't-ethics':['v-hum'], 't-dig':['v-policy','h-sec'], 't-policy':['v-policy'], 't-hum':['v-hum'], 't-health':['v-health'], 't-hw':['h-sys'] };
 const remapT = list => [...new Set(list.flatMap(x => TMAP[x] || [x]))];
 const ME = [['m-exp','Experimental spaces','Labs & experience centre'],['m-inc','Incubation','Exists: InfoEdge CfE'],['m-tt','Technology transfer','To build'],['m-joint','Joint research','In pockets today'],['m-park','Research Park','To build · year 3']];
-const IM = [['d-nat','National agenda'],['d-ind','Industrial innovation'],['d-rep','Research reputation'],['d-stu','Student careers']];
+const IM = [['d-ind','Innovation & AI transformation'],['d-nat','Public & societal impact'],['d-rep','Research reputation'],['d-stu','Student careers']];
+const CHG = [['c-ind','Industrial transformation',130,320],['c-nat','National agenda',335,525],['c-soc','Societal challenges',540,730]];
+const SCH = { parks:['c-ind'], gov:['c-nat','c-soc'], startups:['c-ind','c-soc'], gcc:['c-ind'], bigtech:['c-ind','c-soc'], indian:['c-ind','c-nat'], univ:['c-soc','c-nat'] };
+const CHNAME = Object.fromEntries(CHG.map(c => [c[0], c[1]]));
 const RE = [['r-fund','Funding',1240,84],['r-rep','Reputation',1105,104],['r-gov','Govt relationships',945,150],['r-scale','Scale',800,66],['r-know','IP & papers',680,104]];
 const COLOR = { parks:'var(--parks)', gov:'var(--gov)', startups:'var(--startups)', gcc:'var(--gcc)', bigtech:'var(--bigtech)', indian:'var(--indian)', univ:'var(--univ)' };
 const TINT = { parks:'var(--parks-t)', gov:'var(--gov-t)', startups:'var(--startups-t)', gcc:'var(--gcc-t)', bigtech:'var(--bigtech-t)', indian:'var(--indian-t)', univ:'var(--univ-t)' };
@@ -577,7 +580,7 @@ const P = {};
 EXT.forEach(([id], i) => P[id] = { x: 20, w: 200, h: 32, cy: 150 + i * 90, fill: TINT[id], stroke: COLOR[id] });
 TH.forEach(([id], i) => P[id] = { x: 690, w: 200, h: 30, cy: (i < 5 ? 150 + i * 50 : 450 + (i - 5) * 50), fill: 'var(--th-t)', stroke: 'var(--th-b)' });
 ME.forEach(([id], i) => P[id] = { x: 960, w: 180, h: 46, cy: 160 + i * 130, fill: 'var(--me-t)', stroke: 'var(--me-b)' });
-IM.forEach(([id], i) => P[id] = { x: 1220, w: 180, h: 32, cy: 190 + i * 160, fill: 'var(--im-t)', stroke: 'var(--im-b)' });
+IM.forEach(([id], i) => P[id] = { x: 1205, w: 210, h: 32, cy: 190 + i * 160, fill: 'var(--im-t)', stroke: 'var(--im-b)' });
 const CX = 330, CW = 320, OY = 112, OH = 568, LY = 760;
 
 const gLinks = el('g', {});
@@ -585,11 +588,11 @@ const gNodes = el('g', {});
 const links = [];
 const addLink = (key, d, base, dash, op) => { const p = el('path', { d, class: 'link' }, gLinks); if (base) { p.style.stroke = base; p.style.opacity = op || .55; } if (dash) p.setAttribute('stroke-dasharray', '5 4'); links.push({ key, path: p, base, op: op || .55 }); };
 
-[['Partners',120],['Problems',278],['Ashoka University',490],['Thematic areas · indicative',790],['Mechanisms',1050],['Impact',1310]].forEach(([t, x]) => el('text', { x, y: 60, class: 'head', 'text-anchor': 'middle' }, null, t));
+[['Partners',120],['Challenges',278],['Ashoka University',490],['Thematic areas · indicative',790],['Mechanisms',1050],['Value for partners',1310]].forEach(([t, x]) => el('text', { x, y: 60, class: 'head', 'text-anchor': 'middle' }, null, t));
 el('text', { x: 790, y: 116, 'text-anchor': 'middle', class: 'small', style: 'font-weight:600;fill:var(--hub)' }, null, 'Horizontal \u00b7 computing (CS)');
 el('text', { x: 790, y: 416, 'text-anchor': 'middle', class: 'small', style: 'font-weight:600;fill:var(--th-b)' }, null, 'Vertical \u00b7 the liberal arts (X)');
 
-EXT.forEach(([id], i) => addLink('e:' + id, curve(220, P[id].cy, 260, 160 + i * 92), COLOR[id]));
+EXT.forEach(([id], i) => { const c = CHG.find(x => x[0] === SCH[id][0]); addLink('e:' + id, curve(220, P[id].cy, 260, (c[2] + c[3]) / 2 - 30 + (i % 4) * 20), COLOR[id]); });
 addLink('b:v', `M296 ${BLK.v.cy}H326`);
 addLink('b:a', `M296 ${BLK.a.cy}H326`);
 Object.entries(BLK).forEach(([b, B]) => {
@@ -597,17 +600,23 @@ Object.entries(BLK).forEach(([b, B]) => {
   B.mechs.forEach(m => addLink('bm:' + b + ':' + m, curve(650, B.cy + 20, 960, P[m].cy), B.color, true, .35));
 });
 TH.forEach(([t]) => ME.forEach(([m]) => addLink('tm:' + t + ':' + m, curve(890, P[t].cy, 960, P[m].cy))));
-ME.forEach(([m]) => IM.forEach(([d]) => addLink('md:' + m + ':' + d, curve(1140, P[m].cy, 1220, P[d].cy))));
+ME.forEach(([m]) => IM.forEach(([d]) => addLink('md:' + m + ':' + d, curve(1140, P[m].cy, 1205, P[d].cy))));
 
 const loop = el('path', { d: `M1310 ${P['d-stu'].cy + 16}V${LY - 20}Q1310 ${LY} 1290 ${LY}H510Q490 ${LY} 490 ${LY - 20}V${OY + OH + 6}`, class: 'loop' }, gLinks);
 el('path', { d: `M483 ${OY + OH + 14}L490 ${OY + OH + 2}L497 ${OY + OH + 14}z`, fill: 'var(--re-b)' }, gLinks);
 el('text', { x: 900, y: LY + 50, class: 'small', 'text-anchor': 'middle', style: 'font-size:16px;font-weight:600;fill:var(--ink)' }, null, '↺  Value for Ashoka');
 
-el('rect', { x: 260, y: 130, width: 36, height: 600, rx: 18, fill: 'url(#barGrad)' }, gNodes);
-el('text', { x: 283, y: 430, class: 'bar-text', 'text-anchor': 'middle', transform: 'rotate(-90 283 430)' }, gNodes, 'Problem statements → research areas');
+const segs = {};
+CHG.forEach(([id, n, y0, y1]) => {
+  const g = el('g', { class: 'chg' }, gNodes);
+  el('rect', { x: 260, y: y0, width: 36, height: y1 - y0, rx: 18, fill: '#0b7285' }, g);
+  const cy = (y0 + y1) / 2;
+  el('text', { x: 283, y: cy, class: 'chg-text', 'text-anchor': 'middle', transform: `rotate(-90 283 ${cy})` }, g, n);
+  segs[id] = g;
+});
 el('text', { x: 278, y: 752, class: 'small', 'text-anchor': 'middle' }, gNodes, 'local + global');
-el('path', { d: `M318 ${BLK.v.cy - 6}L328 ${BLK.v.cy}L318 ${BLK.v.cy + 6}z`, fill: 'var(--bar-a)' }, gNodes);
-el('path', { d: `M318 ${BLK.a.cy - 6}L328 ${BLK.a.cy}L318 ${BLK.a.cy + 6}z`, fill: 'var(--bar-b)' }, gNodes);
+el('path', { d: `M318 ${BLK.v.cy - 6}L328 ${BLK.v.cy}L318 ${BLK.v.cy + 6}z`, fill: '#0b7285' }, gNodes);
+el('path', { d: `M318 ${BLK.a.cy - 6}L328 ${BLK.a.cy}L318 ${BLK.a.cy + 6}z`, fill: '#0b7285' }, gNodes);
 
 el('rect', { x: CX - 16, y: OY, width: CW + 32, height: OH, rx: 28, class: 'outer' }, gNodes);
 el('text', { x: CX + 4, y: OY + 34, class: 'outer-title' }, gNodes, 'Ashoka University');
@@ -643,7 +652,7 @@ const pill = (id, label, sub, x, cy, w, h, fill, stroke, small) => {
 };
 THH.forEach(([id]) => { P[id].fill = 'var(--hub-t)'; P[id].stroke = 'var(--hub)'; });
 const THSET = new Set(TH.map(t => t[0]));
-[EXT, TH, IM].forEach(grp => grp.forEach(([id, n]) => pill(id, n, null, P[id].x, P[id].cy, P[id].w, P[id].h, P[id].fill, P[id].stroke, THSET.has(id))));
+[EXT, TH, IM].forEach(grp => grp.forEach(([id, n]) => pill(id, n, null, P[id].x, P[id].cy, P[id].w, P[id].h, P[id].fill, P[id].stroke, THSET.has(id) || id === 'parks' || id.startsWith('d-'))));
 ME.forEach(([id, n, sub]) => pill(id, n, sub, P[id].x, P[id].cy, P[id].w, P[id].h, P[id].fill, P[id].stroke));
 RE.forEach(([id, n, cx, w]) => pill(id, n, null, cx - w / 2, LY, w, 28, 'var(--re-t)', 'var(--re-b)', true));
 
@@ -660,6 +669,7 @@ function reset() {
   Object.values(blocks).forEach(b => { b.g.classList.remove('on'); b.r.style.stroke = ''; b.r.style.strokeWidth = ''; });
   links.forEach(l => { l.path.classList.remove('on'); l.path.style.stroke = l.base || ''; l.path.style.opacity = l.base ? l.op : ''; });
   loop.classList.remove('on'); loop.style.stroke = '';
+  Object.values(segs).forEach(g => g.style.opacity = 1);
 }
 function light(ids, keyColor, nodeColor, blockColor) {
   svg.classList.add('dim');
@@ -686,8 +696,8 @@ const blocksFor = s => Object.keys(BLK).filter(b => keysFor(s).includes('b:' + b
 function setPanel(color, html) { panel.style.setProperty('--pc', color); panel.innerHTML = html; const b = panel.querySelector('.reset'); if (b) b.addEventListener('click', showAll); }
 function showAll() {
   reset(); pressChip('all');
-  setPanel('var(--hub)', '<div class="eyebrow">How to read it</div><h3>Problems in, impact out, value back</h3>' +
-    '<div class="k">Left to right</div><p>Seven kinds of partners bring problem statements. Inside Ashoka University, VSAC works them with the university’s other departments and centres, through five indicative thematic areas and five mechanisms, into four kinds of impact.</p>' +
+  setPanel('var(--hub)', '<div class="eyebrow">How to read it</div><h3>Challenges in, value out</h3>' +
+    '<div class="k">Left to right</div><p>Seven kinds of partners bring three kinds of challenge: industrial transformation, the national agenda and societal challenges. Inside Ashoka University, VSAC works them with the university’s other departments and centres, across computing and the liberal arts, through five mechanisms, into value for partners.</p>' +
     '<div class="k">Underneath</div><p>Value for Ashoka: funding, reputation, government relationships, scale and IP.</p>' +
     '<div class="k">Try</div><p>Trace a partner above, click VSAC or Other departments and centres to see who leads them, or click any theme or mechanism.</p>');
 }
@@ -696,14 +706,17 @@ function showS(s) {
   const km = new Map(keysFor(s).map(k => [k, COLOR[s]]));
   light([s, ...S[s].links, ...blocksFor(s)], km, () => COLOR[s], COLOR[s]);
   loop.classList.add('on'); loop.style.stroke = COLOR[s];
+  Object.entries(segs).forEach(([c, g]) => g.style.opacity = SCH[s].includes(c) ? 1 : .3);
   const L = S[s].links;
   setPanel(COLOR[s], '<div class="eyebrow">Partner</div><h3>' + S[s].name + '</h3>' +
+    '<div class="k">Challenges</div><p>' + SCH[s].map(c => CHNAME[c]).join(', ') + '</p>' +
     '<div class="k">They bring</div><p>' + S[s].bring + '</p>' +
     '<div class="k">VSAC offers</div><p>' + S[s].offer + '</p>' +
     '<div class="k">Ashoka ties today</div><p>' + S[s].ties + '</p>' +
     '<div class="k">Worked by</div>' + unitList(sel(L, 'i-')) +
     '<div class="k">Through</div><p>' + names(sel(L, 'm-')) + '</p>' +
-    '<div class="k">Impact and value</div><p>' + names(sel(L, 'd-')) + '. Value for Ashoka: ' + names(sel(L, 'r-')) + '.</p>' +
+    '<div class="k">Value for partners</div><p>' + names(sel(L, 'd-')) + '</p>' +
+    '<div class="k">Value for Ashoka</div><p>' + names(sel(L, 'r-')) + '</p>' +
     '<button class="reset" type="button">Show the whole map</button>');
 }
 function showBlock(b) {
@@ -733,7 +746,7 @@ function showNode(id) {
   bs.forEach(b => { km.set('b:' + b, 'var(--hub)'); if (km.has('bt:' + b + ':' + id) || BLK[b].themes.includes(id)) km.set('bt:' + b + ':' + id, BLK[b].color); if (BLK[b].mechs.includes(id)) km.set('bm:' + b + ':' + id, BLK[b].color); });
   light([id, ...who, ...bs.map(b => 'blk-' + b)], km, n => COLOR[n] || 'var(--hub)', 'var(--hub)');
   if (id.startsWith('r-')) { loop.classList.add('on'); loop.style.stroke = 'var(--hub)'; }
-  const kind = ({ h:'Thematic area \u00b7 horizontal (CS)', v:'Thematic area \u00b7 vertical', t:'Thematic area', m:'Mechanism', d:'Impact domain', r:'Value for Ashoka' })[id[0]];
+  const kind = ({ h:'Thematic area \u00b7 horizontal (CS)', v:'Thematic area \u00b7 vertical', t:'Thematic area', m:'Mechanism', d:'Value for partners', r:'Value for Ashoka' })[id[0]];
   let html = '<div class="eyebrow">' + kind + '</div><h3>' + NAME[id] + '</h3>';
   if (THEME[id]) html += '<div class="k">People and units at Ashoka</div><p>' + THEME[id] + '</p>';
   if (us.length) html += '<div class="k">' + (id.startsWith('m-') ? 'Hosted by' : 'Strong units') + '</div>' + unitList(us);
@@ -879,21 +892,22 @@ const KG = [
     ['Professionals upskilled in AI',[150,500,1000],'','Executive education and sessions in experimental spaces'],
     ['Innovation programmes run with partners',[2,5,10],'','Challenges, studios and hackathons'],
     ['Science park and accelerator links',[1,3,5],'','e.g. Cambridge, IIT Madras, Y Combinator']]],
-  ['Translation','Research turned into products, deals and ventures','var(--bigtech)',[
-    ['Invention disclosures',[5,15,30],'','Filed with the technology-transfer office'],
-    ['Licences and tech-transfer deals',[0,3,8],'','Signed agreements'],
-    ['VSAC-linked startups incubated',[5,12,25],'','With the InfoEdge Centre for Entrepreneurship'],
-    ['Research Park anchor tenants',[0,2,5],'','Signed before the park is built']]],
+  ['Public and societal impact','Work that serves India’s missions and society','var(--gov)',[
+    ['Government-funded projects',[2,5,9],'','Active in the year'],
+    ['Pilots in public systems',[1,3,6],'','Running with a government partner'],
+    ['Societal challenge projects',[3,8,15],'','With NGOs, public bodies and communities']]],
   ['Research reputation','Standing with global peers','var(--univ)',[
     ['Papers at top-tier venues',[20,35,55],'','Per year, VSAC faculty and students'],
     ['Joint grants with global partners',[1,3,6],'','Cumulative'],
     ['Visiting faculty and exchanges',[4,10,18],'','Per year']]],
-  ['National agenda','Work that serves India’s missions','var(--gov)',[
-    ['Government-funded projects',[2,5,9],'','Active in the year'],
-    ['Pilots in public systems',[1,3,6],'','Running with a government partner']]],
   ['Student careers','Partners shaping talent','var(--startups)',[
     ['Students on partner-sponsored projects',[100,250,450],'','Capstones, challenges and studios'],
     ['Internships through partners',[60,150,300],'','Per year']]],
+  ['Mechanisms: translation','How research turns into products, deals and ventures','var(--bigtech)',[
+    ['Invention disclosures',[5,15,30],'','Filed with the technology-transfer office'],
+    ['Licences and tech-transfer deals',[0,3,8],'','Signed agreements'],
+    ['VSAC-linked startups incubated',[5,12,25],'','With the InfoEdge Centre for Entrepreneurship'],
+    ['Research Park anchor tenants',[0,2,5],'','Signed before the park is built']]],
   ['Value for Ashoka','What flows back to the university','var(--indian)',[
     ['External funding raised',[10,30,60],'₹ crore','Grants and sponsored research, per year'],
     ['Recurring industry revenue',[1,4,10],'₹ crore','Executive education and sponsored projects'],
